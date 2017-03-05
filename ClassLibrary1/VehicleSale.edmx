@@ -1,0 +1,1810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VehicleSaleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AmentiesMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Banners">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="BannerUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="BannerLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="PublicKey" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleTypeID" Type="int" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Faq">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Name="FaqId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdon" Type="datetime" />
+          <Property Name="updatedon" Type="datetime" />
+          <Property Name="Faqresult" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FeaturesMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AmentiesID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Folders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FolderName" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Login_SocailNetwork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProviderKey" Type="nvarchar(max)" />
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Url" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PageImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageId" Type="int" />
+          <Property Name="ImageId" Type="varchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="RentTerms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Term" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Testimonial">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageURl" Type="varchar(max)" />
+          <Property Name="LogoUrl" Type="varchar" MaxLength="500" />
+          <Property Name="isactive" Type="bit" Nullable="false" />
+          <Property Name="createdon" Type="datetime" />
+          <Property Name="updatedon" Type="datetime" />
+          <Property Name="Rating" Type="int" />
+        </EntityType>
+        <EntityType Name="UploadFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FolderId" Type="int" />
+          <Property Name="FileName" Type="varchar" MaxLength="500" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="ForgetPassword" Type="varchar" MaxLength="100" />
+          <Property Name="ProviderKey" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="VehicleAmenties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="AmentiesID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="VehicleFeatures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="FeatureID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="VehicleImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="VideoUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="PublicKey" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="VehicleRent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TermID" Type="int" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="VehicleRentleConditions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="VehicleCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleTypeID" Type="int" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="BrandID" Type="int" />
+          <Property Name="ModelID" Type="int" />
+          <Property Name="Seats" Type="int" />
+          <Property Name="Sleeps" Type="int" />
+          <Property Name="YearBuilt" Type="int" />
+          <Property Name="Length" Type="nvarchar" MaxLength="50" />
+          <Property Name="Width" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsFeatured" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="geography" />
+          <Property Name="IsSaleable" Type="bit" Nullable="false" />
+          <Property Name="SalePrice" Type="float" />
+        </EntityType>
+        <EntityType Name="VehicleTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Widget">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageId" Type="int" />
+          <Property Name="WidgetId" Type="varchar" MaxLength="50" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Userid" Type="int" Nullable="false" />
+          <Property Name="Vehicleid" Type="int" Nullable="false" />
+          <Property Name="Createdon" Type="datetime" />
+          <Property Name="Updatedon" Type="datetime" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="isactive" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContactUsRequestDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="500" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="500" />
+          <Property Name="Website" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="MessageSender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="500" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Newsletter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdon" Type="datetime" />
+          <Property Name="updatedon" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OfferMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="NoOfNights" Type="int" />
+          <Property Name="Location" Type="nvarchar" MaxLength="500" />
+          <Property Name="ValidUntillDate" Type="datetime" />
+          <Property Name="PickUp" Type="datetime" />
+          <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="OfferPrice" Type="float" />
+          <Property Name="DownPaymentPercentage" Type="float" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TagMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagName" Type="nvarchar" MaxLength="500" />
+          <Property Name="TagIconUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="BackgroundUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="VehicleTags">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="TagID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Categories_VehicleTypes">
+          <End Role="VehicleTypes" Type="Self.VehicleTypes" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="VehicleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeaturesMaster_AmentiesMaster">
+          <End Role="AmentiesMaster" Type="Self.AmentiesMaster" Multiplicity="0..1" />
+          <End Role="FeaturesMaster" Type="Self.FeaturesMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AmentiesMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FeaturesMaster">
+              <PropertyRef Name="AmentiesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferMaster_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="OfferMaster" Type="Self.OfferMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OfferMaster">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UploadFiles_Folders">
+          <End Role="Folders" Type="Self.Folders" Multiplicity="0..1" />
+          <End Role="UploadFiles" Type="Self.UploadFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UploadFiles">
+              <PropertyRef Name="FolderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleAmenties_AmentiesMaster">
+          <End Role="AmentiesMaster" Type="Self.AmentiesMaster" Multiplicity="0..1" />
+          <End Role="VehicleAmenties" Type="Self.VehicleAmenties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AmentiesMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleAmenties">
+              <PropertyRef Name="AmentiesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleAmenties_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="VehicleAmenties" Type="Self.VehicleAmenties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleAmenties">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleFeatures_FeaturesMaster">
+          <End Role="FeaturesMaster" Type="Self.FeaturesMaster" Multiplicity="0..1" />
+          <End Role="VehicleFeatures" Type="Self.VehicleFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FeaturesMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleFeatures">
+              <PropertyRef Name="FeatureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleFeatures_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="VehicleFeatures" Type="Self.VehicleFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleFeatures">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleImages_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="VehicleImages" Type="Self.VehicleImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleImages">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleRent_RentTerms">
+          <End Role="RentTerms" Type="Self.RentTerms" Multiplicity="0..1" />
+          <End Role="VehicleRent" Type="Self.VehicleRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentTerms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleRent">
+              <PropertyRef Name="TermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleRent_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="VehicleRent" Type="Self.VehicleRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleRent">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleRentleConditions_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="VehicleRentleConditions" Type="Self.VehicleRentleConditions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleRentleConditions">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Models">
+          <End Role="Models" Type="Self.Models" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_VehicleTypes">
+          <End Role="VehicleTypes" Type="Self.VehicleTypes" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="VehicleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleTags_TagMaster">
+          <End Role="TagMaster" Type="Self.TagMaster" Multiplicity="0..1" />
+          <End Role="VehicleTags" Type="Self.VehicleTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleTags">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleTags_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="VehicleTags" Type="Self.VehicleTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleTags">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Widget_Page">
+          <End Role="Page" Type="Self.Page" Multiplicity="0..1" />
+          <End Role="Widget" Type="Self.Widget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Page">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Widget">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VehicleSaleModelStoreContainer">
+          <EntitySet Name="AmentiesMaster" EntityType="Self.AmentiesMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banners" EntityType="Self.Banners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faq" EntityType="Self.Faq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeaturesMaster" EntityType="Self.FeaturesMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Folders" EntityType="Self.Folders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login_SocailNetwork" EntityType="Self.Login_SocailNetwork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Models" EntityType="Self.Models" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageImages" EntityType="Self.PageImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentTerms" EntityType="Self.RentTerms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Testimonial" EntityType="Self.Testimonial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UploadFiles" EntityType="Self.UploadFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleAmenties" EntityType="Self.VehicleAmenties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleFeatures" EntityType="Self.VehicleFeatures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleImages" EntityType="Self.VehicleImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleRent" EntityType="Self.VehicleRent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleRentleConditions" EntityType="Self.VehicleRentleConditions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleTypes" EntityType="Self.VehicleTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Widget" EntityType="Self.Widget" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wishlist" EntityType="Self.Wishlist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactUsRequestDetails" EntityType="Self.ContactUsRequestDetails" Schema="VehicleSale" store:Type="Tables" />
+          <EntitySet Name="MessageSender" EntityType="Self.MessageSender" Schema="VehicleSale" store:Type="Tables" />
+          <EntitySet Name="Newsletter" EntityType="Self.Newsletter" Schema="VehicleSale" store:Type="Tables" />
+          <EntitySet Name="OfferMaster" EntityType="Self.OfferMaster" Schema="VehicleSale" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="VehicleSale" store:Type="Tables" />
+          <EntitySet Name="TagMaster" EntityType="Self.TagMaster" Schema="VehicleSale" store:Type="Tables" />
+          <EntitySet Name="VehicleTags" EntityType="Self.VehicleTags" Schema="VehicleSale" store:Type="Tables" />
+          <AssociationSet Name="FK_Categories_VehicleTypes" Association="Self.FK_Categories_VehicleTypes">
+            <End Role="VehicleTypes" EntitySet="VehicleTypes" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeaturesMaster_AmentiesMaster" Association="Self.FK_FeaturesMaster_AmentiesMaster">
+            <End Role="AmentiesMaster" EntitySet="AmentiesMaster" />
+            <End Role="FeaturesMaster" EntitySet="FeaturesMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferMaster_Vehicles" Association="Self.FK_OfferMaster_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="OfferMaster" EntitySet="OfferMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UploadFiles_Folders" Association="Self.FK_UploadFiles_Folders">
+            <End Role="Folders" EntitySet="Folders" />
+            <End Role="UploadFiles" EntitySet="UploadFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleAmenties_AmentiesMaster" Association="Self.FK_VehicleAmenties_AmentiesMaster">
+            <End Role="AmentiesMaster" EntitySet="AmentiesMaster" />
+            <End Role="VehicleAmenties" EntitySet="VehicleAmenties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleAmenties_Vehicles" Association="Self.FK_VehicleAmenties_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="VehicleAmenties" EntitySet="VehicleAmenties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleFeatures_FeaturesMaster" Association="Self.FK_VehicleFeatures_FeaturesMaster">
+            <End Role="FeaturesMaster" EntitySet="FeaturesMaster" />
+            <End Role="VehicleFeatures" EntitySet="VehicleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleFeatures_Vehicles" Association="Self.FK_VehicleFeatures_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="VehicleFeatures" EntitySet="VehicleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleImages_Vehicles" Association="Self.FK_VehicleImages_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="VehicleImages" EntitySet="VehicleImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleRent_RentTerms" Association="Self.FK_VehicleRent_RentTerms">
+            <End Role="RentTerms" EntitySet="RentTerms" />
+            <End Role="VehicleRent" EntitySet="VehicleRent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleRent_Vehicles" Association="Self.FK_VehicleRent_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="VehicleRent" EntitySet="VehicleRent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleRentleConditions_Vehicles" Association="Self.FK_VehicleRentleConditions_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="VehicleRentleConditions" EntitySet="VehicleRentleConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Brands" Association="Self.FK_Vehicles_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Categories" Association="Self.FK_Vehicles_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Models" Association="Self.FK_Vehicles_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_VehicleTypes" Association="Self.FK_Vehicles_VehicleTypes">
+            <End Role="VehicleTypes" EntitySet="VehicleTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleTags_TagMaster" Association="Self.FK_VehicleTags_TagMaster">
+            <End Role="TagMaster" EntitySet="TagMaster" />
+            <End Role="VehicleTags" EntitySet="VehicleTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleTags_Vehicles" Association="Self.FK_VehicleTags_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="VehicleTags" EntitySet="VehicleTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Widget_Page" Association="Self.FK_Widget_Page">
+            <End Role="Page" EntitySet="Page" />
+            <End Role="Widget" EntitySet="Widget" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VehicleSaleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AmentiesMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FeaturesMasters" Relationship="Self.FK_FeaturesMaster_AmentiesMaster" FromRole="AmentiesMaster" ToRole="FeaturesMaster" />
+          <NavigationProperty Name="VehicleAmenties" Relationship="Self.FK_VehicleAmenties_AmentiesMaster" FromRole="AmentiesMaster" ToRole="VehicleAmenties" />
+        </EntityType>
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BannerLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="BannerUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PublicKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Vehicles" Relationship="VehicleSaleModel.FK_Vehicles_Brands" FromRole="Brand" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleTypeID" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="VehicleType" Relationship="Self.FK_Categories_VehicleTypes" FromRole="Categories" ToRole="VehicleTypes" />
+          <NavigationProperty Name="Vehicles" Relationship="VehicleSaleModel.FK_Vehicles_Categories" FromRole="Category" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="FeaturesMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AmentiesID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="AmentiesMaster" Relationship="Self.FK_FeaturesMaster_AmentiesMaster" FromRole="FeaturesMaster" ToRole="AmentiesMaster" />
+          <NavigationProperty Name="VehicleFeatures" Relationship="Self.FK_VehicleFeatures_FeaturesMaster" FromRole="FeaturesMaster" ToRole="VehicleFeatures" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Vehicles" Relationship="VehicleSaleModel.FK_Vehicles_Models" FromRole="Model" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="RentTerm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Term" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="VehicleRents" Relationship="Self.FK_VehicleRent_RentTerms" FromRole="RentTerms" ToRole="VehicleRent" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="ForgetPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VehicleAmenty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="AmentiesID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="AmentiesMaster" Relationship="Self.FK_VehicleAmenties_AmentiesMaster" FromRole="VehicleAmenties" ToRole="AmentiesMaster" />
+          <NavigationProperty Name="Vehicle" Relationship="VehicleSaleModel.FK_VehicleAmenties_Vehicles" FromRole="VehicleAmenty" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="VehicleFeature">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="FeatureID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="FeaturesMaster" Relationship="Self.FK_VehicleFeatures_FeaturesMaster" FromRole="VehicleFeatures" ToRole="FeaturesMaster" />
+          <NavigationProperty Name="Vehicle" Relationship="VehicleSaleModel.FK_VehicleFeatures_Vehicles" FromRole="VehicleFeature" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="VehicleImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Vehicle" Relationship="VehicleSaleModel.FK_VehicleImages_Vehicles" FromRole="VehicleImage" ToRole="Vehicle" />
+          <Property Name="VideoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PublicKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VehicleRent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TermID" Type="Int32" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="RentTerm" Relationship="Self.FK_VehicleRent_RentTerms" FromRole="VehicleRent" ToRole="RentTerms" />
+          <NavigationProperty Name="Vehicle" Relationship="VehicleSaleModel.FK_VehicleRent_Vehicles" FromRole="VehicleRent" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="VehicleRentleCondition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Vehicle" Relationship="VehicleSaleModel.FK_VehicleRentleConditions_Vehicles" FromRole="VehicleRentleCondition" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Categories_VehicleTypes" FromRole="VehicleTypes" ToRole="Categories" />
+          <NavigationProperty Name="Vehicles" Relationship="VehicleSaleModel.FK_Vehicles_VehicleTypes" FromRole="VehicleType" ToRole="Vehicle" />
+        </EntityType>
+        <Association Name="FK_FeaturesMaster_AmentiesMaster">
+          <End Role="AmentiesMaster" Type="Self.AmentiesMaster" Multiplicity="0..1" />
+          <End Role="FeaturesMaster" Type="Self.FeaturesMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AmentiesMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FeaturesMaster">
+              <PropertyRef Name="AmentiesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleAmenties_AmentiesMaster">
+          <End Role="AmentiesMaster" Type="Self.AmentiesMaster" Multiplicity="0..1" />
+          <End Role="VehicleAmenties" Type="Self.VehicleAmenty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AmentiesMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleAmenties">
+              <PropertyRef Name="AmentiesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_VehicleTypes">
+          <End Role="VehicleTypes" Type="Self.VehicleType" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="VehicleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleFeatures_FeaturesMaster">
+          <End Role="FeaturesMaster" Type="Self.FeaturesMaster" Multiplicity="0..1" />
+          <End Role="VehicleFeatures" Type="Self.VehicleFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FeaturesMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleFeatures">
+              <PropertyRef Name="FeatureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleRent_RentTerms">
+          <End Role="RentTerms" Type="Self.RentTerm" Multiplicity="0..1" />
+          <End Role="VehicleRent" Type="Self.VehicleRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentTerms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleRent">
+              <PropertyRef Name="TermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VehicleSaleEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AmentiesMasters" EntityType="Self.AmentiesMaster" />
+          <EntitySet Name="Banners" EntityType="Self.Banner" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="FeaturesMasters" EntityType="Self.FeaturesMaster" />
+          <EntitySet Name="Models" EntityType="Self.Model" />
+          <EntitySet Name="RentTerms" EntityType="Self.RentTerm" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="VehicleAmenties" EntityType="Self.VehicleAmenty" />
+          <EntitySet Name="VehicleFeatures" EntityType="Self.VehicleFeature" />
+          <EntitySet Name="VehicleImages" EntityType="Self.VehicleImage" />
+          <EntitySet Name="VehicleRents" EntityType="Self.VehicleRent" />
+          <EntitySet Name="VehicleRentleConditions" EntityType="Self.VehicleRentleCondition" />
+          <EntitySet Name="VehicleTypes" EntityType="Self.VehicleType" />
+          <AssociationSet Name="FK_FeaturesMaster_AmentiesMaster" Association="Self.FK_FeaturesMaster_AmentiesMaster">
+            <End Role="AmentiesMaster" EntitySet="AmentiesMasters" />
+            <End Role="FeaturesMaster" EntitySet="FeaturesMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleAmenties_AmentiesMaster" Association="Self.FK_VehicleAmenties_AmentiesMaster">
+            <End Role="AmentiesMaster" EntitySet="AmentiesMasters" />
+            <End Role="VehicleAmenties" EntitySet="VehicleAmenties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_VehicleTypes" Association="Self.FK_Categories_VehicleTypes">
+            <End Role="VehicleTypes" EntitySet="VehicleTypes" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleFeatures_FeaturesMaster" Association="Self.FK_VehicleFeatures_FeaturesMaster">
+            <End Role="FeaturesMaster" EntitySet="FeaturesMasters" />
+            <End Role="VehicleFeatures" EntitySet="VehicleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleRent_RentTerms" Association="Self.FK_VehicleRent_RentTerms">
+            <End Role="RentTerms" EntitySet="RentTerms" />
+            <End Role="VehicleRent" EntitySet="VehicleRents" />
+          </AssociationSet>
+          <EntitySet Name="Vehicles" EntityType="VehicleSaleModel.Vehicle" />
+          <AssociationSet Name="FK_Vehicles_Brands" Association="VehicleSaleModel.FK_Vehicles_Brands">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Categories" Association="VehicleSaleModel.FK_Vehicles_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Models" Association="VehicleSaleModel.FK_Vehicles_Models">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleAmenties_Vehicles" Association="VehicleSaleModel.FK_VehicleAmenties_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="VehicleAmenty" EntitySet="VehicleAmenties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleFeatures_Vehicles" Association="VehicleSaleModel.FK_VehicleFeatures_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="VehicleFeature" EntitySet="VehicleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleImages_Vehicles" Association="VehicleSaleModel.FK_VehicleImages_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="VehicleImage" EntitySet="VehicleImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleRent_Vehicles" Association="VehicleSaleModel.FK_VehicleRent_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="VehicleRent" EntitySet="VehicleRents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleRentleConditions_Vehicles" Association="VehicleSaleModel.FK_VehicleRentleConditions_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="VehicleRentleCondition" EntitySet="VehicleRentleConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_VehicleTypes" Association="VehicleSaleModel.FK_Vehicles_VehicleTypes">
+            <End Role="VehicleType" EntitySet="VehicleTypes" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <EntitySet Name="Faqs" EntityType="VehicleSaleModel.Faq" />
+          <EntitySet Name="Roles" EntityType="VehicleSaleModel.Role" />
+          <EntitySet Name="Login_SocailNetwork" EntityType="VehicleSaleModel.Login_SocailNetwork" />
+          <EntitySet Name="Testimonials" EntityType="VehicleSaleModel.Testimonial" />
+          <EntitySet Name="OfferMasters" EntityType="VehicleSaleModel.OfferMaster" />
+          <AssociationSet Name="FK_OfferMaster_Vehicles" Association="VehicleSaleModel.FK_OfferMaster_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="OfferMaster" EntitySet="OfferMasters" />
+          </AssociationSet>
+          <EntitySet Name="Wishlists" EntityType="VehicleSaleModel.Wishlist" />
+          <EntitySet Name="Newsletters" EntityType="VehicleSaleModel.Newsletter" />
+          <EntitySet Name="Pages" EntityType="VehicleSaleModel.Page" />
+          <EntitySet Name="Widgets" EntityType="VehicleSaleModel.Widget" />
+          <AssociationSet Name="FK_Widget_Page" Association="VehicleSaleModel.FK_Widget_Page">
+            <End Role="Page" EntitySet="Pages" />
+            <End Role="Widget" EntitySet="Widgets" />
+          </AssociationSet>
+          <EntitySet Name="PageImages" EntityType="VehicleSaleModel.PageImage" />
+          <EntitySet Name="Folders" EntityType="VehicleSaleModel.Folder" />
+          <EntitySet Name="UploadFiles" EntityType="VehicleSaleModel.UploadFile" />
+          <AssociationSet Name="FK_UploadFiles_Folders" Association="VehicleSaleModel.FK_UploadFiles_Folders">
+            <End Role="Folder" EntitySet="Folders" />
+            <End Role="UploadFile" EntitySet="UploadFiles" />
+          </AssociationSet>
+          <EntitySet Name="TagMasters" EntityType="VehicleSaleModel.TagMaster" />
+          <EntitySet Name="VehicleTags" EntityType="VehicleSaleModel.VehicleTag" />
+          <AssociationSet Name="FK_VehicleTags_Vehicles" Association="VehicleSaleModel.FK_VehicleTags_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="VehicleTag" EntitySet="VehicleTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleTags_TagMaster" Association="VehicleSaleModel.FK_VehicleTags_TagMaster">
+            <End Role="TagMaster" EntitySet="TagMasters" />
+            <End Role="VehicleTag" EntitySet="VehicleTags" />
+          </AssociationSet>
+          <EntitySet Name="MessageSenders" EntityType="VehicleSaleModel.MessageSender" />
+          <EntitySet Name="ContactUsRequestDetails" EntityType="VehicleSaleModel.ContactUsRequestDetail" />
+          </EntityContainer>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleTypeID" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="BrandID" Type="Int32" />
+          <Property Name="ModelID" Type="Int32" />
+          <Property Name="Seats" Type="Int32" />
+          <Property Name="Sleeps" Type="Int32" />
+          <Property Name="YearBuilt" Type="Int32" />
+          <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsFeatured" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Brand" Relationship="VehicleSaleModel.FK_Vehicles_Brands" FromRole="Vehicle" ToRole="Brand" />
+          <NavigationProperty Name="Category" Relationship="VehicleSaleModel.FK_Vehicles_Categories" FromRole="Vehicle" ToRole="Category" />
+          <NavigationProperty Name="Model" Relationship="VehicleSaleModel.FK_Vehicles_Models" FromRole="Vehicle" ToRole="Model" />
+          <NavigationProperty Name="VehicleAmenties" Relationship="VehicleSaleModel.FK_VehicleAmenties_Vehicles" FromRole="Vehicle" ToRole="VehicleAmenty" />
+          <NavigationProperty Name="VehicleFeatures" Relationship="VehicleSaleModel.FK_VehicleFeatures_Vehicles" FromRole="Vehicle" ToRole="VehicleFeature" />
+          <NavigationProperty Name="VehicleImages" Relationship="VehicleSaleModel.FK_VehicleImages_Vehicles" FromRole="Vehicle" ToRole="VehicleImage" />
+          <NavigationProperty Name="VehicleRents" Relationship="VehicleSaleModel.FK_VehicleRent_Vehicles" FromRole="Vehicle" ToRole="VehicleRent" />
+          <NavigationProperty Name="VehicleRentleConditions" Relationship="VehicleSaleModel.FK_VehicleRentleConditions_Vehicles" FromRole="Vehicle" ToRole="VehicleRentleCondition" />
+          <NavigationProperty Name="VehicleType" Relationship="VehicleSaleModel.FK_Vehicles_VehicleTypes" FromRole="Vehicle" ToRole="VehicleType" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OfferMasters" Relationship="VehicleSaleModel.FK_OfferMaster_Vehicles" FromRole="Vehicle" ToRole="OfferMaster" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Location" Type="Geography" />
+          <Property Name="IsSaleable" Type="Boolean" Nullable="false" />
+          <Property Name="SalePrice" Type="Double" />
+          <Property Name="Longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="VehicleTags" Relationship="VehicleSaleModel.FK_VehicleTags_Vehicles" FromRole="Vehicle" ToRole="VehicleTag" />
+        </EntityType>
+        <Association Name="FK_Vehicles_Brands">
+          <End Type="VehicleSaleModel.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Categories">
+          <End Type="VehicleSaleModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Models">
+          <End Type="VehicleSaleModel.Model" Role="Model" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleAmenties_Vehicles">
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.VehicleAmenty" Role="VehicleAmenty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleAmenty">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleFeatures_Vehicles">
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.VehicleFeature" Role="VehicleFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleFeature">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleImages_Vehicles">
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.VehicleImage" Role="VehicleImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleImage">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleRent_Vehicles">
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.VehicleRent" Role="VehicleRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleRent">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleRentleConditions_Vehicles">
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.VehicleRentleCondition" Role="VehicleRentleCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleRentleCondition">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_VehicleTypes">
+          <End Type="VehicleSaleModel.VehicleType" Role="VehicleType" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="VehicleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Faq">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Name="FaqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdon" Type="DateTime" Precision="3" />
+          <Property Name="updatedon" Type="DateTime" Precision="3" />
+          <Property Name="Faqresult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Login_SocailNetwork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Testimonial">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageURl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" Nullable="false" />
+          <Property Name="createdon" Type="DateTime" Precision="3" />
+          <Property Name="updatedon" Type="DateTime" Precision="3" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="LogoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OfferMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="NoOfNights" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PickUp" Type="DateTime" Precision="3" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+          <Property Name="OfferPrice" Type="Double" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Vehicle" Relationship="VehicleSaleModel.FK_OfferMaster_Vehicles" FromRole="OfferMaster" ToRole="Vehicle" />
+          <Property Name="ValidUntillDate" Type="DateTime" Precision="3" />
+          <Property Name="DownPaymentPercentage" Type="Double" />
+        </EntityType>
+        <Association Name="FK_OfferMaster_Vehicles">
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.OfferMaster" Role="OfferMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OfferMaster">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Userid" Type="Int32" Nullable="false" />
+          <Property Name="Vehicleid" Type="Int32" Nullable="false" />
+          <Property Name="Createdon" Type="DateTime" Precision="3" />
+          <Property Name="Updatedon" Type="DateTime" Precision="3" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="IpAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Newsletter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdon" Type="DateTime" Precision="3" />
+          <Property Name="updatedon" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Widgets" Relationship="VehicleSaleModel.FK_Widget_Page" FromRole="Page" ToRole="Widget" />
+        </EntityType>
+        <EntityType Name="Widget">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageId" Type="Int32" />
+          <Property Name="WidgetId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Page" Relationship="VehicleSaleModel.FK_Widget_Page" FromRole="Widget" ToRole="Page" />
+        </EntityType>
+        <Association Name="FK_Widget_Page">
+          <End Type="VehicleSaleModel.Page" Role="Page" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.Widget" Role="Widget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Page">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Widget">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PageImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageId" Type="Int32" />
+          <Property Name="ImageId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Folder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FolderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="UploadFiles" Relationship="VehicleSaleModel.FK_UploadFiles_Folders" FromRole="Folder" ToRole="UploadFile" />
+        </EntityType>
+        <EntityType Name="UploadFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FolderId" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Folder" Relationship="VehicleSaleModel.FK_UploadFiles_Folders" FromRole="UploadFile" ToRole="Folder" />
+        </EntityType>
+        <Association Name="FK_UploadFiles_Folders">
+          <End Type="VehicleSaleModel.Folder" Role="Folder" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.UploadFile" Role="UploadFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UploadFile">
+              <PropertyRef Name="FolderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TagMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TagIconUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BackgroundUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="VehicleTags" Relationship="VehicleSaleModel.FK_VehicleTags_TagMaster" FromRole="TagMaster" ToRole="VehicleTag" />
+        </EntityType>
+        <EntityType Name="VehicleTag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="TagID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Vehicle" Relationship="VehicleSaleModel.FK_VehicleTags_Vehicles" FromRole="VehicleTag" ToRole="Vehicle" />
+          <NavigationProperty Name="TagMaster" Relationship="VehicleSaleModel.FK_VehicleTags_TagMaster" FromRole="VehicleTag" ToRole="TagMaster" />
+        </EntityType>
+        <Association Name="FK_VehicleTags_Vehicles">
+          <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.VehicleTag" Role="VehicleTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleTag">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleTags_TagMaster">
+          <End Type="VehicleSaleModel.TagMaster" Role="TagMaster" Multiplicity="0..1" />
+          <End Type="VehicleSaleModel.VehicleTag" Role="VehicleTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VehicleTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MessageSender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ContactUsRequestDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VehicleSaleModelStoreContainer" CdmEntityContainer="VehicleSaleEntities1">
+          <EntitySetMapping Name="AmentiesMasters">
+            <EntityTypeMapping TypeName="VehicleSaleModel.AmentiesMaster">
+              <MappingFragment StoreEntitySet="AmentiesMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banners">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Banner">
+              <MappingFragment StoreEntitySet="Banners">
+                <ScalarProperty Name="PublicKey" ColumnName="PublicKey" />
+                <ScalarProperty Name="BannerUrl" ColumnName="BannerUrl" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BannerLink" ColumnName="BannerLink" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Brand">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VehicleTypeID" ColumnName="VehicleTypeID" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeaturesMasters">
+            <EntityTypeMapping TypeName="VehicleSaleModel.FeaturesMaster">
+              <MappingFragment StoreEntitySet="FeaturesMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AmentiesID" ColumnName="AmentiesID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Model">
+              <MappingFragment StoreEntitySet="Models">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentTerms">
+            <EntityTypeMapping TypeName="VehicleSaleModel.RentTerm">
+              <MappingFragment StoreEntitySet="RentTerms">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="VehicleSaleModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="ForgetPassword" ColumnName="ForgetPassword" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleAmenties">
+            <EntityTypeMapping TypeName="VehicleSaleModel.VehicleAmenty">
+              <MappingFragment StoreEntitySet="VehicleAmenties">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="AmentiesID" ColumnName="AmentiesID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleFeatures">
+            <EntityTypeMapping TypeName="VehicleSaleModel.VehicleFeature">
+              <MappingFragment StoreEntitySet="VehicleFeatures">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="FeatureID" ColumnName="FeatureID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleImages">
+            <EntityTypeMapping TypeName="VehicleSaleModel.VehicleImage">
+              <MappingFragment StoreEntitySet="VehicleImages">
+                <ScalarProperty Name="PublicKey" ColumnName="PublicKey" />
+                <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleRents">
+            <EntityTypeMapping TypeName="VehicleSaleModel.VehicleRent">
+              <MappingFragment StoreEntitySet="VehicleRent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TermID" ColumnName="TermID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleRentleConditions">
+            <EntityTypeMapping TypeName="VehicleSaleModel.VehicleRentleCondition">
+              <MappingFragment StoreEntitySet="VehicleRentleConditions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleTypes">
+            <EntityTypeMapping TypeName="VehicleSaleModel.VehicleType">
+              <MappingFragment StoreEntitySet="VehicleTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="IsSaleable" ColumnName="IsSaleable" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="YearBuilt" ColumnName="YearBuilt" />
+                <ScalarProperty Name="Sleeps" ColumnName="Sleeps" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="VehicleTypeID" ColumnName="VehicleTypeID" />
+                <ScalarProperty Name="VehicleCode" ColumnName="VehicleCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faqs">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Faq">
+              <MappingFragment StoreEntitySet="Faq">
+                <ScalarProperty Name="Faqresult" ColumnName="Faqresult" />
+                <ScalarProperty Name="updatedon" ColumnName="updatedon" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FaqId" ColumnName="FaqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login_SocailNetwork">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Login_SocailNetwork">
+              <MappingFragment StoreEntitySet="Login_SocailNetwork">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testimonials">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Testimonial">
+              <MappingFragment StoreEntitySet="Testimonial">
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="updatedon" ColumnName="updatedon" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="ImageURl" ColumnName="ImageURl" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferMasters">
+            <EntityTypeMapping TypeName="VehicleSaleModel.OfferMaster">
+              <MappingFragment StoreEntitySet="OfferMaster">
+                <ScalarProperty Name="DownPaymentPercentage" ColumnName="DownPaymentPercentage" />
+                <ScalarProperty Name="ValidUntillDate" ColumnName="ValidUntillDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OfferPrice" ColumnName="OfferPrice" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="PickUp" ColumnName="PickUp" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="NoOfNights" ColumnName="NoOfNights" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wishlists">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Wishlist">
+              <MappingFragment StoreEntitySet="Wishlist">
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="Updatedon" ColumnName="Updatedon" />
+                <ScalarProperty Name="Createdon" ColumnName="Createdon" />
+                <ScalarProperty Name="Vehicleid" ColumnName="Vehicleid" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Newsletters">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Newsletter">
+              <MappingFragment StoreEntitySet="Newsletter">
+                <ScalarProperty Name="updatedon" ColumnName="updatedon" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Page">
+              <MappingFragment StoreEntitySet="Page">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Widgets">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Widget">
+              <MappingFragment StoreEntitySet="Widget">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="WidgetId" ColumnName="WidgetId" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageImages">
+            <EntityTypeMapping TypeName="VehicleSaleModel.PageImage">
+              <MappingFragment StoreEntitySet="PageImages">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Folders">
+            <EntityTypeMapping TypeName="VehicleSaleModel.Folder">
+              <MappingFragment StoreEntitySet="Folders">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UploadFiles">
+            <EntityTypeMapping TypeName="VehicleSaleModel.UploadFile">
+              <MappingFragment StoreEntitySet="UploadFiles">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagMasters">
+            <EntityTypeMapping TypeName="VehicleSaleModel.TagMaster">
+              <MappingFragment StoreEntitySet="TagMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BackgroundUrl" ColumnName="BackgroundUrl" />
+                <ScalarProperty Name="TagIconUrl" ColumnName="TagIconUrl" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleTags">
+            <EntityTypeMapping TypeName="VehicleSaleModel.VehicleTag">
+              <MappingFragment StoreEntitySet="VehicleTags">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageSenders">
+            <EntityTypeMapping TypeName="VehicleSaleModel.MessageSender">
+              <MappingFragment StoreEntitySet="MessageSender">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactUsRequestDetails">
+            <EntityTypeMapping TypeName="VehicleSaleModel.ContactUsRequestDetail">
+              <MappingFragment StoreEntitySet="ContactUsRequestDetails">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

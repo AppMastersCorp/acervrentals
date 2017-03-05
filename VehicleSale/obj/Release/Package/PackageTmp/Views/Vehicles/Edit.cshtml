@@ -1,0 +1,204 @@
+﻿@model VehicleSale.ViewModels.VehicleVM
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAC0nVjoyNkvQ97Rfus-Unh__TbL_OkrME"></script>
+<script type="text/javascript">
+        window.onload = function () {
+            var mapOptions = {
+                center: new google.maps.LatLng(37.09024, -95.712891),
+                zoom: 4,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var latlngbounds = new google.maps.LatLngBounds();
+            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            google.maps.event.addListener(map, 'click', function (e) {
+                // alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                $("#Longitude").val(e.latLng.lng());
+                $("#Latitude").val(e.latLng.lat());
+            });
+        }
+</script>
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Vehicles</h3>
+    </header>
+    <div class="panel-body">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-sm-6">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VehicleCode)
+                    @Html.EditorFor(model => model.VehicleCode, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VehicleCode, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VehicleTypeID, "Vehicle Type")
+
+                    @Html.DropDownList("VehicleTypeID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.VehicleTypeID, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CategoryID, "Category")
+
+                    @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BrandID, "Brand")
+
+                    @Html.DropDownList("BrandID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BrandID, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ModelID, "Model")
+
+                    @Html.DropDownList("ModelID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ModelID, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title)
+
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description)
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Seats)
+
+                    @Html.EditorFor(model => model.Seats, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Seats, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sleeps)
+
+                    @Html.EditorFor(model => model.Sleeps, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sleeps, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.YearBuilt)
+
+                    @Html.EditorFor(model => model.YearBuilt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.YearBuilt, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Length)
+
+                    @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Width)
+
+                    @Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    <p>Note: To Find Longitude and Latitude, Please find location from the map and click on that. </p>
+                    @Html.LabelFor(model => model.Longitude)
+
+                    @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Latitude)
+
+                    @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.IsFeatured)
+
+                    @Html.CheckBoxFor(model => model.IsFeatured, new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "form-control" } })*@
+
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsSaleable, "Is Available for Sale")
+
+                    @Html.CheckBoxFor(model => model.IsSaleable, new { htmlAttributes = new { @id = "IsSaleable", @class = "form-control" } })
+                    @*@Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                </div>
+                <div class="form-group" id="divSalePrice" style="display:none">
+                    @Html.LabelFor(model => model.SalePrice)
+
+                    @Html.EditorFor(model => model.SalePrice, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SalePrice, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div id="dvMap" class="col-sm-6" style="bottom: 78px;right: 48px;width: 500px; height: 500px;position:absolute">
+            </div>
+        }
+
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        if ($("#IsSaleable").is(":checked"))
+        { $("#divSalePrice").show() }
+        else
+        {
+            $("#divSalePrice").hide()
+        }
+        $("#IsSaleable").click(function () {
+            if($("#IsSaleable").is(":checked"))
+            {
+                $("#divSalePrice").show()
+                $("#SalePrice").val("")
+            }
+            else
+            {
+                $("#divSalePrice").hide()
+                $("#SalePrice").val("")
+            }
+        });
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<ClassLibrary1.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Vehicles</h3>
+    </header>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VehicleCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Seats)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sleeps)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YearBuilt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Length)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Width)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Brand)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VehicleType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsFeatured)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.IsSaleable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalePrice)
+                </th>*@
+                <th>
+                    Features
+                </th>
+                <th>
+                    Images
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VehicleCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Seats)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sleeps)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearBuilt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Length)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Width)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VehicleType.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.IsFeatured)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(model => item.IsSaleable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.SalePrice)
+                    </td>*@
+                    <td>
+                        @Html.ActionLink("Features", "Index", "VehicleFeatures", new { id = item.ID }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Images", "Index", "VehicleImages", new { id = item.ID }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

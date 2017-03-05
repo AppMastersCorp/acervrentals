@@ -1,0 +1,72 @@
+﻿@model ClassLibrary1.Banner
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Banners</h3>
+    </header>
+    <div class="panel-body">
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+      
+            <dl class="">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BannerImageUrl)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BannerImageUrl)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BannerLink)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BannerLink)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+              
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-primary" /> |
+                    @Html.ActionLink("Back to List", "Index" ,new object { },new {@class= "btn btn-primary" })
+                </div>
+            }
+        </div>
+    </div>
+</section>

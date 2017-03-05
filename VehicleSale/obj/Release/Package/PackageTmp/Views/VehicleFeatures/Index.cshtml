@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ClassLibrary1.VehicleFeature>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var ID = ViewBag.ID;
+}
+
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Vehicle Features</h3>
+    </header>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Create New", "Create", new { id = ID }) |
+            @Html.ActionLink("Back to Vehicle List", "Index", "Vehicles", new object { }, null)
+        </p>
+        <table class="table table-bordered table-hover">
+            <tr>
+               
+                <th>
+                    Features
+                </th>
+                <th>
+                    Amenties
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicle)
+                </th>
+                
+               
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                  
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FeaturesMaster.Title)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FeaturesMaster.AmentiesMaster.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.Title)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

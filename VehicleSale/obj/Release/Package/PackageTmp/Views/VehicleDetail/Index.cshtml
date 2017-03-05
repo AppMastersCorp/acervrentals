@@ -1,0 +1,355 @@
+﻿@model VehicleSale.ViewModels.VehicleDetailsVM
+@using CloudinaryDotNet;
+@using System.Web.Configuration;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var offer = (ClassLibrary1.OfferMaster)ViewBag.VehicleOffer;
+    Account account = new Account(WebConfigurationManager.AppSettings["CloudName"],
+                            WebConfigurationManager.AppSettings["ApiKey"],
+                            WebConfigurationManager.AppSettings["ApiSecret"]);
+    Cloudinary cloudinary = new Cloudinary(account);
+}
+<link href="~/Content/Slider/wp-content/themes/twentyeleven/style.css" rel="stylesheet" />
+
+<style type="text/css">
+    img.wp-smiley,
+    img.emoji {
+        display: inline !important;
+        border: none !important;
+        box-shadow: none !important;
+        height: 1em !important;
+        width: 1em !important;
+        margin: 0 .07em !important;
+        vertical-align: -0.1em !important;
+        background: none !important;
+        padding: 0 !important;
+    }
+</style>
+
+@*<script type='text/javascript' src='https://amazingslider.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>*@
+
+<script type='text/javascript' src='~/Content/Slider/wp-content/uploads/amazingslider/sharedengine/amazingsliderbc19.js?ver=4.2'></script>
+
+
+
+<style type="text/css">
+    #header_language_list {
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+        #header_language_list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            #header_language_list ul li img {
+                margin-right: 5px;
+                width: 18px !important;
+            }
+
+            #header_language_list ul li {
+                display: inline;
+                margin: 0 5px 0 5px;
+                padding: 0;
+            }
+
+                #header_language_list ul li a, #header_language_list ul li a:visited {
+                    color: #fff;
+                    text-decoration: underline;
+                }
+
+                    #header_language_list ul li a:hover, #header_language_list ul li a:active {
+                        color: #fff;
+                    }
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+<link href="~/assets/css/main.css" rel="stylesheet" />
+<div class="col-sm-12 contant_detail">
+    <div class="pull-right col-xs-12 col-sm-4 button_book">
+        @if (offer != null)
+        {
+
+            <h3>Offer  @*<span class="text-right">AN-GGRT</span>*@</h3>
+            <div class="offer">
+
+                <ul>
+                    <li><div class="col-xs-6"><b>@offer.NoOfNights</b> Nights</div> <div class="col-xs-6 text-right"><span>$@offer.OfferPrice</span></div></li>
+                    <li><div class="col-xs-12">Valid Until <b> @Convert.ToDateTime(offer.ValidUntillDate).ToString("MM/dd/yyyy")</b></div> </li>
+                    <li><div class="col-xs-12"> Location: <b>@offer.Location</b></div></li>
+                    <li><div class="col-xs-6">Pick-up <b>@Convert.ToDateTime(offer.PickUp).ToString("MM/dd/yyyy")</b></div> <div class="col-xs-6 text-right">Return<b>@Convert.ToDateTime(offer.ReturnDate).ToString("MM/dd/yyyy")</b></div></li>
+                </ul>
+                <div class="col-sm-12 total_cost">
+                    <ul><li><div class="col-xs-6">Total Cost</div> <div class="col-xs-6 text-right">$@offer.OfferPrice</div></li></ul>
+                </div>
+
+                <div class="col-sm-12 Down_payment">
+                    <ul>
+                        <li>
+                            <div class="col-xs-6">Down payment (@offer.DownPaymentPercentage%)</div> <div class="col-xs-6 text-right">
+                                <span>
+                                    <b>
+                                        $@(offer.DownPaymentPercentage * offer.OfferPrice / 100)
+                                    </b>
+                                    <span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-12"> <button>Book Now</button></div>
+
+            </div>
+        }
+        <div class="offer">
+            @if (Model.IsSaleable == true)
+            {
+                <div class="col-sm-12 total_cost">
+                    <ul><li><div class="col-xs-6">Price</div> <div class="col-xs-6 text-right">$@Model.SalePrice</div></li></ul>
+                </div>
+                <div class="col-sm-12"> <button>Buy Now</button></div>
+            }
+            <div class="col-sm-12 total_cost">
+                <ul><li><div class="col-xs-6">Rent for one Night</div> <div class="col-xs-6 text-right">$@Model.Rent</div></li></ul>
+            </div>
+            <div class="col-sm-12"> <button>Book Now for One Night</button></div>
+        </div>
+    </div>
+    <!-----Cols-m-8-------------->
+    <div class="pull-left col-sm-8">
+        <div class="back_content">
+            <ul><li><a href="#" id="backlink"> Back to Search</a><li><li>|</li><li><a href="#">United States</a></li> <li>|</li><li>Article: @Model.vehicleCode</li></ul>
+        </div>
+        @*<div class="menu_links">
+                <ul>
+                    <li><a href="#">Picture</a></li>
+                    <li><a href="#">Vehicle</a></li>
+                    <li><a href="#">Feature</a></li>
+                    <li><a href="#">Conditions</a></li>
+                    <li><a href="#">Rates</a></li>
+                    <li><a href="#">Location</a></li>
+                </ul>
+            </div>*@
+
+        <!------------Slider-------------->
+        <div id="page" class="hfeed">
+            <!-- #branding -->
+            <div class="demo-slider">
+                <div id="amazingslider-2" style="display:block;position:relative;margin:15px auto 30px;">
+                    <ul class="amazingslider-slides" style="display:none;">
+                        @foreach (var item in ViewBag.VehicleImages)
+                        {
+                            if (item.ImageUrl != null)
+                            {
+                                if (item.VideoUrl != null)
+                                {
+                                    <li>
+                                        @cloudinary.Api.UrlImgUp.Transform(new Transformation().Crop("fill")).BuildImageTag(@item.PublicKey)
+                                        @*<img src="@item.ImageUrl" alt="RV" />*@
+                                        <video preload="none" src="@item.VideoUrl"></video>
+                                    </li>
+                                }
+                                else
+                                {
+
+
+                                    <li>
+                                        @cloudinary.Api.UrlImgUp.Transform(new Transformation().Crop("fill")).BuildImageTag(@item.PublicKey)
+                                        @*<img src="@item.ImageUrl" alt="RV" />*@
+                                    </li>
+                                }
+                            }
+                        }
+
+
+                    </ul>
+                    <ul class="amazingslider-thumbnails" style="display:none;">
+                        @foreach (var item in ViewBag.VehicleImages)
+                        {
+                            if (item.ImageUrl != null)
+                            {
+
+                                <li>
+                                    @cloudinary.Api.UrlImgUp.Transform(new Transformation().Crop("fill")).BuildImageTag(@item.PublicKey)
+                                    @*<img src="@item.ImageUrl" />*@
+                                </li>
+
+                            }
+                        }
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <!------------Slider-------------->
+
+
+        <div class="avialable">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp &nbsp Available from <a href="#">Covington</a>
+            <h3>@Model.vehicleTitle</h3>
+        </div>
+
+        <div class="jayco_ul">
+            <ul>
+                <li><img src="~/images/jayco1.png" /><br /> @Model.vehicleCategory</li>
+                <li><img src="~/images/jayco2.png" /><br /> Seats @Model.seats</li>
+                <li><img src="~/images/jayco3.png" /><br /> Sleeps @Model.sleeps</li>
+                @*<li><img src="~/images/jayco4.png" /><br /> Over 3,500kg (3.8 T) </li>
+                    <li><img src="~/images/jayco5.png" /><br /> Pets not allowed </li>*@
+                <li><img src="~/images/jayco6.png" /><br />@Model.vehicleBrand
+                <li>
+            </ul>
+            <h4>@Model.vehicleCode:@Model.vehicleDescription </h4>
+            @*VehicleSale.ViewModels.VehicleDetailsVM This class A motorhome can sleep up to 7 passengers. It has a big double bed in the slide-out to the rear, bunk beds in the larger slide-out, and an optional bed in the living area.
+
+                Nice features include 3 TVs and a DVD player.*@
+        </div>
+
+        <div class="vehicle_detail">
+            <h2>Vehicle Detail</h2>
+
+            <table border="1">
+
+                <tr>
+                    <th>Brand</th>
+                    <td>@Model.vehicleBrand</td>
+                </tr>
+                <tr>
+                    <th>Model</th>
+                    <td>@Model.vehicleModel</td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>@Model.vehicleCategory</td>
+                </tr>
+                <tr>
+                    <th>Year built</th>
+                    <td>@Model.yearBuilt</td>
+                </tr>
+                <tr>
+                    <th>Seats</th>
+                    <td>@Model.seats</td>
+                </tr>
+                <tr>
+                    <th>Sleeps</th>
+                    <td>@Model.sleeps</td>
+                </tr>
+                <tr>
+                    <th>Length</th>
+                    <td>@Model.length</td>
+                </tr>
+                <tr>
+                    <th>Width</th>
+                    <td>@Model.width</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="vehicle_amenties">
+            <h2>Vehicle Amenities</h2>
+            @foreach (var vehicleFeatures in ViewBag.VehicleFeatures)
+            {
+                <div class="amenties_content">
+                    <div class="col-xs-1 col-sm-1">
+                        <img src="~/images/battery.png" />
+                    </div>
+                    <div class="col-xs-11 col-sm-11 amenties_text">
+                        <h1>@vehicleFeatures.Amenty</h1>
+                        <ul>
+                            @foreach (var ammentyfeature in ViewBag.GetAmmentiesFeature)
+                            {
+
+                                if (ammentyfeature.Amenty == vehicleFeatures.Amenty)
+                                {
+                                    <li>@ammentyfeature.Feature</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        @*<div class="condition">
+                <h2>Conditions</h2>
+
+                <h4>Security deposit and deductible</h4>
+                <ul>
+                    <li>Deposit amount: $0.00</li>
+                    <li>Deposit payment method: Cash</li>
+                    <li>Coverage: Need renter to provide insurance binder</li>
+                    <li>Deductible amount: $1,000.00</li>
+                </ul>
+
+                <h4>Driver</h4>
+                <ul>
+                    <li>Minimum age: 18 years</li>
+                    <li>Maximum age: no restriction</li>
+                    <li>Drivers must have held a valid driver's license for: 1 year</li>
+                </ul>
+
+                <h4>1. Insurance</h4>
+                <ul><li>Renters must provide their own insurance binder.</li></ul>
+
+                <h4>2. Mileage</h4>
+                <ul>
+                    <li>700 miles are included with each week-long rental. Additional miles can be purchased in advance for as little as $0.30 per mile.</li>
+                </ul>
+
+                <h4>Security deposit and deductible</h4>
+                <ul>
+                    <li>Deposit amount: $0.00</li>
+                    <li>Deposit payment method: Cash</li>
+                    <li>Coverage: Need renter to provide insurance binder</li>
+                    <li>Deductible amount: $1,000.00</li>
+                </ul>
+
+                <h4>Driver</h4>
+                <ul>
+                    <li>Minimum age: 18 years</li>
+                    <li>Maximum age: no restriction</li>
+                    <li>Drivers must have held a valid driver's license for: 1 year</li>
+                </ul>
+
+                <h4>1. Insurance</h4>
+                <ul><li>Renters must provide their own insurance binder.</li></ul>
+
+                <h4>2. Mileage</h4>
+                <ul>
+                    <li>700 miles are included with each week-long rental. Additional miles can be purchased in advance for as little as $0.30 per mile.</li>
+                </ul>
+            </div>*@
+
+
+    </div>
+    <!-----Cols-m-8-------------->
+
+</div>
+<script src="~/Content/Slider/wp-content/uploads/amazingslider/2/sliderengine/initslider.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $.ajaxPrefilter(function (options, original_Options, jqXHR) {
+            options.async = true;
+        });
+        $('#header').addClass('top_bar')
+        $("#backlink").click(function () {
+            event.preventDefault();
+            history.back(1);
+        });
+    })
+
+</script>
+<script src="~/assets/owl-carousel/owl.carousel.js"></script>
+

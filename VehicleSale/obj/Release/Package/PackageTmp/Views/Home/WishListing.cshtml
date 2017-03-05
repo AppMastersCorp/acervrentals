@@ -1,0 +1,70 @@
+﻿@model IEnumerable<VehicleSale.ViewModels.WishlistVM>
+@{
+    ViewBag.Title = "WishListing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mid_contain">
+    <h2>My Wish List</h2>
+
+
+
+    @if (Model.Any())
+    {
+        foreach (var wishList in Model)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-3 wishlist_box">
+                <a href="@Url.Action("Index","VehicleDetail",new {id= wishList.vehicleID})">
+                    @if (wishList.ImageUrl != null)
+                    {
+                        <img style="width:100%; height:200px;" src="@wishList.ImageUrl" />
+                    }
+                    else
+                    {
+                        <img style="width:100%; height:200px;" src="/ProductImage/noimage.jpg" />
+                    }
+
+                </a>
+                <div class="text_wishlist">
+                    <a href="@Url.Action("Index","VehicleDetail",new {id= wishList.vehicleID})">
+                        <h3>@wishList.Title </h3>
+                    </a>
+                    <button class="btn btn-primary" onclick="RemoveWish(this)" wishlistid="@wishList.ID">Delete from Wish list</button>
+                </div>
+            </div>
+        }
+
+    }
+
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#header').addClass('top_bar');
+    });
+    function RemoveWish(ctrl) {
+        if ("@Session["CurrentUser"]" == "") {
+            $('#login').trigger("click");
+        }
+        else {
+            var wishId = parseInt($(ctrl).attr("wishlistid"));
+            if (wishId != "") {
+                $.ajax({
+                    url: "/Home/RemoveFromWishList",
+                    data: JSON.stringify({ wishId: wishId }),
+                    contentType: 'application/json; charset=utf-8',
+                    type: 'POST',
+                    success: function (data) {
+                        $(ctrl).parent().remove();
+                    },
+                    error: function (xhr) {
+                        //alert('error');
+                    }
+                })
+            }
+        }
+    }
+</script>

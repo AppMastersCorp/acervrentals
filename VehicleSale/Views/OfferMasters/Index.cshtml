@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ClassLibrary1.OfferMaster>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Offers</h3>
+    </header>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Vehicle
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoOfNights)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValidUntillDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickUp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReturnDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OfferPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DownPaymentPercentage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoOfNights)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValidUntillDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem =>item.PickUp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReturnDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfferPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DownPaymentPercentage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

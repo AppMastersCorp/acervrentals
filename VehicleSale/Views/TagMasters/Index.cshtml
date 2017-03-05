@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ClassLibrary1.TagMaster>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Tags Master</h3>
+    </header>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TagName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TagIconUrl)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.BackgroundUrl)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TagName)
+                    </td>
+                    <td>
+                        <img src=@Html.DisplayFor(modelItem => item.TagIconUrl) alt="" width="200" height="200" />
+                    </td>
+                    @*<td>
+                        <img src=@Html.DisplayFor(modelItem => item.BackgroundUrl) alt="" width="200" height="200" />
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>
