@@ -19,7 +19,7 @@ namespace ClassLibrary1
         public int Vehicleid { get; set; }
         public Nullable<System.DateTime> Createdon { get; set; }
         public Nullable<System.DateTime> Updatedon { get; set; }
-        public Nullable<bool> isactive { get; set; }
         public string IpAddress { get; set; }
+        public Nullable<bool> isactive { get; set; }
     }
 }

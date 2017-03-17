@@ -13,6 +13,7 @@ namespace VehicleSale.ViewModels
         public string vehicleDescription { get; set; }
         public string vehicleCode { get; set; }
         public string vehicleType { get; set; }
+        public int vehicleTypeId { get; set; }
         public string vehicleCategory { get; set; }
         public string vehicleBrand { get; set; }
         public string vehicleModel { get; set; }
@@ -20,7 +21,8 @@ namespace VehicleSale.ViewModels
         public string PublicKey { get; set; }
         public string Features { get; set; }
         public int? seats { get; set; }
-        public int? sleeps { get; set; }
+        public int? Adultsleeps { get; set; }
+        public int? KidSleeps { get; set; }
         public int? yearBuilt { get; set; }
         public string length { get; set; }
         public double? Rent { get; set; }
@@ -32,6 +34,25 @@ namespace VehicleSale.ViewModels
         public string longitude { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+
+        public string Transmission { get; set; }       
+        public string DriveMode { get; set; } 
+        public string FuelType { get; set; }
+        public Nullable<int> Amps { get; set; }   
+        public Nullable<int> Wheelbase { get; set; }
+        public int GCWR { get; set; }
+        public Nullable<double> FuelCapacity { get; set; }
+        public Nullable<double> HitchWeight { get; set; }
+        public Nullable<double> BaseWeight { get; set; }
+        public Nullable<bool> GVWR { get; set; }
+        public Nullable<int> ExteriorlengthFt { get; set; }
+        public Nullable<int> ExteriorlengthInch { get; set; }
+        public Nullable<int> ExteriorHeightFt { get; set; }
+        public Nullable<int> ExteriorHeightInch { get; set; }
+        public Nullable<double> FreshWater { get; set; }
+        public Nullable<double> GreyWater { get; set; }
+        public Nullable<double> BlackWater { get; set; }
+
         public System.Data.Entity.Spatial.DbGeography Location { get; set; }
         public Nullable<bool> IsSaleable { get; set; }
         public Nullable<double> SalePrice { get; set; }

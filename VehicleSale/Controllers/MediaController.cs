@@ -56,6 +56,7 @@ namespace VehicleSale.Controllers
                     banner.BannerUrl = filepathtosave;
                     banner.IsActive = isactive;
                     banner.PublicKey = uploadResult.PublicId;
+                    db.Entry(banner).State = EntityState.Modified;
                     db.SaveChanges();
                 }
             }
@@ -67,6 +68,7 @@ namespace VehicleSale.Controllers
                 banner.Description = desc;
                 banner.BannerUrl = banner.BannerUrl;
                 banner.IsActive = isactive;
+                db.Entry(banner).State = EntityState.Modified;
                 db.SaveChanges();
             }
 

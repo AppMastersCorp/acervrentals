@@ -135,13 +135,19 @@
                     }
                 </tr>
                 <tr>
-                    <td>Sleeps</td>
+                    <td>Adult Sleeps</td>
                     @foreach (var item in Model)
                     {
-                        <td>@item.sleeps</td>
+                        <td>@item.Adultsleeps</td>
                     }
                 </tr>
-
+                <tr>
+                    <td>Kids Sleeps</td>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.KidSleeps</td>
+                    }
+                </tr>
 
                 <tr>
                     <td>Rate</td>

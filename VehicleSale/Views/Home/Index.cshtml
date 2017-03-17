@@ -413,12 +413,12 @@
 
                     @if (FeatureList != null)
             {
-                foreach (AmentiesMaster ammenty in FeatureList)
+                foreach (FeaturesMaster feature in FeatureList)
                 {
                             <li class="">
-                                <a href="#feature" onclick="SelectFeature(this)" data-html="@ammenty.Name">
-                                    <img src="@ammenty.ImageUrl" alt="@ammenty.Name" /><br />
-                                    @ammenty.Name<br />
+                                <a href="#feature" onclick="SelectFeature(this)" data-html="@feature.Title">
+                                    <img src="@feature.ImageUrl" alt="@feature.Title" /><br />
+                                    @feature.Title<br />
                                     <span id="featuretext"></span>
                                 </a>
                             </li>
@@ -734,7 +734,7 @@
 
         </div>
 
-        <div class="btn-see"><a href="#" class="read-more">See All Feedbacks</a></div>
+        <div class="btn-see"><a href="/Home/TestimonialListing" class="read-more">See All Feedbacks</a></div>
     </div>
 </section>
 
@@ -878,6 +878,7 @@
             $.ajax({
                 url: "/Home/MessageSenderDetails",
                 dataType: "json",
+                contentType: "application/json; charset=utf-8",
                 data: "{'Name':'" + Name + "', 'Email':'" + Email + "', 'Phone':'" + Phone + "', 'Message':'" + Message + "'}",
                 type: "post", success: function (data) {
 

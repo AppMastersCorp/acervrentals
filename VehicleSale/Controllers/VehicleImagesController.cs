@@ -43,7 +43,7 @@ namespace VehicleSale.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,VehicleID")] VehicleImage vehicleImage, HttpPostedFileBase ImageUrl, int? Id)
+        public ActionResult Create([Bind(Include = "ID,VehicleID,VideoUrl")] VehicleImage vehicleImage, HttpPostedFileBase ImageUrl, int? Id)
         {
             if (ImageUrl == null)
             {
@@ -109,14 +109,24 @@ namespace VehicleSale.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,VehicleID")] VehicleImage vehicleImage, HttpPostedFileBase ImageUrl)
+        public ActionResult Edit([Bind(Include = "ID,VehicleID,VideoUrl")] VehicleImage vehicleImage, HttpPostedFileBase ImageUrl)
         {
             Cloudinary cloudinary = new Cloudinary(account);
             if (ModelState.IsValid)
             {
                 vehicleImage.IsActive = true;
-                vehicleImage.VehicleID = Convert.ToInt32(Request.Form["hdnVehicleID"]);
-                ViewBag.ID = vehicleImage.VehicleID;
+                if (!string.IsNullOrEmpty(Request.Form["hdnVehicleID"]))
+                {
+                    vehicleImage.VehicleID = Convert.ToInt32(Request.Form["hdnVehicleID"]);
+                    ViewBag.ID = vehicleImage.VehicleID;
+                }
+                // var vehiclecode = db.Vehicles.Where(x => x.ID == vehicleImage.VehicleID).FirstOrDefault();
+                var olddata = db.VehicleImages.Find(vehicleImage.ID);
+                if (olddata != null)
+                {
+                    vehicleImage.ImageUrl = olddata.ImageUrl;
+                    vehicleImage.PublicKey = olddata.PublicKey;                   
+                }
                 if (ImageUrl != null && ImageUrl.ContentLength > 0)
                 {
 
@@ -128,6 +138,12 @@ namespace VehicleSale.Controllers
                         HttpPostedFileBase files = file[i];
                         if (!string.IsNullOrEmpty(Path.GetFileName(files.FileName)))
                         {
+                            //if (!System.IO.Directory.Exists(Server.MapPath(@"~/"+vehiclecode.VehicleCode+"/")))
+                            //{
+                            //    System.IO.Directory.CreateDirectory(Server.MapPath(@"~/" + vehiclecode.VehicleCode + "/"));
+                            //}
+
+
                             var fileName = Guid.NewGuid() + Path.GetFileName(files.FileName);
                             string path = Server.MapPath("~/ProductImage/") + fileName;
                             dt.Rows.Add(files.FileName);
@@ -139,13 +155,15 @@ namespace VehicleSale.Controllers
                             };
                             var uploadResult = cloudinary.Upload(uploadParams);
                             vehicleImage.PublicKey = uploadResult.PublicId;
-                            db.Entry(vehicleImage).State = EntityState.Modified;
-                            db.SaveChanges();
+                          
                         }
                     }
                 }
-               
-            
+                using (var context =  new VehicleSaleEntities())
+                {
+                    context.Entry(vehicleImage).State = EntityState.Modified;
+                    context.SaveChanges();
+                }
                 return RedirectToAction("Index", new { id = vehicleImage.VehicleID });
             }
             ViewBag.VehicleID = new SelectList(db.Vehicles, "ID", "Title", vehicleImage.VehicleID);
@@ -188,6 +206,54 @@ namespace VehicleSale.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult SaveUploadedFile(int? Id)
+        {
+            Cloudinary cloudinary = new Cloudinary(account);
+            bool isSavedSuccessfully = true;
+            string fName = "";
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                VehicleImage objImg = new VehicleImage();
+                DataTable dt = new DataTable { Columns = { new DataColumn("Path") } };
+                //Save file content goes here
+                fName = file.FileName;
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName1 = Guid.NewGuid() + Path.GetFileName(file.FileName);
+                    string path = Server.MapPath("~/ProductImage/") + fileName1;
+                    dt.Rows.Add(file.FileName);
+                    objImg.ImageUrl = "/ProductImage/" + fileName1;
+                    file.SaveAs(path);
+                    var uploadParams = new ImageUploadParams()
+                    {
+                        File = new FileDescription(path)
+                    };
+                    var uploadResult = cloudinary.Upload(uploadParams);
+                    objImg.PublicKey = uploadResult.PublicId;
+                    objImg.VehicleID = Id;
+                    objImg.IsActive = true;
+                  
+                    db.VehicleImages.Add(objImg);
+                    db.SaveChanges();
+                }
+            }
+            if (isSavedSuccessfully)
+            {
+                return Json(new { Message = fName });
+            }
+            else
+            {
+                return Json(new { Message = "Error in saving file" });
+            }
+        }
+        public ActionResult Manage(int Id)
+        {
+            //var id = Convert.ToInt32(Request.QueryString[""]);
+            var list = db.VehicleImages.Where(x => x.VehicleID == Id).ToList();
+            return PartialView("Manage", list);
         }
     }
 }

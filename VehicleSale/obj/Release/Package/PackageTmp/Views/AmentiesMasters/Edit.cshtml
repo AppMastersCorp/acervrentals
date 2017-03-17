@@ -42,8 +42,8 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.ImageUrl)
-
-                        <img src=@Html.DisplayFor(modelItem => modelItem.ImageUrl) alt="" width="200" height="200" />
+                    
+                        <img src=@Html.DisplayFor(modelItem => modelItem.ImageUrl)  alt="" width="200" height="200" />
                         <i class="fa fa-times" aria-hidden="true" vehicleid="@Model.ID" id="Cross_image"></i>
                         @*@Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
@@ -55,7 +55,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.ImageUrl)
 
-                        <input id="ImageUrl" name="ImageUrl" type="file" class="file form-control" data-preview-file-type="text">
+                        <input id="ImageUrl" name="ImageUrl" type="file" required accept="image/*" class="file form-control" data-preview-file-type="text">
                         @*@Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
 
@@ -64,7 +64,7 @@
                 }
                 <div class="form-group">
 
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="submit" value="Save"  class="btn btn-primary" />
                     @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn btn-primary" })
                 </div>
             </div>
@@ -73,6 +73,10 @@
     </div>
 </section>
 <script type="text/javascript">
+    //function validate()
+    //{
+    //    if(ImageUrl)
+    //}
     $('#Cross_image').click(function () {
         if (confirm("Do you want to delete image?")) {
             var id = $("#Cross_image").attr("vehicleid");

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<VehicleSale.ViewModels.VehicleDetailsVM>
+@using CloudinaryDotNet;
+@using System.Web.Configuration;
+
+@using ClassLibrary1;
+@{
+    Account account = new Account(WebConfigurationManager.AppSettings["CloudName"],
+                            WebConfigurationManager.AppSettings["ApiKey"],
+                            WebConfigurationManager.AppSettings["ApiSecret"]);
+    Cloudinary cloudinary = new Cloudinary(account);
+
+}
+<link href="~/Content/admin/plugins/bootstrap-slider/slider.css" rel="stylesheet" />
+<link href="~/assets/css/font-awesome.min.css" rel="stylesheet" />
+
+@*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+<script src="~/Content/admin/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+<div id="grid" class="tab-pane fade in active">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-sm-4">
+            <div class="listing_box item-list">
+                <div class="listing_img">
+                    <a href="@Url.Action("Index","VehicleDetail",new {id= item.ID})">
+                        @if (item.ImageUrl != null)
+                        {
+                            @cloudinary.Api.UrlImgUp.Transform(new Transformation().Crop("fill")).BuildImageTag(@item.PublicKey)
+                            @*<img src="@item.ImageUrl.Replace("~",string.Empty)" />*@
+                        }
+                        else
+                        {
+                            <img src="/ProductImage/noimage.jpg" />
+                        }
+
+                    </a>
+                </div>
+                @*@Url.Action("Index", "VehicleDetail", new { id = item.ID })*@
+                <div class="col-xs-12 col-sm-12 listing_text">
+                    <a href="/VehicleDetail/Index/@item.ID"> <h2>@item.yearBuilt &nbsp;&nbsp; @item.vehicleTitle</h2></a>
+                    <ul>
+                        <li><b>Vehicle Code:</b> @item.vehicleCode</li>
+                        @*<li><b>Vehicle Brand:</b> @item.vehicleBrand</li>
+                            @*<li><b>Vehicle Model:</b> @item.vehicleModel</li>
+                            <li><b>Vehicle Category:</b> @item.vehicleCategory</li>
+                            <li><b>Vehicle Type:</b>@item.vehicleType</li>
+                            <li><b>Length & Width:</b>@item.length & @item.width</li>*@
+                        <li><b>Seats:</b> @item.seats , <b>Adult Sleeps:</b>@item.Adultsleeps@*, <b>Kid Sleeps:</b>@item.KidSleeps*@</li>
+                    </ul>
+                    <div class="btns_listing" data-role="none">
+                        <div class="col-xs-6 col-sm-6 "><input data-role="none" type="checkbox" class="mycheckbox" id="@item.ID"> <span>&nbsp; Compare</span> </div>
+                        <div class="col-xs-6 col-sm-6"> <span>&nbsp; Rent</span> :<span>&nbsp; @item.Rent</span></div>
+                        <div class="veiw_detail"><a data-role="none" href="@Url.Action("Index","VehicleDetail",new {id= item.ID})">View Detail</a></div>
+
+                        <div class="favourate_icon">
+                            @if (item.IsWishListed == true)
+                            {
+                                <a class="btn btn-default   btn-sm make-favorite" style="background-color: #EEEEEE;color: #E74C3C;" addid="@item.ID" onclick="RemoveFavouriteAdds(this)"> <i class="fa fa-heart"></i> <span></span> </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-default  btn-sm make-favorite" addid="@item.ID" onclick="favouriteAdds(this)"> <i class="fa fa-heart"></i> <span>Add to Wish List</span> </a>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+<div id="listing" class="tab-pane fade">
+
+    <div class="col-sm-12">
+        @foreach (var item in Model)
+        {
+            <div class="listing_box item-list">
+                <div class="col-xs-9 col-sm-4 listing_img">
+                    <a href="@Url.Action("Index","VehicleDetail",new {id= item.ID})">
+                        @if (item.ImageUrl != null)
+                        {
+                            @cloudinary.Api.UrlImgUp.Transform(new Transformation().Crop("fill")).BuildImageTag(@item.PublicKey)
+                            @*<img src="@item.ImageUrl.Replace("~",string.Empty)" />*@
+                        }
+                        else
+                        {
+                            <img src="/ProductImage/noimage.jpg" />
+                        }
+
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-8 listing_text">
+                    <a href="@Url.Action("Index","VehicleDetail",new {id= item.ID})"> <h2>@item.yearBuilt &nbsp;&nbsp; @item.vehicleTitle</h2></a>
+                    <ul>
+                        <li><b>Vehicle Code:</b> @item.vehicleCode</li>
+                        <li><b>Vehicle Brand:</b> @item.vehicleBrand</li>
+                        <li><b>Vehicle Model:</b> @item.vehicleModel</li>
+                        <li><b>Vehicle Category:</b> @item.vehicleCategory</li>
+                        <li><b>Vehicle Type:</b>@item.vehicleType</li>
+                        <li><b>Length & Width:</b>@item.length & @item.width</li>
+                        <li><b>Seats:</b> @item.seats , <b>Adult Sleeps:</b>@item.Adultsleeps@*, <b>Kid Sleeps:</b>@item.KidSleeps*@</li>
+                    </ul>
+                    <div class="btns_listing" data-role="none">
+                        <div class="col-sm-12 text-right"><input data-role="none" type="checkbox" class="mycheckbox" id="@item.ID"> <span>&nbsp; Compare</span> </div>
+                        <div class="col-sm-12 text-right"> <span>&nbsp; Rent</span> :<span>&nbsp; @item.Rent</span></div>
+                        <a data-role="none" href="@Url.Action("Index","VehicleDetail",new {id= item.ID})">View Detail</a>
+                    </div>
+
+                    <div class="col-sm-10" style="padding-left:0px;">
+                        @if (item.IsWishListed == true)
+                        {
+                            <a class="btn btn-default btn_heart btn-sm make-favorite" style="background-color: #EEEEEE;color: #E74C3C;" addid="@item.ID" onclick="RemoveFavouriteAdds(this)"> <i class="fa fa-heart"></i> <span></span> </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-default btn_heart btn-sm make-favorite" addid="@item.ID" onclick="favouriteAdds(this)"> <i class="fa fa-heart"></i> <span>Add to Wish List</span> </a>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+
+</div>

@@ -18,6 +18,7 @@ namespace ClassLibrary1
         public Nullable<int> VehicleID { get; set; }
         public Nullable<int> FeatureID { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public string Description { get; set; }
     
         public virtual FeaturesMaster FeaturesMaster { get; set; }
         public virtual Vehicle Vehicle { get; set; }

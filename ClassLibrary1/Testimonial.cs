@@ -19,10 +19,10 @@ namespace ClassLibrary1
         public string Title { get; set; }
         public string Summary { get; set; }
         public string ImageURl { get; set; }
+        public string LogoUrl { get; set; }
         public bool isactive { get; set; }
         public Nullable<System.DateTime> createdon { get; set; }
         public Nullable<System.DateTime> updatedon { get; set; }
         public Nullable<int> Rating { get; set; }
-        public string LogoUrl { get; set; }
     }
 }

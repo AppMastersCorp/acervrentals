@@ -41,7 +41,7 @@
     <script src="~/Content/Scripts/lib/jquery-ui-1.10.4/jquery-1.10.2.js"></script>
 
     <script src="~/Content/Scripts/lib/jquery/validate/jquery.validate.js"></script>
-    <script src="~/Content/Scripts/lib/jquery/validate/jquery.validate.js"></script>
+    @*<script src="~/Content/Scripts/lib/jquery/validate/jquery.validate.js"></script>*@
     <script src="~/Content/Scripts/lib/jquery/validate/jquery.validate.unobtrusive.min.js"></script>
     @*<script src="~/Content/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>*@
     <!-- jQuery UI 1.11.4 -->
@@ -90,7 +90,7 @@
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
-                <h3 style="color: #fff;margin-top: 10px;font-size: 31px;margin-bottom: -45px;text-align: center;margin-right: 220px;">ACE RV Fleet Management System</h3>
+                <h3 class="admin_layout_font" style="color: #fff;margin-top: 10px;font-size: 31px;margin-bottom: -45px;text-align: center;margin-right: 220px;">ACE RV Fleet Management System</h3>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
@@ -168,6 +168,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="/Brands"><i class="fa fa-circle-o"></i>Brands</a></li>
+                            <li><a href="/Makes/"><i class="fa fa-circle-o"></i>Makes</a></li>
                             <li><a href="/AmentiesMasters"><i class="fa fa-circle-o"></i>Amenties Master</a></li>
                             <li><a href="/Categories/"><i class="fa fa-circle-o"></i>Categories</a></li>
                             <li><a href="/FeaturesMasters/"><i class="fa fa-circle-o"></i>Features Master</a></li>
@@ -253,3 +254,4 @@
 </html>
 
 <script src="~/Content/admin/dist/js/pages/dashboard.js"></script>
+<script src="~/Content/admin/dist/js/app.js"></script>

@@ -20,8 +20,7 @@ namespace VehicleSale.Controllers
             var vehicleDetails = (from vehicle in db.Vehicles
                                   join vehicleType in db.VehicleTypes on vehicle.VehicleTypeID equals vehicleType.ID
                                   join models in db.Models on vehicle.ModelID equals models.ID
-                                  join category in db.Categories on vehicle.CategoryID equals category.ID
-                                  join vehicleRent in db.VehicleRents on vehicle.ID equals vehicleRent.VehicleID
+                                  join category in db.Categories on vehicle.CategoryID equals category.ID                               
                                   join brand in db.Brands on vehicle.BrandID equals brand.ID
                                   where vehicle.ID == Id
                                   select new VehicleDetailsVM
@@ -37,8 +36,9 @@ namespace VehicleSale.Controllers
                                       width = vehicle.Width,
                                       yearBuilt = vehicle.YearBuilt,
                                       seats = vehicle.Seats,
-                                      sleeps = vehicle.Sleeps,
-                                      Rent = vehicleRent.Amount,
+                                      Adultsleeps = vehicle.AdultSleeps,
+                                      KidSleeps = vehicle.KidSleeps,
+                                      Rent = vehicle.DailyRate,
                                       IsSaleable = vehicle.IsSaleable,
                                       IsActive = vehicle.IsActive,
                                       IsFeatured = vehicle.IsFeatured,

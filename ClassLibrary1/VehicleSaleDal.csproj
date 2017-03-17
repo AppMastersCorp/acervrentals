@@ -78,6 +78,9 @@
     <Compile Include="Login_SocailNetwork.cs">
       <DependentUpon>VehicleSale.tt</DependentUpon>
     </Compile>
+    <Compile Include="Make.cs">
+      <DependentUpon>VehicleSale.tt</DependentUpon>
+    </Compile>
     <Compile Include="MessageSender.cs">
       <DependentUpon>VehicleSale.tt</DependentUpon>
     </Compile>

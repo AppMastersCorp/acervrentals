@@ -27,6 +27,7 @@ namespace VehicleSale.ViewModels
         [Required(ErrorMessage = "Please Enter Return Date.")]
         public Nullable<System.DateTime> ReturnDate { get; set; }
         [Required(ErrorMessage = "Please Enter Offer Price.")]
+        [Range(0, int.MaxValue, ErrorMessage = "Offer Price must be a positive number")]
         [Display(Name = "Offer Price")]
         public Nullable<double> OfferPrice { get; set; }
         [Range(1, 100)]

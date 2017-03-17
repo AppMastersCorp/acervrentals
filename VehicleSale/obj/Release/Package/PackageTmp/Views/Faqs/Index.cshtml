@@ -4,44 +4,51 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">FAQ</h3>
+    </header>
+    <div class="panel-body">
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isactive)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.Faqresult)
-        </th>
-        <th></th>
-    </tr>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isactive)
+                </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isactive)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Faqresult)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FaqId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FaqId })
-        </td>
-    </tr>
-}
+                <th>
+                    @Html.DisplayNameFor(model => model.Faqresult)
+                </th>
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.isactive)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Faqresult)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.FaqId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.FaqId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

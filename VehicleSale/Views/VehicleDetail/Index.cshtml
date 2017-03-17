@@ -92,7 +92,7 @@
                                     <b>
                                         $@(offer.DownPaymentPercentage * offer.OfferPrice / 100)
                                     </b>
-                                    <span>
+                                </span>
                             </div>
                         </li>
                     </ul>
@@ -145,8 +145,8 @@
                                 if (item.VideoUrl != null)
                                 {
                                     <li>
-                                        @cloudinary.Api.UrlImgUp.Transform(new Transformation().Crop("fill")).BuildImageTag(@item.PublicKey)
-                                        @*<img src="@item.ImageUrl" alt="RV" />*@
+                                        @*@cloudinary.Api.UrlImgUp.Transform(new Transformation().Crop("fill")).BuildImageTag(@item.PublicKey)*@
+                                        <img src="@item.ImageUrl" alt="" />
                                         <video preload="none" src="@item.VideoUrl"></video>
                                     </li>
                                 }
@@ -160,8 +160,18 @@
                                     </li>
                                 }
                             }
+                            else
+                            {
+                                <li>
+                                    <img src="/ProductImage/noimage.jpg" />
+                                </li>   }
                         }
-
+                        @if (((List<ClassLibrary1.VehicleImage>)ViewBag.VehicleImages).Count() <= 0)
+                        {
+                            <li>
+                                <img src="/ProductImage/noimage.jpg" />
+                            </li>
+                        }
 
                     </ul>
                     <ul class="amazingslider-thumbnails" style="display:none;">
@@ -202,7 +212,7 @@
             <ul>
                 <li><img src="~/images/jayco1.png" /><br /> @Model.vehicleCategory</li>
                 <li><img src="~/images/jayco2.png" /><br /> Seats @Model.seats</li>
-                <li><img src="~/images/jayco3.png" /><br /> Sleeps @Model.sleeps</li>
+                <li><img src="~/images/jayco3.png" /><br /> Sleeps @Model.Adultsleeps</li>
                 @*<li><img src="~/images/jayco4.png" /><br /> Over 3,500kg (3.8 T) </li>
                     <li><img src="~/images/jayco5.png" /><br /> Pets not allowed </li>*@
                 <li><img src="~/images/jayco6.png" /><br />@Model.vehicleBrand
@@ -240,9 +250,17 @@
                     <td>@Model.seats</td>
                 </tr>
                 <tr>
-                    <th>Sleeps</th>
-                    <td>@Model.sleeps</td>
+                    <th>Adult Sleeps</th>
+                    <td>@Model.Adultsleeps</td>
                 </tr>
+                @if (Model.KidSleeps > 0)
+                {
+                    <tr>
+                        <th>Kids Sleeps</th>
+                        <td>@Model.KidSleeps</td>
+                    </tr>
+                }
+                
                 <tr>
                     <th>Length</th>
                     <td>@Model.length</td>
@@ -251,6 +269,27 @@
                     <th>Width</th>
                     <td>@Model.width</td>
                 </tr>
+                @if (Model.Transmission != "")
+                {
+                <tr>
+                    <th>Transmission</th>
+                    <td>@Model.Transmission</td>
+                </tr>
+                }
+                @if (Model.DriveMode != "")
+                {
+                    <tr>
+                        <th>Drive Mode</th>
+                        <td>@Model.DriveMode</td>
+                    </tr>
+                }
+                @if (Model.FuelType != "")
+                {
+                    <tr>
+                        <th>Fuel Type</th>
+                        <td>@Model.FuelType</td>
+                    </tr>
+                }
             </table>
 
         </div>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ClassLibrary1;
 using VehicleSale.ViewModels;
+using System.IO;
 
 namespace VehicleSale.Controllers
 {
@@ -50,11 +51,34 @@ namespace VehicleSale.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,AmentiesID,Title,Description,IsActive")] FeaturesMasterVM featuresMastervm)
+        public ActionResult Create([Bind(Include = "ID,AmentiesID,Title,Description,IsActive")] FeaturesMasterVM featuresMastervm, HttpPostedFileBase ImageUrl)
         {
+            if (ImageUrl == null)
+            {
+                ModelState.AddModelError("ImageUrl", "Please select image");
+            }
             if (ModelState.IsValid)
             {
                 FeaturesMaster featuresmaster = new FeaturesMaster();
+                if (ImageUrl != null && ImageUrl.ContentLength > 0)
+                {
+                    HttpFileCollectionBase file = Request.Files;
+                    DataTable dt = new DataTable { Columns = { new DataColumn("Path") } };
+                    for (int i = 0; i < file.Count; i++)
+                    {
+                        HttpPostedFileBase files = file[i];
+                        if (!string.IsNullOrEmpty(Path.GetFileName(files.FileName)))
+                        {
+                            var fileName = Guid.NewGuid() + Path.GetFileName(files.FileName);
+                            string path = Server.MapPath("~/ProductImage/") + fileName;
+                            dt.Rows.Add(files.FileName);
+                            featuresmaster.ImageUrl = "/ProductImage/" + fileName;
+                            files.SaveAs(path);
+
+                        }
+                    }
+                }
+                
                 featuresmaster.ID = featuresMastervm.ID;
                 featuresmaster.AmentiesID = featuresMastervm.AmentiesID;
                 featuresmaster.Description = featuresMastervm.Description;
@@ -76,21 +100,20 @@ namespace VehicleSale.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             FeaturesMaster featuresMaster = db.FeaturesMasters.Find(id);
-            FeaturesMasterVM FeaturesMasterVM = new FeaturesMasterVM();
-
-
-            FeaturesMasterVM.ID = featuresMaster.ID;
-            FeaturesMasterVM.Description = featuresMaster.Description;
-            FeaturesMasterVM.AmentiesID = featuresMaster.AmentiesID;
-            FeaturesMasterVM.IsActive = featuresMaster.IsActive;
-            FeaturesMasterVM.Title = featuresMaster.Title;
+            FeaturesMasterVM featuresMasterVM = new FeaturesMasterVM();            
+            featuresMasterVM.ID = featuresMaster.ID;
+            featuresMasterVM.Description = featuresMaster.Description;
+            featuresMasterVM.ImageUrl = featuresMaster.ImageUrl;
+            featuresMasterVM.AmentiesID = featuresMaster.AmentiesID;
+            featuresMasterVM.IsActive = featuresMaster.IsActive;
+            featuresMasterVM.Title = featuresMaster.Title;
             if (featuresMaster == null)
             {
                 return HttpNotFound();
             }
 
             ViewBag.AmentiesID = new SelectList(db.AmentiesMasters, "ID", "Name", featuresMaster.AmentiesID);
-            return View(FeaturesMasterVM);
+            return View(featuresMasterVM);
         }
 
         // POST: FeaturesMasters/Edit/5
@@ -98,11 +121,33 @@ namespace VehicleSale.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,AmentiesID,Title,Description,IsActive")] FeaturesMasterVM featuresMastervm)
+        public ActionResult Edit([Bind(Include = "ID,AmentiesID,Title,Description,IsActive")] FeaturesMasterVM featuresMastervm, HttpPostedFileBase ImageUrl)
         {
+            //if (ImageUrl == null)
+            //{
+            //    ModelState.AddModelError("ImageUrl", "Please select image");
+            //}
             if (ModelState.IsValid)
             {
-                FeaturesMaster featuresmaster = new FeaturesMaster();
+                FeaturesMaster featuresmaster = db.FeaturesMasters.Where(am => am.ID == featuresMastervm.ID).FirstOrDefault();
+                if (ImageUrl != null && ImageUrl.ContentLength > 0)
+                {
+
+                    HttpFileCollectionBase file = Request.Files;
+                    DataTable dt = new DataTable { Columns = { new DataColumn("Path") } };
+                    for (int i = 0; i < file.Count; i++)
+                    {
+                        HttpPostedFileBase files = file[i];
+                        if (!string.IsNullOrEmpty(Path.GetFileName(files.FileName)))
+                        {
+                            var fileName = Guid.NewGuid() + Path.GetFileName(files.FileName);
+                            string path = Server.MapPath("~/ProductImage/") + fileName;
+                            dt.Rows.Add(files.FileName);
+                            files.SaveAs(path);
+                            featuresmaster.ImageUrl = "/ProductImage/" + fileName;
+                        }
+                    }
+                }
                 featuresmaster.ID = featuresMastervm.ID;
                 featuresmaster.AmentiesID = featuresMastervm.AmentiesID;
                 featuresmaster.Description = featuresMastervm.Description;
@@ -114,6 +159,22 @@ namespace VehicleSale.Controllers
             }
             ViewBag.AmentiesID = new SelectList(db.AmentiesMasters, "ID", "Name", featuresMastervm.AmentiesID);
             return View(featuresMastervm);
+        }
+
+        [HttpPost]
+        public ActionResult ImageDelete(int? id)
+        {
+            FeaturesMaster FeaturesMaster = db.FeaturesMasters.Find(id);
+
+            if (FeaturesMaster == null)
+            {
+                return HttpNotFound();
+            }
+
+            FeaturesMaster.ImageUrl = null;
+            db.Entry(FeaturesMaster).State = EntityState.Modified;
+            db.SaveChanges();
+            return Content("true");
         }
 
         // GET: FeaturesMasters/Delete/5

@@ -24,9 +24,9 @@
                     @Html.DisplayNameFor(model => model.ImageUrl)
                 </th>
 
-                <th>
-                    @Html.DisplayNameFor(model => model.VehicleType)
-                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.VehicleTypeID)
+                </th>*@
                 <th>Action</th>
             </tr>
 
@@ -40,9 +40,9 @@
                         <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" height="100" width="100" alt="" >
                     </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VehicleType.Name)
-                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.VehicleTypeID.Name)
+                    </td>*@
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.ID })

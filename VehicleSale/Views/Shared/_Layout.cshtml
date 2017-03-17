@@ -37,6 +37,7 @@
     <script src="~/Content/Scripts/Model.js"></script>
     <script src="~/Content/admin/plugins/ckeditor/ckeditor.js"></script>
     <script src="~/Content/Scripts/Ecommerce/front-end-editing.js"></script>
+
     <script>
         var $ = jQuery.noConflict();
 
@@ -65,6 +66,13 @@
         <div class="container">
 
             <h1 class="logo_img"><a href="/Home/index"><img src="~/images/Logo.png" alt="" /></a></h1>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
             <ul class="register_menu">
 
                 <li>
@@ -78,8 +86,8 @@
                     }
                     else
                     {
-                      
-                        <a class="login_head" id="logout" href="~/Account/Logoff">LogOut</a>
+
+                        <a class="login_head" id="logout" href="~/Account/Logoff">LOGOUT</a>
                         <a class="regist_head" href="#">@User.FirstName @User.LastName</a>
 
                     }
@@ -195,48 +203,177 @@
 
 
         <nav class="menu">
-            <ul>
-                <li class="active">
-                    <a href="/Home/OurFleetListing">Our Fleet</a>
-                </li>
-                <li class="drop-down">
-                    <a href="#">Catagories</a>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul>
+                    <li class="active">
+                        <a href="/Home/OurFleetListing">OUR FLEET</a>
+                    </li>
+                    <li class="drop-down" id="cateLi">
+                        <a href="#">CATEGORIES</a>
 
-                    <div class="mega-menu fadeIn animated">
+                        <div class="mega-menu fadeIn animated" id="cateMenu">
 
-                        <ul class="catagories_ul">
-                            @if (CategoryList != null)
-                            {
-                                foreach (Category cat in CategoryList)
+                            <ul class="catagories_ul">
+                                @if (CategoryList != null)
                                 {
-                                    <li class="col-xs-6 col-sm-3 col-md-2">
-                                        <div class="img_div">
-                                            <a href="/Home/CategoryWiseFleetListing/@cat.ID"><img src="@cat.ImageUrl" /></a><br />
-                                        </div>
-                                        <a href="/Home/CategoryWiseFleetListing/@cat.ID">@cat.Name</a>
-                                    </li>
+                                    foreach (Category cat in CategoryList)
+                                    {
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="/Home/CategoryWiseFleetListing/@cat.ID"><img src="@cat.ImageUrl" /></a><br />
+                                            </div>
+                                            <a href="/Home/CategoryWiseFleetListing/@cat.ID">@cat.Name</a>
+                                        </li>
+                                    }
+
                                 }
+                            </ul>
+                        </div>
 
-                            }
-                        </ul>
-                    </div>
+                    </li>
+                    <li class="drop-down" id="menuLi">
+                        <a href="#">MENU</a>
+                        <div class="mega-menu fadeIn animated" id="smartMenu">
 
-                </li>
-                <li>
-                    <a href="#">Menu</a>
-                </li>
-                <li>
-                    <a href="/Home/WishListing">Wishlist</a>
-                </li>
-                @if (Session["Admin"] != null)
-                {
+                            <div class="container">
 
-                    <li style="cursor:pointer;" class="dropdown-toggle" onclick="editSlider()"><a id="toggle">Start editing</a></li>
-                    <li><a href="/Brands">DASHBOARD </a></li>
-                }
+                                <div class="col-xs-12 col-sm-offset-1 col-sm-8 tab_right pull-right">
 
 
-            </ul>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#rvs">RV'S</a></li>
+                                        <li><a data-toggle="tab" href="#trailers">Trailers</a></li>
+                                        <li><a data-toggle="tab" href="#van">VAN</a></li>
+                                    </ul>
+
+                                    <div class="tab-content tab_content">
+                                        <div id="rvs" class="tab-pane fade in active">
+                                            <ul class="cars_catgories">
+                                                @if (CategoryList != null)
+                                                {
+                                                    foreach (Category cat in CategoryList.Where(c => c.VehicleTypeID == 1).Take(6))
+                                                    {
+                                                        <li>
+                                                            <a href="/Home/CategoryWiseFleetListing/@cat.ID">
+                                                                <img src="@cat.ImageUrl" />
+                                                            </a>
+                                                            <a href="/Home/CategoryWiseFleetListing/@cat.ID">   <h3>@cat.Name</h3></a>
+                                                        </li>
+                                                    }
+                                                }
+
+
+                                            </ul>
+
+                                            <div class="text-right col-sm-12 view_menu" style="padding:0px;">
+                                                <a href="" class="read-more">VIEW ALL</a>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div id="trailers" class="tab-pane fade">
+                                            <ul class="cars_catgories">
+                                                @if (CategoryList != null)
+                                                {
+                                                    foreach (Category cat in CategoryList.Where(c => c.VehicleTypeID == 2).Take(6))
+                                                    {
+                                                        <li>
+                                                            <img src="@cat.ImageUrl" />
+                                                            <h3>@cat.Name</h3>
+                                                        </li>
+                                                    }
+                                                }
+
+
+
+                                            </ul>
+
+                                            <div class="text-right col-sm-12 view_menu" style="padding:0px;">
+                                                <a href="" class="read-more">VIEW ALL</a>
+
+                                            </div>
+                                        </div>
+                                        <div id="van" class="tab-pane fade">
+                                            <ul class="cars_catgories">
+                                                @if (CategoryList != null)
+                                                {
+                                                    foreach (Category cat in CategoryList.Where(c => c.VehicleTypeID == 2).Take(6))
+                                                    {
+                                                        <li>
+                                                            <img src="@cat.ImageUrl" />
+                                                            <h3>@cat.Name</h3>
+                                                        </li>
+                                                    }
+                                                }
+                                            </ul>
+                                            <div class="text-right col-sm-12 view_menu" style="padding:0px;">
+                                                <a href="" class="read-more">VIEW ALL</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="col-xs-12 col-sm-3 menu_box pull-left">
+                                    <h4>Menu</h4>
+                                    <ul class="menu_sub_catagory">
+                                        <li><a href="/Home/Index">Home</a></li>
+                                        <li><a href="/Home/AboutUs">About</a></li>
+                                        <li><a href="/Home/TestimonialListing">Testimonials</a></li>
+                                        <li><a href="/Home/RefundPolicy">Refund Policies</a></li>
+                                        <li><a href="/Home/TermsAndConditions">Terms&Conditions</a></li>
+                                        <li><a href="/Home/ContactUs">Conatct Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="container">
+
+
+                                <section id="three" class="sponcer">
+                                    <h3>CATEGORIES</h3>
+
+
+                                    <div class="full">
+                                        <ul class="catagory_last">
+                                            <li><a href="/Home/TagWiseFleetListing/4"><img src="/Images/506482f0-8713-4841-ac9d-c7c0923a29eclogo-sponcer-1.jpg" alt=""></a></li>
+                                            <li><a href="/Home/TagWiseFleetListing/5"><img src="/Images/d75415fe-7596-44f1-8519-2921b0127b6flogo-sponcer-2.jpg" alt=""></a></li>
+                                            <li><a href="/Home/TagWiseFleetListing/6"><img src="/Images/631c7371-65c3-4832-8bf3-88a9dc53b8f8logo-sponcer-3.jpg" alt=""></a></li>
+                                            <li><a href="/Home/TagWiseFleetListing/7"><img src="/Images/c5d06d7d-e5f0-47d7-af91-064d9936ab55logo-sponcer-4.jpg" alt=""></a></li>
+                                            <li><a href="/Home/TagWiseFleetListing/8"><img src="/Images/d62da804-ce8e-4c2a-84a7-a1544f38acb1logo-sponcer-5.jpg" alt=""></a></li>
+
+
+                                        </ul>
+                                    </div>
+
+
+                                </section>
+
+
+                            </div>
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/Home/WishListing">WISH LIST</a>
+                    </li>
+                    @if (Session["Admin"] != null)
+                    {
+
+                        <li style="cursor:pointer;" class="dropdown-toggle" onclick="editSlider()"><a id="toggle">START EDITING</a></li>
+                        <li><a href="/Brands">DASHBOARD </a></li>
+                    }
+
+
+                </ul>
+            </div>
         </nav>
 
 
@@ -314,10 +451,10 @@
             </div>
             <div class="col-sm-3">
                 <ul>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">Our RVS</a></li>
-                    <li><a href="#">Our Trailers</a></li>
-                    <li><a href="#">Our Vans</a></li>
+                    <li><a href="~/Home/TestimonialListing">Testimonials</a></li>
+                    <li><a href="~/Home/OurFleetListing?VehicleType=1">Our RVS</a></li>
+                    <li><a href="~/Home/OurFleetListing?VehicleType=2">Our Trailers</a></li>
+                    <li><a href="~/Home/OurFleetListing?VehicleType=3">Our Vans</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
@@ -457,11 +594,17 @@
             $(this).addClass('active');
         });
         //drop down menu
-        $(".drop-down").hover(function () {
-            $('.mega-menu').addClass('display-on');
+        $("#cateLi").hover(function () {
+            $('#cateMenu').addClass('display-on');
         });
-        $(".drop-down").mouseleave(function () {
-            $('.mega-menu').removeClass('display-on');
+        $("#cateLi").mouseleave(function () {
+            $('#cateMenu').removeClass('display-on');
+        });
+        $("#menuLi").hover(function () {
+            $('#smartMenu').addClass('display-on');
+        });
+        $("#menuLi").mouseleave(function () {
+            $('#smartMenu').removeClass('display-on');
         });
 
     });

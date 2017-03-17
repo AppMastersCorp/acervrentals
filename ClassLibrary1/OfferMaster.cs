@@ -18,12 +18,12 @@ namespace ClassLibrary1
         public Nullable<int> VehicleID { get; set; }
         public Nullable<int> NoOfNights { get; set; }
         public string Location { get; set; }
+        public Nullable<System.DateTime> ValidUntillDate { get; set; }
         public Nullable<System.DateTime> PickUp { get; set; }
         public Nullable<System.DateTime> ReturnDate { get; set; }
         public Nullable<double> OfferPrice { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public Nullable<System.DateTime> ValidUntillDate { get; set; }
         public Nullable<double> DownPaymentPercentage { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     
         public virtual Vehicle Vehicle { get; set; }
     }

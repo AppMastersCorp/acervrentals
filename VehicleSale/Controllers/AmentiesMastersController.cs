@@ -117,6 +117,7 @@ namespace VehicleSale.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Description")] AmentiesMasterVM amentiesMastervm, HttpPostedFileBase ImageUrl)
         {
+            
             if (ModelState.IsValid)
             {
                 AmentiesMaster amentiesMaster = db.AmentiesMasters.Where(am => am.ID == amentiesMastervm.ID).FirstOrDefault();
@@ -136,6 +137,7 @@ namespace VehicleSale.Controllers
                             dt.Rows.Add(files.FileName);
                             files.SaveAs(path);
                             amentiesMaster.ImageUrl = "/ProductImage/" + fileName;
+                          
                         }
                     }
                 }
@@ -143,8 +145,6 @@ namespace VehicleSale.Controllers
                 amentiesMaster.ID = amentiesMastervm.ID;
                 amentiesMaster.Name = amentiesMastervm.Name;
                 amentiesMaster.IsActive = true;
-
-
                 db.Entry(amentiesMaster).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -147,6 +147,7 @@ namespace VehicleSale.Controllers
                 //}
                 tagMasters.ID = tagMasterVM.ID;
                 tagMasters.TagName = tagMasterVM.TagName;
+                tagMasters.IsActive = tagMasterVM.IsActive;
                 db.Entry(tagMasters).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
