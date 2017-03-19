@@ -457,17 +457,19 @@
     <Property Name="FuelCapacity" Type="Double" />
     <Property Name="HitchWeight" Type="Double" />
     <Property Name="BaseWeight" Type="Double" />
-    <Property Name="GVWR" Type="Boolean" />
+    <Property Name="GVWR" Type="Int32" />
     <Property Name="Exteriorlength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ExteriorHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExteriorWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="FreshWater" Type="Double" />
     <Property Name="GreyWater" Type="Double" />
     <Property Name="BlackWater" Type="Double" />
-    <Property Name="AwingSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AwingSize" Type="Int32" />
     <Property Name="Bed" Type="Int32" />
     <Property Name="Queen" Type="Int32" />
     <Property Name="Full" Type="Int32" />
     <Property Name="Twin" Type="Int32" />
+    <Property Name="RearAxle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Brand" Relationship="VehicleSaleModel.FK_Vehicles_Brands" FromRole="Vehicle" ToRole="Brand" />
     <NavigationProperty Name="Category" Relationship="VehicleSaleModel.FK_Vehicles_Categories" FromRole="Vehicle" ToRole="Category" />
     <NavigationProperty Name="Make" Relationship="VehicleSaleModel.FK_Vehicles_Make" FromRole="Vehicle" ToRole="Make" />

@@ -315,6 +315,7 @@
     <EntitySetMapping Name="Vehicles">
       <EntityTypeMapping TypeName="VehicleSaleModel.Vehicle">
         <MappingFragment StoreEntitySet="Vehicles">
+          <ScalarProperty Name="RearAxle" ColumnName="RearAxle" />
           <ScalarProperty Name="Twin" ColumnName="Twin" />
           <ScalarProperty Name="Full" ColumnName="Full" />
           <ScalarProperty Name="Queen" ColumnName="Queen" />
@@ -323,6 +324,7 @@
           <ScalarProperty Name="BlackWater" ColumnName="BlackWater" />
           <ScalarProperty Name="GreyWater" ColumnName="GreyWater" />
           <ScalarProperty Name="FreshWater" ColumnName="FreshWater" />
+          <ScalarProperty Name="ExteriorWidth" ColumnName="ExteriorWidth" />
           <ScalarProperty Name="ExteriorHeight" ColumnName="ExteriorHeight" />
           <ScalarProperty Name="Exteriorlength" ColumnName="Exteriorlength" />
           <ScalarProperty Name="GVWR" ColumnName="GVWR" />

@@ -1587,7 +1587,7 @@ section.sponcer {
     padding: 5px 15px;
     background: url(../../images/top_bar.jpg) repeat-y;
     background-size: 100% 100%;
-    border-radius: 10px;
+    border-radius: 0px;
     margin-bottom: 15px;
 }
 

@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace VehicleSale.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "Admin")]
     public class VehiclesController : Controller
     {
         private VehicleSaleEntities db = new VehicleSaleEntities();
@@ -151,18 +151,18 @@ namespace VehicleSale.Controllers
                 vehicle.FreshWater = vehicleVM.FreshWater;
                 vehicle.GreyWater = vehicleVM.GreyWater;
                 vehicle.BlackWater = vehicleVM.BlackWater;
-                string AwingSizeFt = Convert.ToString(vehicleVM.AwingSizeFt);
-                string AwingSizeInch = Convert.ToString(vehicleVM.AwingSizeInch);
-                String AwingSize = "";
-                if (!string.IsNullOrEmpty(AwingSizeFt))
-                {
-                    AwingSize = AwingSizeFt + " ft. ";
-                }
-                if (!string.IsNullOrEmpty(AwingSizeInch))
-                {
-                    AwingSize += AwingSizeInch + " inch. ";
-                }
-                vehicle.AwingSize = AwingSize;
+                //string AwingSizeFt = Convert.ToString(AwingSizeFt);
+                //string AwingSizeInch = Convert.ToString(vehicleVM.AwingSizeInch);
+                //String AwingSize = "";
+                //if (!string.IsNullOrEmpty(AwingSizeFt))
+                //{
+                //    AwingSize = AwingSizeFt + " ft. ";
+                //}
+                //if (!string.IsNullOrEmpty(AwingSizeInch))
+                //{
+                //    AwingSize += AwingSizeInch + " inch. ";
+                //}
+                vehicle.AwingSize = vehicleVM.AwingSize;
 
                 vehicle.Bed = vehicleVM.Bed;
                 vehicle.Queen = vehicleVM.Queen;
@@ -349,14 +349,15 @@ namespace VehicleSale.Controllers
             vehicleVM.FreshWater = vehicle.FreshWater;
             vehicleVM.GreyWater = vehicle.GreyWater;
             vehicleVM.BlackWater = vehicle.BlackWater;
-            string AwingSize = vehicle.AwingSize;
-            if (!string.IsNullOrEmpty(AwingSize))
-            {
-                AwingSize = AwingSize.Replace("ft.", ",") + ",";
-                vehicleVM.AwingSizeFt = Convert.ToInt32(AwingSize.Split(',')[0].Trim());
-                if (!string.IsNullOrEmpty(AwingSize.Replace("inch.", "").Split(',')[1].Trim()))
-                    vehicleVM.AwingSizeInch = Convert.ToInt32(AwingSize.Replace("inch.", "").Split(',')[1].Trim());
-            }
+            //string AwingSize = vehicle.AwingSize;
+            //if (!string.IsNullOrEmpty(AwingSize))
+            //{
+            //    AwingSize = AwingSize.Replace("ft.", ",") + ",";
+            //    vehicleVM.AwingSizeFt = Convert.ToInt32(AwingSize.Split(',')[0].Trim());
+            //    if (!string.IsNullOrEmpty(AwingSize.Replace("inch.", "").Split(',')[1].Trim()))
+            //        vehicleVM.AwingSizeInch = Convert.ToInt32(AwingSize.Replace("inch.", "").Split(',')[1].Trim());
+            //}
+            vehicleVM.AwingSize = vehicle.AwingSize;
             vehicleVM.Bed = vehicle.Bed;
             vehicleVM.Queen = vehicle.Queen;
             vehicleVM.Full = vehicle.Full;
@@ -495,18 +496,18 @@ namespace VehicleSale.Controllers
                 vehicle.FreshWater = vehicleVM.FreshWater;
                 vehicle.GreyWater = vehicleVM.GreyWater;
                 vehicle.BlackWater = vehicleVM.BlackWater;
-                string AwingSizeFt = Convert.ToString(vehicleVM.AwingSizeFt);
-                string AwingSizeInch = Convert.ToString(vehicleVM.AwingSizeInch);
-                String AwingSize = "";
-                if (!string.IsNullOrEmpty(AwingSizeFt))
-                {
-                    AwingSize = AwingSizeFt + " ft. ";
-                }
-                if (!string.IsNullOrEmpty(AwingSizeInch))
-                {
-                    AwingSize += AwingSizeInch + " inch. ";
-                }
-                vehicle.AwingSize = AwingSize;
+                //string AwingSizeFt = Convert.ToString(vehicleVM.AwingSizeFt);
+                //string AwingSizeInch = Convert.ToString(vehicleVM.AwingSizeInch);
+                //String AwingSize = "";
+                //if (!string.IsNullOrEmpty(AwingSizeFt))
+                //{
+                //    AwingSize = AwingSizeFt + " ft. ";
+                //}
+                //if (!string.IsNullOrEmpty(AwingSizeInch))
+                //{
+                //    AwingSize += AwingSizeInch + " inch. ";
+                //}
+                vehicle.AwingSize = vehicleVM.AwingSize;
 
                 vehicle.Bed = vehicleVM.Bed;
                 vehicle.Queen = vehicleVM.Queen;

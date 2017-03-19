@@ -330,17 +330,19 @@
           <Property Name="FuelCapacity" Type="float" />
           <Property Name="HitchWeight" Type="float" />
           <Property Name="BaseWeight" Type="float" />
-          <Property Name="GVWR" Type="bit" />
+          <Property Name="GVWR" Type="int" />
           <Property Name="Exteriorlength" Type="varchar" MaxLength="50" />
           <Property Name="ExteriorHeight" Type="varchar" MaxLength="50" />
+          <Property Name="ExteriorWidth" Type="varchar" MaxLength="50" />
           <Property Name="FreshWater" Type="float" />
           <Property Name="GreyWater" Type="float" />
           <Property Name="BlackWater" Type="float" />
-          <Property Name="AwingSize" Type="varchar" MaxLength="50" />
+          <Property Name="AwingSize" Type="int" />
           <Property Name="Bed" Type="int" />
           <Property Name="Queen" Type="int" />
           <Property Name="Full" Type="int" />
           <Property Name="Twin" Type="int" />
+          <Property Name="RearAxle" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="VehicleTags">
           <Key>
@@ -1192,17 +1194,19 @@
           <Property Name="FuelCapacity" Type="Double" />
           <Property Name="HitchWeight" Type="Double" />
           <Property Name="BaseWeight" Type="Double" />
-          <Property Name="GVWR" Type="Boolean" />
+          <Property Name="GVWR" Type="Int32" />
           <Property Name="Exteriorlength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ExteriorHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExteriorWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FreshWater" Type="Double" />
           <Property Name="GreyWater" Type="Double" />
           <Property Name="BlackWater" Type="Double" />
-          <Property Name="AwingSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AwingSize" Type="Int32" />
           <Property Name="Bed" Type="Int32" />
           <Property Name="Queen" Type="Int32" />
           <Property Name="Full" Type="Int32" />
           <Property Name="Twin" Type="Int32" />
+          <Property Name="RearAxle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Brand" Relationship="VehicleSaleModel.FK_Vehicles_Brands" FromRole="Vehicle" ToRole="Brand" />
           <NavigationProperty Name="Category" Relationship="VehicleSaleModel.FK_Vehicles_Categories" FromRole="Vehicle" ToRole="Category" />
           <NavigationProperty Name="Make" Relationship="VehicleSaleModel.FK_Vehicles_Make" FromRole="Vehicle" ToRole="Make" />
@@ -1819,6 +1823,7 @@
           <EntitySetMapping Name="Vehicles">
             <EntityTypeMapping TypeName="VehicleSaleModel.Vehicle">
               <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="RearAxle" ColumnName="RearAxle" />
                 <ScalarProperty Name="Twin" ColumnName="Twin" />
                 <ScalarProperty Name="Full" ColumnName="Full" />
                 <ScalarProperty Name="Queen" ColumnName="Queen" />
@@ -1827,6 +1832,7 @@
                 <ScalarProperty Name="BlackWater" ColumnName="BlackWater" />
                 <ScalarProperty Name="GreyWater" ColumnName="GreyWater" />
                 <ScalarProperty Name="FreshWater" ColumnName="FreshWater" />
+                <ScalarProperty Name="ExteriorWidth" ColumnName="ExteriorWidth" />
                 <ScalarProperty Name="ExteriorHeight" ColumnName="ExteriorHeight" />
                 <ScalarProperty Name="Exteriorlength" ColumnName="Exteriorlength" />
                 <ScalarProperty Name="GVWR" ColumnName="GVWR" />

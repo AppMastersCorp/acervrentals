@@ -18,11 +18,11 @@ namespace VehicleSale.Controllers
     public class HomeController : Controller
     {
         private VehicleSaleEntities db = new VehicleSaleEntities();
-        public static string no_of_person, vehicle_feature, v_vehicleType, v_brands, v_sleeps, v_Category, v_MinPrice, v_MaxPrice, v_Lat, v_Lng;
-        public static string v_vehicleTypeOF, v_brandsOF, v_sleepsOF, v_CategoryOF, v_MinPriceOF, v_MaxPriceOF, v_LatOF, v_LngOF;
-        public static string v_vehicleTypeCW, v_brandsCW, v_sleepsCW, v_CategoryCW, v_MinPriceCW, v_MaxPriceCW, v_LatCW, v_LngCW;
-        public static string v_vehicleTypeBL, v_brandsBL, v_sleepsBL, v_CategoryBL, v_MinPriceBL, v_MaxPriceBL, v_LatBL, v_LngBL;
-        public static string v_vehicleTypeTW, v_brandsTW, v_sleepsTW, v_CategoryTW, v_MinPriceTW, v_MaxPriceTW, v_LatTW, v_LngTW;
+        public string no_of_person, vehicle_feature, v_vehicleType, v_brands, v_sleeps, v_Category, v_MinPrice, v_MaxPrice, v_Lat, v_Lng;
+        public string v_vehicleTypeOF, v_brandsOF, v_sleepsOF, v_CategoryOF, v_MinPriceOF, v_MaxPriceOF, v_LatOF, v_LngOF;
+        public string v_vehicleTypeCW, v_brandsCW, v_sleepsCW, v_CategoryCW, v_MinPriceCW, v_MaxPriceCW, v_LatCW, v_LngCW;
+        public string v_vehicleTypeBL, v_brandsBL, v_sleepsBL, v_CategoryBL, v_MinPriceBL, v_MaxPriceBL, v_LatBL, v_LngBL;
+        public string v_vehicleTypeTW, v_brandsTW, v_sleepsTW, v_CategoryTW, v_MinPriceTW, v_MaxPriceTW, v_LatTW, v_LngTW;
         public ActionResult Index()
         {
             ViewBag.RVCategoryList = db.Categories.Where(c => c.IsActive == true).ToList();
@@ -31,7 +31,7 @@ namespace VehicleSale.Controllers
                                          join vi in db.VehicleImages on v.ID equals vi.VehicleID
                                          where v.IsFeatured == true && v.IsActive == true
                                          group new { v, vi } by new { vi.VehicleID, v.ID } into r
-                                        
+
                                          select new VehicleAddimage
                                          {
                                              VehicleID = r.Max(iu => iu.v.ID),
@@ -48,195 +48,18 @@ namespace VehicleSale.Controllers
             ViewBag.RVRatingavrage = db.Testimonials.Where(c => c.isactive == true).Select(r => r.Rating).Average();
             return View();
         }
+
         public List<Banner> GetSliderImages()
         {
             return db.Banners.Where(b => b.IsActive == true).ToList();
         }
 
         [HttpGet]
-        public ActionResult ListingPage(string sort)
+        public ActionResult ListingPage()
         {
-            // VehicleDetailsVM vehicleDetailsVM = new VehicleDetailsVM();    
-            int v_persons = int.Parse(no_of_person);
-            int v_vehicletype = 1;
-            int v_sleep = 0;
-            int v_brand = 0;
-            int v_cate = 0;
-            int v_minPrice = 0;
-            int v_maxprice = 1000;
-            double v_lat = 0;
-            double v_lng = 0;
-            if (!string.IsNullOrEmpty(v_vehicleType) && v_vehicleType != "undefined")
-            {
-                v_vehicletype = int.Parse(v_vehicleType);
-            }
-            if (!string.IsNullOrEmpty(v_sleeps))
-            {
-                v_sleep = int.Parse(v_sleeps);
-            }
-            if (!string.IsNullOrEmpty(v_brands))
-            {
-                v_brand = int.Parse(v_brands);
-            }
-            if (!string.IsNullOrEmpty(v_Category))
-            {
-                v_cate = int.Parse(v_Category);
-            }
-            if (!string.IsNullOrEmpty(v_MinPrice))
-            {
-                v_minPrice = int.Parse(v_MinPrice);
-            }
-            if (!string.IsNullOrEmpty(v_MaxPrice))
-            {
-                v_maxprice = int.Parse(v_MaxPrice);
-            }
-            if (!string.IsNullOrEmpty(v_Lat))
-            {
-                v_lat = Convert.ToDouble(v_Lat);
-            }
-            if (!string.IsNullOrEmpty(v_Lng))
-            {
-                v_lng = Convert.ToDouble(v_Lng);
-            }
-            var User = (ViewModels.RoleVM)Session["CurrentUser"];
-            List<VehicleDetailsVM> Search_Result = (from vehicle in db.Vehicles
-                                                    join vehicleType in db.VehicleTypes on vehicle.VehicleTypeID equals vehicleType.ID
-                                                    join models in db.Models on vehicle.ModelID equals models.ID
-                                                    join category in db.Categories on vehicle.CategoryID equals category.ID
-                                                    join brand in db.Brands on vehicle.BrandID equals brand.ID
-                                                    from VehicleImage in db.VehicleImages.Where(o => vehicle.ID == o.VehicleID && o.IsActive == true)
-                                                           .Take(1)
-                                                    .DefaultIfEmpty()
-                                                        //join VehicleFeature in db.VehicleFeatures on vehicle.ID equals VehicleFeature.VehicleID join FeaturesMaster in db.FeaturesMasters on VehicleFeature.FeatureID equals FeaturesMaster.ID
-                                                    where vehicle.Seats >= v_persons && vehicle.IsActive == true
-                                                    select new VehicleDetailsVM
-                                                    {
-                                                        ID = vehicle.ID,
-                                                        vehicleCode = vehicle.VehicleCode,
-                                                        vehicleTitle = vehicle.Title,
-                                                        vehicleBrand = brand.Name,
-                                                        vehicleCategory = category.Name,
-                                                        vehicleModel = models.Name,
-                                                        length = vehicle.Length,
-                                                        width = vehicle.Width,
-                                                        yearBuilt = vehicle.YearBuilt,
-                                                        PublicKey = VehicleImage.PublicKey,
-                                                        seats = vehicle.Seats,
-                                                        Adultsleeps = vehicle.AdultSleeps,
-                                                        KidSleeps = vehicle.KidSleeps,
-                                                        IsActive = vehicle.IsActive,
-                                                        IsFeatured = vehicle.IsFeatured,
-                                                        vehicleType = vehicleType.Name,
-                                                        ImageUrl = VehicleImage.ImageUrl,
-                                                        Rent = vehicle.DailyRate,
-                                                        CreatedOn = vehicle.CreatedOn
-                                                    }).ToList();
-            string[] v_features = vehicle_feature.Split(',');
-            if (v_features != null)
-            {
-                Search_Result = (from search in Search_Result
-                                 join vehicleFeature in db.VehicleFeatures on search.ID equals vehicleFeature.VehicleID
-                                 join featuresMaster in db.FeaturesMasters on vehicleFeature.FeatureID equals featuresMaster.ID
-                                 // join amentiesMaster in db.AmentiesMasters on featuresMaster.AmentiesID equals amentiesMaster.ID
-                                 where v_features.Contains(featuresMaster.Title.ToString())
-                                 select search).ToList();
-            }
-            if (v_vehicletype > 1 || v_sleep > 0 || v_brand > 0 || v_cate > 0)
-            {
-                Search_Result = (from vehicle in db.Vehicles
-                                 join vehicleType in db.VehicleTypes on vehicle.VehicleTypeID equals vehicleType.ID
-                                 join models in db.Models on vehicle.ModelID equals models.ID
-                                 join category in db.Categories on vehicle.CategoryID equals category.ID
-                                 join brand in db.Brands on vehicle.BrandID equals brand.ID
-                                 from VehicleImage in db.VehicleImages.Where(o => vehicle.ID == o.VehicleID && o.IsActive == true)
-                                             .Take(1)
-                                             .DefaultIfEmpty()
-                                 where vehicle.IsActive == true
-                                 select new VehicleDetailsVM
-                                 {
-                                     ID = vehicle.ID,
-                                     vehicleCode = vehicle.VehicleCode,
-                                     vehicleTitle = vehicle.Title,
-                                     vehicleBrand = brand.Name,
-                                     vehicleCategory = category.Name,
-                                     vehicleModel = models.Name,
-                                     length = vehicle.Length,
-                                     width = vehicle.Width,
-                                     yearBuilt = vehicle.YearBuilt,
-                                     seats = vehicle.Seats,
-                                     Adultsleeps = vehicle.AdultSleeps,
-                                     KidSleeps = vehicle.KidSleeps,
-                                     IsActive = vehicle.IsActive,
-                                     IsFeatured = vehicle.IsFeatured,
-                                     vehicleType = vehicleType.Name,
-                                     ImageUrl = VehicleImage.ImageUrl,
-                                     PublicKey = VehicleImage.PublicKey,
-                                     Rent = vehicle.DailyRate,
-                                     CreatedOn = vehicle.CreatedOn
-                                 }).ToList();
-            }
-            if (v_vehicletype > 1)
-            {
-                string vehicletype = db.VehicleTypes.Where(v => v.ID == v_vehicletype).FirstOrDefault().Name;
-                Search_Result = (from search in Search_Result
-                                 where search.vehicleType == vehicletype
-                                 select search).ToList();
-            }
-            if (v_sleep > 0)
-            {
-                Search_Result = (from search in Search_Result
-                                 where search.Adultsleeps >= v_sleep
-                                 select search).ToList();
-            }
-            if (v_brand > 0)
-            {
-                string brand = db.Brands.Where(v => v.ID == v_brand).FirstOrDefault().Name;
-                Search_Result = (from search in Search_Result
-                                 where search.vehicleBrand == brand
-                                 select search).ToList();
-            }
-
-            if (v_cate > 0)
-            {
-                string category = db.Categories.Where(v => v.ID == v_cate).FirstOrDefault().Name;
-                Search_Result = (from search in Search_Result
-                                 where search.vehicleCategory == category
-                                 select search).ToList();
-            }
-            Search_Result = (from search in Search_Result
-                             where search.Rent >= v_minPrice && search.Rent <= v_maxprice
-                             select search).Distinct().ToList();
-            foreach (var item in Search_Result)
-            {
-                if (User != null)
-                {
-                    var IsFavorite = db.Wishlists.Where(x => x.Vehicleid == item.ID && x.Userid == User.UserId).FirstOrDefault();
-                    if (IsFavorite != null)
-                    {
-                        item.IsWishListed = true;
-                    }
-                    else
-                    {
-                        item.IsWishListed = false;
-                    }
-                }
-                else
-                {
-                    item.IsWishListed = false;
-                }
-            }
-            if (sort == "true")
-            {
-                Search_Result = Search_Result.OrderByDescending(o => o.CreatedOn).ToList();
-            }
-            if (v_lat > 0 || v_lng > 0)
-            {
-                Search_Result = GetAllNearestVehicles(v_lat, v_lng, Search_Result);
-            }
             ViewBag.RVCategoryList = db.Categories.Where(c => c.IsActive == true).ToList();
             ViewBag.RVBrandList = db.Brands.Where(c => c.IsActive == true).ToList();
-            ViewBag.count = Search_Result.Count;
-            return View(Search_Result);
+            return View();
         }
         public static string compare_id;
         public JsonResult Compares(string Id)
@@ -246,9 +69,9 @@ namespace VehicleSale.Controllers
             return Json(ViewBag.Message, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Compare()
+        public ActionResult Compare(string id)
         {
-            var id = compare_id;
+          
             var my_id = id.Split(',');
             List<VehicleDetailsVM> vm = new List<VehicleDetailsVM>();
             for (var i = 1; i < my_id.Length; i++)
@@ -376,8 +199,12 @@ namespace VehicleSale.Controllers
         [WebMethod]
         public JsonResult GoToList(string person, string feature)
         {
-            no_of_person = person;
-            vehicle_feature = feature;
+            //no_of_person = person;
+            //vehicle_feature = feature;
+
+            Session["no_of_person"] = person;
+            Session["vehicle_feature"] = feature;
+
             v_brands = "";
             v_vehicleType = "";
             v_sleeps = "";
@@ -621,7 +448,6 @@ namespace VehicleSale.Controllers
             return Json("false", JsonRequestBehavior.AllowGet);
         }
 
-
         public ActionResult AboutUs()
         {
             var model = db.Pages.Where(x => x.Name == "AboutUs").FirstOrDefault();
@@ -644,6 +470,203 @@ namespace VehicleSale.Controllers
         {
             var model = db.Faqs.Where(x => x.isactive == true).ToList();
             return View(model);
+        }
+
+        public ActionResult getVehicle(string vType, string brands, string sleeps, string vehicleCategory, string MinPrice, string MaxPrice, string Lat, string Long, string sort)
+        {
+            #region variables
+
+            int v_persons = Convert.ToInt32(Session["no_of_person"]);
+            int v_vehicletype = 1;
+            int v_sleep = 0;
+            int v_brand = 0;
+
+            string[] v_cate = null;
+
+            if (!string.IsNullOrEmpty(vehicleCategory))
+            {
+                v_cate = vehicleCategory.Split(',');
+            }
+
+            int v_minPrice = 0;
+            int v_maxprice = 1000;
+            double v_lat = 0;
+            double v_lng = 0;
+
+            if (!string.IsNullOrEmpty(vType) && vType != "undefined")
+            {
+                v_vehicletype = int.Parse(vType);
+            }
+            if (!string.IsNullOrEmpty(sleeps))
+            {
+                v_sleep = int.Parse(sleeps);
+            }
+            if (!string.IsNullOrEmpty(brands))
+            {
+                v_brand = int.Parse(brands);
+            }
+
+            if (!string.IsNullOrEmpty(MinPrice))
+            {
+                v_minPrice = int.Parse(MinPrice);
+            }
+            if (!string.IsNullOrEmpty(MaxPrice))
+            {
+                v_maxprice = int.Parse(MaxPrice);
+            }
+            if (!string.IsNullOrEmpty(Lat))
+            {
+                v_lat = Convert.ToDouble(Lat);
+            }
+            if (!string.IsNullOrEmpty(Long))
+            {
+                v_lng = Convert.ToDouble(Long);
+            }
+
+            #endregion
+
+            var User = (ViewModels.RoleVM)Session["CurrentUser"];
+            List<VehicleDetailsVM> Search_Result = (from vehicle in db.Vehicles
+                                                    join vehicleType in db.VehicleTypes on vehicle.VehicleTypeID equals vehicleType.ID
+                                                    join models in db.Models on vehicle.ModelID equals models.ID
+                                                    join category in db.Categories on vehicle.CategoryID equals category.ID
+                                                    join brand in db.Brands on vehicle.BrandID equals brand.ID
+                                                    from VehicleImage in db.VehicleImages.Where(o => vehicle.ID == o.VehicleID && o.IsActive == true)
+                                                           .Take(1)
+                                                    .DefaultIfEmpty()
+                                                        //join VehicleFeature in db.VehicleFeatures on vehicle.ID equals VehicleFeature.VehicleID join FeaturesMaster in db.FeaturesMasters on VehicleFeature.FeatureID equals FeaturesMaster.ID
+                                                    where vehicle.Seats >= v_persons && vehicle.IsActive == true
+                                                    select new VehicleDetailsVM
+                                                    {
+                                                        ID = vehicle.ID,
+                                                        vehicleCode = vehicle.VehicleCode,
+                                                        vehicleTitle = vehicle.Title,
+                                                        vehicleBrand = brand.Name,
+                                                        vehicleCategory = category.Name,
+                                                        vehicleModel = models.Name,
+                                                        length = vehicle.Length,
+                                                        width = vehicle.Width,
+                                                        yearBuilt = vehicle.YearBuilt,
+                                                        PublicKey = VehicleImage.PublicKey,
+                                                        seats = vehicle.Seats,
+                                                        Adultsleeps = vehicle.AdultSleeps,
+                                                        KidSleeps = vehicle.KidSleeps,
+                                                        IsActive = vehicle.IsActive,
+                                                        IsFeatured = vehicle.IsFeatured,
+                                                        vehicleType = vehicleType.Name,
+                                                        ImageUrl = VehicleImage.ImageUrl,
+                                                        Rent = vehicle.DailyRate,
+                                                        CreatedOn = vehicle.CreatedOn
+                                                    }).ToList();
+            if (!string.IsNullOrEmpty(Convert.ToString(Session["vehicle_feature"])))
+            {
+                string[] v_features = Convert.ToString(Session["vehicle_feature"]).Split(',');
+                if (v_features != null)
+                {
+                    Search_Result = (from search in Search_Result
+                                     join vehicleFeature in db.VehicleFeatures on search.ID equals vehicleFeature.VehicleID
+                                     join featuresMaster in db.FeaturesMasters on vehicleFeature.FeatureID equals featuresMaster.ID
+                                     join amentiesMaster in db.AmentiesMasters on featuresMaster.AmentiesID equals amentiesMaster.ID
+                                     where v_features.Contains(featuresMaster.Title.ToString())
+                                     select search).ToList();
+                }
+            }
+            if (v_vehicletype > 1 || v_sleep > 0 || v_brand > 0 || v_cate != null)
+            {
+                Search_Result = (from vehicle in db.Vehicles
+                                 join vehicleType in db.VehicleTypes on vehicle.VehicleTypeID equals vehicleType.ID
+                                 join models in db.Models on vehicle.ModelID equals models.ID
+                                 join category in db.Categories on vehicle.CategoryID equals category.ID
+                                 join brand in db.Brands on vehicle.BrandID equals brand.ID
+                                 from VehicleImage in db.VehicleImages.Where(o => vehicle.ID == o.VehicleID && o.IsActive == true)
+                                             .Take(1)
+                                             .DefaultIfEmpty()
+                                 where vehicle.IsActive == true
+                                 select new VehicleDetailsVM
+                                 {
+                                     ID = vehicle.ID,
+                                     vehicleCode = vehicle.VehicleCode,
+                                     vehicleTitle = vehicle.Title,
+                                     vehicleBrand = brand.Name,
+                                     vehicleCategory = category.Name,
+                                     vehicleModel = models.Name,
+                                     length = vehicle.Length,
+                                     width = vehicle.Width,
+                                     yearBuilt = vehicle.YearBuilt,
+                                     seats = vehicle.Seats,
+                                     Adultsleeps = vehicle.AdultSleeps,
+                                     KidSleeps = vehicle.KidSleeps,
+                                     IsActive = vehicle.IsActive,
+                                     IsFeatured = vehicle.IsFeatured,
+                                     vehicleType = vehicleType.Name,
+                                     ImageUrl = VehicleImage.ImageUrl,
+                                     PublicKey = VehicleImage.PublicKey,
+                                     Rent = vehicle.DailyRate,
+                                     CreatedOn = vehicle.CreatedOn
+                                 }).ToList();
+            }
+            if (v_vehicletype > 1)
+            {
+                string vehicletype = db.VehicleTypes.Where(v => v.ID == v_vehicletype).FirstOrDefault().Name;
+                Search_Result = (from search in Search_Result
+                                 where search.vehicleType == vehicletype
+                                 select search).ToList();
+            }
+            if (v_sleep > 0)
+            {
+                Search_Result = (from search in Search_Result
+                                 where search.Adultsleeps >= v_sleep
+                                 select search).ToList();
+            }
+            if (v_brand > 0)
+            {
+                string brand = db.Brands.Where(v => v.ID == v_brand).FirstOrDefault().Name;
+                Search_Result = (from search in Search_Result
+                                 where search.vehicleBrand == brand
+                                 select search).ToList();
+            }
+
+            if (v_cate != null)
+            {
+                var cat = db.Categories.Where(x => v_cate.Contains(x.ID.ToString())).Select(x => x.Name).ToArray();
+                Search_Result = (from search in Search_Result
+                                 where cat.Contains(search.vehicleCategory)
+                                 select search).ToList();
+            }
+            Search_Result = (from search in Search_Result
+                             where search.Rent >= v_minPrice && search.Rent <= v_maxprice
+                             select search).Distinct().ToList();
+            foreach (var item in Search_Result)
+            {
+                if (User != null)
+                {
+                    var IsFavorite = db.Wishlists.Where(x => x.Vehicleid == item.ID && x.Userid == User.UserId).FirstOrDefault();
+                    if (IsFavorite != null)
+                    {
+                        item.IsWishListed = true;
+                    }
+                    else
+                    {
+                        item.IsWishListed = false;
+                    }
+                }
+                else
+                {
+                    item.IsWishListed = false;
+                }
+            }
+            if (sort == "true")
+            {
+                Search_Result = Search_Result.OrderByDescending(o => o.CreatedOn).ToList();
+            }
+            if (v_lat > 0 || v_lng > 0)
+            {
+                Search_Result = GetAllNearestVehicles(v_lat, v_lng, Search_Result);
+            }
+
+            ViewBag.count = Search_Result.Count;
+
+            return PartialView("partialGrid", Search_Result);
         }
 
         public ActionResult OurFleetListing(string sort, int? VehicleType)
@@ -909,7 +932,7 @@ namespace VehicleSale.Controllers
             }
             if (v_lat > 0 || v_lng > 0)
             {
-               // model = GetAllNearestVehicles(v_lat, v_lng, model);
+                // model = GetAllNearestVehicles(v_lat, v_lng, model);
 
             }
             ViewBag.RVCategoryList = db.Categories.Where(c => c.IsActive == true).ToList();

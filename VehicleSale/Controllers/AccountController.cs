@@ -75,8 +75,7 @@ namespace VehicleSale.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -107,12 +106,15 @@ namespace VehicleSale.Controllers
                         Session["CurrentUser"] = user;
                         Session["CurrentUserId"] = user.UserId;
 
-                        FormsAuthentication.SetAuthCookie(model.Email, true);
 
-                        var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, user.RoleName);
-                        string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-                        var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                        HttpContext.Response.Cookies.Add(authCookie);
+                        User ouser = SetupFormsAuthTicket(model.Email, true);
+
+                        //FormsAuthentication.SetAuthCookie(model.Email, true);
+
+                        //var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, user.RoleName);
+                        //string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                        //var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                        //HttpContext.Response.Cookies.Add(authCookie);
 
                         //string userData = JsonConvert.SerializeObject(model);
                         //FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
@@ -129,6 +131,12 @@ namespace VehicleSale.Controllers
 
                         // if(user.UserRole=="Mer")
                         // {
+
+                        if (!string.IsNullOrEmpty(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+
                         if (user.RoleName == "Admin")
                         {
                             Session["Admin"] = user;
@@ -157,6 +165,113 @@ namespace VehicleSale.Controllers
             return View(model);
 
         }
+        public User SetupFormsAuthTicket(string Email, bool persistanceFlag)
+        {
+
+            User user = new User();
+
+            user = context.Users.Where(x => x.Email == Email).FirstOrDefault();
+            var userId = user.ID;
+            var userData = userId.ToString(CultureInfo.InvariantCulture);
+            CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
+            serializeModel.UserId = Convert.ToInt32(user.ID);
+            serializeModel.Rolls = context.Roles.Where(x => x.ID == user.RoleID).Select(x => x.RoleName).FirstOrDefault();
+            serializeModel.UserName = user.Email;
+            string UserSerializedData = JsonConvert.SerializeObject(serializeModel);
+            var authTicket = new FormsAuthenticationTicket(1, //version
+                                                        Email, // user name
+                                                        DateTime.Now, //creation
+                                                        DateTime.Now.AddMinutes(30), //Expiration
+                                                        persistanceFlag, //Persistent
+                                                        UserSerializedData);
+            Session["CurrentUserData"] = serializeModel;
+            var encTicket = FormsAuthentication.Encrypt(authTicket);
+            Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+            return user;
+        }
+
+        //
+        // POST: /Account/Login
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Login(LoginViewModel model, string returnUrl)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        model.Password = Encrypt(model.Password);
+        //        var user = (from u in context.Users
+        //                    join role in context.Roles on u.RoleID equals role.ID
+        //                    where u.Email == model.Email && u.Password == model.Password
+        //                    select new ViewModels.RoleVM
+        //                    {
+        //                        UserId = u.ID,
+        //                        RoleName = role.RoleName,
+        //                        FirstName = u.FirstName,
+        //                        LastName = u.LastName,
+        //                        Email = u.Email,
+        //                        Password = u.Password,
+        //                        IsActive = u.IsActive
+
+        //                    }).FirstOrDefault();
+        //        if (user != null)
+        //        {
+        //            if (user.IsActive == true)
+        //            {
+
+        //                Session["CurrentUser"] = user;
+        //                Session["CurrentUserId"] = user.UserId;
+
+        //                FormsAuthentication.SetAuthCookie(model.Email, true);
+
+        //                var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, user.RoleName);
+        //                string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+        //                var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+        //                HttpContext.Response.Cookies.Add(authCookie);
+
+        //                //string userData = JsonConvert.SerializeObject(model);
+        //                //FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+        //                //         1,
+        //                //        user.Email,
+        //                //         DateTime.Now,
+        //                //         DateTime.Now.AddMinutes(60),
+        //                //         false,
+        //                //         userData);
+
+        //                //string encTicket = FormsAuthentication.Encrypt(authTicket);
+        //                //HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+        //                //Response.Cookies.Add(faCookie);
+
+        //                // if(user.UserRole=="Mer")
+        //                // {
+        //                if (user.RoleName == "Admin")
+        //                {
+        //                    Session["Admin"] = user;
+        //                    Session["AdminId"] = user.UserId;
+        //                    return RedirectToAction("Index", "Home", new RouteValueDictionary(new { login = "true" }));
+        //                }
+        //                else
+        //                {
+        //                    return RedirectToAction("Index", "Home", new RouteValueDictionary(new { login = "true" }));
+        //                }
+        //                // }
+        //            }
+        //            else
+        //            {
+
+        //                ViewBag.Error = "Your Account is closed contact us for Login.";
+
+        //            }
+        //        }
+        //        else
+        //        {
+        //            //  ModelState.AddModelError("Error", "Invalid username or password.");
+        //            ViewBag.Error = "Invalid Email or password.";
+        //        }
+        //    }
+        //    return View(model);
+
+        //}
 
         //
         // GET: /Account/VerifyCode
@@ -379,7 +494,7 @@ namespace VehicleSale.Controllers
                 CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
 
                 serializeModel.FirstName = FirstName;
-                serializeModel.roles = "User";
+                serializeModel.Rolls = "User";
                 string userData = JsonConvert.SerializeObject(serializeModel);
                 FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
                          1,
@@ -407,13 +522,6 @@ namespace VehicleSale.Controllers
             }
         }
 
-        public class CustomPrincipalSerializeModel
-        {
-            public int UserId { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string roles { get; set; }
-        }
         [HttpGet]
         [AllowAnonymous]
         public ActionResult EmailVerification(string Email)

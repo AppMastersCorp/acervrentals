@@ -13,6 +13,7 @@ namespace VehicleSale.ViewModels
         public string Title { get; set; }
         [Required(ErrorMessage = "Please enter Vehicle Code")]
         public string VehicleCode { get; set; }
+        public string RearAxle { get; set; }
         public Nullable<int> VehicleTypeID { get; set; }
         public Nullable<int> CategoryID { get; set; }
         [Display(Name = "Other Category")]
@@ -28,10 +29,11 @@ namespace VehicleSale.ViewModels
         public string OtherMake { get; set; }
         [Required(ErrorMessage = "Please enter Seats")]
         public Nullable<int> Seats { get; set; }
-        [Required(ErrorMessage = "Please enter Sleeps")]
-        [Display(Name = "Adult Sleeps")]
+        [Required(ErrorMessage = "Please enter Adults Sleeps")]
+        [Display(Name = "Adults(Sleeps)")]
         public Nullable<int> AdultSleeps { get; set; }
-        [Display(Name = "Kid Sleeps")]
+        [Display(Name = "Kids(Sleeps)")]
+        [Required(ErrorMessage = "Please enter Kid Sleeps")]
         public Nullable<int> KidSleeps { get; set; }
         [Required(ErrorMessage = "Please enter Year Built")]
         public Nullable<int> YearBuilt { get; set; }
@@ -78,7 +80,7 @@ namespace VehicleSale.ViewModels
         public Nullable<double> HitchWeight { get; set; }
         [Display(Name = "Base Weight")]
         public Nullable<double> BaseWeight { get; set; }
-        public Nullable<bool> GVWR { get; set; }
+        public Nullable<int> GVWR { get; set; }
         [Display(Name = "Exterior Length")]
         [RegularExpression("^[0-9]{1,12}$", ErrorMessage = "Exterior length must be numeric")]
         public Nullable<int> ExteriorlengthFt { get; set; }
@@ -93,6 +95,13 @@ namespace VehicleSale.ViewModels
         [RegularExpression("^[0-9]*$", ErrorMessage = "Exterior Height must be numeric")]
         public Nullable<int> ExteriorHeightInch { get; set; }
 
+        [Display(Name = "Exterior Width")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Exterior Width must be numeric")]
+        public Nullable<int> ExteriorWidthFt { get; set; }
+        [Display(Name = "Exterior Width")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Exterior Width must be numeric")]
+        public Nullable<int> ExteriorWidthInch { get; set; }
+
         [Display(Name = "Fresh Water")]
         public Nullable<double> FreshWater { get; set; }
         [Display(Name = "Grey Water")]
@@ -100,15 +109,17 @@ namespace VehicleSale.ViewModels
         [Display(Name = "Black Water")]
         public Nullable<double> BlackWater { get; set; }
 
-        [Display(Name = "Awing Size")]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "Awing Size must be numeric")]
-        public Nullable<int> AwingSizeFt { get; set; }
-        [Display(Name = "Awing Size")]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "Awing Size must be numeric")]
-        public Nullable<int> AwingSizeInch { get; set; }
+        [Display(Name = "Awing Size(ft)")]
+        //[RegularExpression("^[0-9]*$", ErrorMessage = "Awing Size must be numeric")]
+        public Nullable<int> AwingSize { get; set; }
+
+        //[Display(Name = "Awing Size")]
+        //[RegularExpression("^[0-9]*$", ErrorMessage = "Awing Size must be numeric")]
+        //public Nullable<int> AwingSizeInch { get; set; }
 
 
         [RegularExpression("^[0-9]{1,12}$", ErrorMessage = "Bed must be numeric")]
+        [Display(Name = "Total Beds")]
         public Nullable<int> Bed { get; set; }
 
 

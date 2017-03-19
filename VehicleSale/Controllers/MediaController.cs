@@ -16,7 +16,7 @@ using VehicleSale.ViewModels;
 
 namespace VehicleSale.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "Admin")]
     public class MediaController : Controller
     {
         Account account = new Account(WebConfigurationManager.AppSettings["CloudName"],

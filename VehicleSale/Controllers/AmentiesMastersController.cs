@@ -12,7 +12,7 @@ using VehicleSale.ViewModels;
 
 namespace VehicleSale.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "Admin")]
     public class AmentiesMastersController : Controller
     {
         private VehicleSaleEntities db = new VehicleSaleEntities();

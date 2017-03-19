@@ -14,7 +14,7 @@ using System.Web.Configuration;
 
 namespace VehicleSale.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "Admin")]
     public class VehicleImagesController : Controller
     {
 

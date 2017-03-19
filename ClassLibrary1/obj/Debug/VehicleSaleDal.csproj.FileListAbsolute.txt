@@ -28,3 +28,13 @@ D:\VehicleSale (3)\VehicleSale\ClassLibrary1\bin\Debug\EntityFramework.SqlServer
 D:\VehicleSale (3)\VehicleSale\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 D:\VehicleSale (3)\VehicleSale\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 D:\VehicleSale (3)\VehicleSale\ClassLibrary1\obj\Debug\VehicleSaleDal.csprojResolveAssemblyReference.cache
+D:\Official\Project\VehicleSale\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+D:\Official\Project\VehicleSale\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+D:\Official\Project\VehicleSale\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+D:\Official\Project\VehicleSale\ClassLibrary1\bin\Debug\EntityFramework.dll
+D:\Official\Project\VehicleSale\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+D:\Official\Project\VehicleSale\ClassLibrary1\bin\Debug\EntityFramework.xml
+D:\Official\Project\VehicleSale\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+D:\Official\Project\VehicleSale\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+D:\Official\Project\VehicleSale\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+D:\Official\Project\VehicleSale\ClassLibrary1\obj\Debug\VehicleSaleDal.csprojResolveAssemblyReference.cache

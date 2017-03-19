@@ -195,3 +195,28 @@ D:\VehicleSale (3)\VehicleSale\VehicleSale\obj\Debug\VehicleSale.dll
 D:\VehicleSale (3)\VehicleSale\VehicleSale\obj\Debug\VehicleSale.pdb
 D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\SqlServerTypes\x64\SqlServerSpatial130.dll
 D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\SqlServerTypes\x86\SqlServerSpatial130.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\ApplicationInsights.config
+D:\Official\Project\VehicleSale\VehicleSale\bin\SqlServerTypes\x64\msvcr120.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\SqlServerTypes\x64\SqlServerSpatial130.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\SqlServerTypes\x86\msvcr120.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\SqlServerTypes\x86\SqlServerSpatial130.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\csc.exe
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\System.Collections.Immutable.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\System.Reflection.Metadata.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\vbc.exe
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe.config
+D:\Official\Project\VehicleSale\VehicleSale\bin\VehicleSale.dll.config
+D:\Official\Project\VehicleSale\VehicleSale\bin\VehicleSale.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\VehicleSale.pdb
+D:\Official\Project\VehicleSale\VehicleSale\bin\ClassLibrary1.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\ClassLibrary1.pdb
+D:\Official\Project\VehicleSale\VehicleSale\obj\Debug\VehicleSale.csprojResolveAssemblyReference.cache
+D:\Official\Project\VehicleSale\VehicleSale\obj\Debug\VehicleSale.dll
+D:\Official\Project\VehicleSale\VehicleSale\obj\Debug\VehicleSale.pdb

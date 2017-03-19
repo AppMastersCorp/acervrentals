@@ -15,14 +15,14 @@ namespace VehicleSale.Controllers
         public ActionResult Index(int? Id)
         {
             VehicleDetailsVM vehicleDetailsVM = new VehicleDetailsVM();
-            var vehicles = db.Vehicles.Where(v => v.ID == Id).FirstOrDefault();
+            var vehicles = db.Vehicles.Where(v => v.ID == Id && v.IsActive == true).FirstOrDefault();
             var vehicleFeatures = db.VehicleFeatures.Where(v => v.VehicleID == Id).ToList();
             var vehicleDetails = (from vehicle in db.Vehicles
                                   join vehicleType in db.VehicleTypes on vehicle.VehicleTypeID equals vehicleType.ID
                                   join models in db.Models on vehicle.ModelID equals models.ID
-                                  join category in db.Categories on vehicle.CategoryID equals category.ID                               
+                                  join category in db.Categories on vehicle.CategoryID equals category.ID
                                   join brand in db.Brands on vehicle.BrandID equals brand.ID
-                                  where vehicle.ID == Id
+                                  where vehicle.ID == Id && vehicle.IsActive == true
                                   select new VehicleDetailsVM
                                   {
                                       ID = vehicle.ID,
@@ -44,7 +44,7 @@ namespace VehicleSale.Controllers
                                       IsFeatured = vehicle.IsFeatured,
                                       vehicleType = vehicleType.Name,
                                       SalePrice = vehicle.SalePrice
-                                    
+
                                   }).FirstOrDefault();
             vehicleDetailsVM = vehicleDetails;
             if (vehicleFeatures.Count > 0)

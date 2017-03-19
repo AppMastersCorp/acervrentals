@@ -233,6 +233,8 @@
     <Compile Include="Controllers\BannersController.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CustomAuthorize.cs" />
+    <Compile Include="Controllers\CustomePrinicipal.cs" />
     <Compile Include="Controllers\EditingController.cs" />
     <Compile Include="Controllers\FaqsController.cs" />
     <Compile Include="Controllers\FeaturesMastersController.cs" />
@@ -1328,6 +1330,7 @@
     <Content Include="Content\Compare\javascript\jquery-merged-20160414174124.js" />
     <Content Include="Content\Compare\javascript\jquery.AshAlom.gaugeMeter-2.0.0.min-20160407195904.js" />
     <Content Include="Content\Compare\javascript\viewportchecker-20160407195904.js" />
+    <Content Include="Content\Css\jquery.multiselect.css" />
     <Content Include="Content\Css\Model.css" />
     <Content Include="Content\dropzone\css\basic.css" />
     <Content Include="Content\dropzone\css\dropzone.css" />
@@ -1757,6 +1760,7 @@
     <Content Include="Content\Scripts\lib\jquery-ui-1.10.4\ui\minified\jquery.ui.widget.min.js" />
     <Content Include="Content\Scripts\lib\jquery.are-you-sure.js" />
     <Content Include="Content\Scripts\lib\jquery.fancybox.js" />
+    <Content Include="Content\Scripts\lib\jquery.multiselect.js" />
     <Content Include="Content\Scripts\lib\jquery.noty.packaged.js" />
     <Content Include="Content\Scripts\lib\jquery.signalR-2.2.0.js" />
     <Content Include="Content\Scripts\lib\jquery.signalR-2.2.0.min.js" />
@@ -2155,6 +2159,7 @@
     <Content Include="images\img-testimonial.png" />
     <Content Include="images\img-truck.jpg" />
     <Content Include="images\in.png" />
+    <Content Include="images\indicator.white.gif" />
     <Content Include="images\insta.png" />
     <Content Include="images\jayco1.png" />
     <Content Include="images\Jayco2.png" />
@@ -2565,6 +2570,7 @@
     <Content Include="Views\Home\TestimonialListing.cshtml" />
     <Content Include="Views\Home\partialGrid.cshtml" />
     <Content Include="Views\VehicleImages\Manage.cshtml" />
+    <Content Include="Views\Home\partialList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

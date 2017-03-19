@@ -63,17 +63,19 @@ namespace ClassLibrary1
         public Nullable<double> FuelCapacity { get; set; }
         public Nullable<double> HitchWeight { get; set; }
         public Nullable<double> BaseWeight { get; set; }
-        public Nullable<bool> GVWR { get; set; }
+        public Nullable<int> GVWR { get; set; }
         public string Exteriorlength { get; set; }
         public string ExteriorHeight { get; set; }
+        public string ExteriorWidth { get; set; }
         public Nullable<double> FreshWater { get; set; }
         public Nullable<double> GreyWater { get; set; }
         public Nullable<double> BlackWater { get; set; }
-        public string AwingSize { get; set; }
+        public Nullable<int> AwingSize { get; set; }
         public Nullable<int> Bed { get; set; }
         public Nullable<int> Queen { get; set; }
         public Nullable<int> Full { get; set; }
         public Nullable<int> Twin { get; set; }
+        public string RearAxle { get; set; }
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }

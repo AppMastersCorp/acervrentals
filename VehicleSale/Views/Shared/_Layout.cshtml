@@ -220,9 +220,9 @@
                                     {
                                         <li class="col-xs-6 col-sm-3 col-md-2">
                                             <div class="img_div">
-                                                <a href="/Home/CategoryWiseFleetListing/@cat.ID"><img src="@cat.ImageUrl" /></a><br />
+                                                <a href="/Home/ListingPage?vehicle=@cat.ID"><img src="@cat.ImageUrl" /></a><br />
                                             </div>
-                                            <a href="/Home/CategoryWiseFleetListing/@cat.ID">@cat.Name</a>
+                                            <a href="/Home/ListingPage?vehicle=@cat.ID">@cat.Name</a>
                                         </li>
                                     }
 
@@ -254,10 +254,10 @@
                                                     foreach (Category cat in CategoryList.Where(c => c.VehicleTypeID == 1).Take(6))
                                                     {
                                                         <li>
-                                                            <a href="/Home/CategoryWiseFleetListing/@cat.ID">
+                                                            <a href="/Home/ListingPage?vehicle=@cat.ID">
                                                                 <img src="@cat.ImageUrl" />
                                                             </a>
-                                                            <a href="/Home/CategoryWiseFleetListing/@cat.ID">   <h3>@cat.Name</h3></a>
+                                                            <a href="/Home/ListingPage?vehicle=@cat.ID">   <h3>@cat.Name</h3></a>
                                                         </li>
                                                     }
                                                 }

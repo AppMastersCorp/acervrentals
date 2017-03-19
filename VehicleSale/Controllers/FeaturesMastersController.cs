@@ -12,7 +12,7 @@ using System.IO;
 
 namespace VehicleSale.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "Admin")]
     public class FeaturesMastersController : Controller
     {
         private VehicleSaleEntities db = new VehicleSaleEntities();

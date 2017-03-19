@@ -100,14 +100,14 @@ $(window).load(function () {
 
     $(function () {
 
-        var isEditingEnabled;
+        var isEditingEnable;
         var Editing = localStorage.getItem("Editing");
         var sessionValue = $("#hduname").val();
         //if ($.session.get('CurrentUserId') != null)
         //{
         if (sessionValue != "") {
             if (Editing == 'true') {
-                isEditingEnabled = false;
+                isEditingEnable = false;
                 toggleEditor();
 
             }
@@ -115,10 +115,10 @@ $(window).load(function () {
         $("a[id='toggle']").click(function () {
             var html = $(this).html();
             if (html == "Start editing") {
-                isEditingEnabled = false;
+                isEditingEnable = false;
             }
             else {
-                isEditingEnabled = true;
+                isEditingEnable = true;
                 localStorage.clear();
             }
             toggleEditor();
@@ -151,7 +151,7 @@ $(window).load(function () {
 
         function toggleEditor() {
 
-            if (isEditingEnabled) {
+            if (isEditingEnable) {
                 $("[id*=Widget]").each(function () {
 
                     var element = $(this);
@@ -166,7 +166,7 @@ $(window).load(function () {
                     element.attr('contenteditable', false);
                     element.attr('layoutcontenteditable', false);
                 });
-                isEditingEnabled = false;
+                isEditingEnable = false;
                 $(".EditableImage").find("a[data-toggle='modal']").remove();
                 $("div[id*='Slider']").find("a[data-toggle='modal']").css("display", "none")
                 $(".vedio_box").find("a[data-toggle='modal']").remove();
@@ -196,13 +196,13 @@ $(window).load(function () {
 
             }
 
-            localStorage.setItem('isEditingEnabled', isEditingEnable);
+            localStorage.setItem('isEditingEnable', isEditingEnable);
 
         }
 
         //function toggleEditorLayout() {
 
-        //    if (isEditingEnabled) {
+        //    if (isEditingEnable) {
         //        $("[id*=LayoutText]").each(function () {
 
         //            var element = $(this);
@@ -210,7 +210,7 @@ $(window).load(function () {
         //            element.attr('Layoutcontenteditable', false);
         //            toggle.innerHTML = 'Start editing';
         //        });
-        //        isEditingEnabled = false;
+        //        isEditingEnable = false;
 
         //        localStorage.setItem('Editing', 'false');
         //    }
@@ -227,7 +227,7 @@ $(window).load(function () {
         //        isEditingEnable = true;
         //    }
 
-        //    localStorage.setItem('isEditingEnabled', isEditingEnable);
+        //    localStorage.setItem('isEditingEnable', isEditingEnable);
 
         //}
         function first() {

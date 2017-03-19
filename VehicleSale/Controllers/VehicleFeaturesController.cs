@@ -10,7 +10,7 @@ using ClassLibrary1;
 
 namespace VehicleSale.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "Admin")]
     public class VehicleFeaturesController : Controller
     {
         private VehicleSaleEntities db = new VehicleSaleEntities();
