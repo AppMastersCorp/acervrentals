@@ -3431,6 +3431,9 @@ nav.menu {
 }
 
 
+.button_book h3 {
+    margin-bottom: 30px;
+}
 
 
 
@@ -3546,6 +3549,18 @@ nav.menu {
     .menu li:last-child {
         margin-right: 0px !important;
     }
+
+    .logo_img img {
+        margin-top: 0px;
+    }
+
+    .register_menu {
+        padding: 8px 20px;
+    }
+
+    .col-xs-12.col-sm-4.testimonial_box {
+        width: 50%;
+    }
 }
 
 
@@ -3642,87 +3657,1127 @@ nav.menu {
     }
 }
 /*--------------------Contact Page-Css----------------*/
-  
-.contct_page 
-{
- width:100%;
- float:left;
- background:#f8f8f8;
-}
-.contct_page h3
-{
- font-size:30px;
- color:#000;
- font-weight:100;
- margin-top:30px;
-}
-.contct_page p
-{
- font-size:18px;
- margin-bottom:20px;
+
+.contct_page {
+    width: 100%;
+    float: left;
+    background: #f8f8f8;
 }
 
-.contact_form .form-group label
-{
- font-size:14px;
+    .contct_page h3 {
+        font-size: 30px;
+        color: #000;
+        font-weight: 100;
+        margin-top: 30px;
+    }
+
+    .contct_page p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+.contact_form .form-group label {
+    font-size: 14px;
 }
 
-.contact_form .form-group input
-{
- font-size:14px;
+.contact_form .form-group input {
+    font-size: 14px;
 }
 
-.contact_form .form-group textarea
-{
- width:100%;
- min-height:100px;
- border-radius:5px;
- border:1px solid #ccc;
- padding:0px 10px;
- font-size:14px;
+.contact_form .form-group textarea {
+    width: 100%;
+    min-height: 100px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0px 10px;
+    font-size: 14px;
 }
 
 
-.contact_form .form-group button
-{
- width:120px;
- background:#32d4b2;
- color:#fff;
- border:0px;
- height:35px;
- font-weight:700;
- text-transform:uppercase;
+.contact_form .form-group button {
+    width: 120px;
+    background: #32d4b2;
+    color: #fff;
+    border: 0px;
+    height: 35px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 
 
 
-.text_contact h2
-{
- font-size:24px;
- color:#000;
- font-weight:100;
- margin-top:40px;
+.text_contact h2 {
+    font-size: 24px;
+    color: #000;
+    font-weight: 100;
+    margin-top: 40px;
 }
 
 
-.text_contact h4
-{
-font-size:15px;
-margin-top:30px;
-font-weight:500;
+.text_contact h4 {
+    font-size: 15px;
+    margin-top: 30px;
+    font-weight: 500;
 }
 
 
-.map_page 
-{
- width:100%;
- float:left;
- margin-top:20px;
- margin-bottom:20px;
+.map_page {
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-.map_page img
-{
- width:100%;
-}
+
+    .map_page img {
+        width: 100%;
+    }
 /*--------------------Contact Page-Css----------------*/
+
+/*---------Menu Css------------------*/
+
+.tab_right ul li {
+    line-height: normal !important;
+}
+
+    .tab_right ul li:last-child {
+        padding: 0px 0px !important;
+    }
+
+.tab_right .nav-tabs {
+    border-bottom: 2px solid #c9c9c9;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    background: transparent !important;
+    color: #000 !important;
+    border: 0px !important;
+    font-weight: 700;
+}
+
+
+.tab_right ul li a {
+    color: #999 !important;
+    font-size: 20px !important;
+    text-transform: uppercase !important;
+}
+
+    .tab_right ul li a:hover {
+        border: 1px solid transparent !important;
+        color: #000 !important;
+    }
+
+
+
+.mega-menu .cars_catgories {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px !important;
+}
+
+.cars_catgories li {
+    width: 33%;
+    text-align: left;
+    float: left;
+    margin: 0px !important;
+}
+
+    .cars_catgories li h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #666 !important;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .cars_catgories li:last-child {
+        margin: 0px !important;
+    }
+
+.view_menu .read-more {
+    background: url(../../images/Read-More.png) no-repeat;
+    background-size: 100%;
+    color: #fff;
+    padding: 5px 40px;
+    display: inline-block;
+    line-height: 40px;
+    color: #2e58eb !important;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 20px;
+    height: 50px !important;
+    background-size: 100% 50px !important;
+}
+
+
+    .view_menu .read-more:hover {
+        background: url(../../images/Read-More.png) no-repeat !important;
+        height: 50px !important;
+        border: 0px !important;
+        background-size: 100% 50px !important;
+    }
+
+
+.menu_box h4 {
+    color: #333 !important;
+    font-size: 20px !important;
+    font-weight: 700;
+    border-bottom: 2px solid #c9c9c9;
+    text-align: left;
+    padding-bottom: 9px;
+    text-transform: uppercase;
+}
+
+
+.menu_sub_catagory li {
+    display: block !important;
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+    float: none !important;
+    line-height: normal !important;
+    margin: 0px !important;
+}
+
+
+    .menu_sub_catagory li:last-child {
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+
+    .menu_sub_catagory li a {
+        display: block !important;
+        color: #666 !important;
+        padding: 10px !important;
+        background: transparent !important;
+    }
+
+        .menu_sub_catagory li a:hover {
+            background: url(../../images/bg-button.png) repeat-y top left !important;
+            color: #fff !important;
+        }
+
+
+.sponcer h3 {
+    color: #333 !important;
+    font-size: 20px !important;
+    font-weight: 700;
+    border-bottom: 2px solid #c9c9c9;
+    text-align: left;
+    padding-bottom: 9px;
+    text-transform: uppercase;
+}
+
+
+.catagory_last li {
+    margin: 0px !important;
+    padding: 0px !important;
+    float: left !important;
+}
+
+    .catagory_last li:last-child {
+        margin: 0px !important;
+    }
+
+    .catagory_last li a {
+        margin: 0px !important;
+        padding: 0px !important;
+        float: left !important;
+    }
+
+.catagory_last {
+    padding-bottom: 30px !important;
+    overflow: hidden;
+}
+
+
+#header.alt nav a {
+    color: #333;
+    font-size: 14px;
+    font-weight: 100;
+}
+/*--------End of-Menu Css------------------*/
+
+/*---------Start of Today Css 7-3-2017  --------*/
+
+
+
+
+/*-----today Css----------*/
+.testimonial_box .item {
+    margin: 0px;
+}
+
+.testimonial_box {
+    margin-bottom: 15px;
+}
+
+.full_test {
+    width: 100%;
+    float: left;
+}
+
+
+.testi_tittle {
+    background: url(../../images/line-title.png) repeat-y top left;
+    background-size: 100% auto;
+    padding: 5px 0px 5px 0px;
+    height: auto;
+    margin: 30px 0px 20px 0px;
+    position: relative;
+    float: left;
+    width: 100%;
+    border-radius: 5px;
+}
+
+    .testi_tittle span {
+        color: #fff !important;
+    }
+
+.testimonial_box .item .img-block img {
+    height: 220px;
+}
+
+
+.testimonial_box .item .caption {
+    min-height: 170px;
+}
+
+/*-------end of css-----------*/
+
+
+
+.cars_catgories li a {
+    display: block !important;
+    text-align: center;
+}
+
+    .cars_catgories li a h3 {
+        text-align: center !important;
+        width: 100%;
+        float: left;
+    }
+
+.cars_catgories li {
+    min-height: 138px;
+}
+
+
+#header .container {
+    position: initial;
+}
+
+/*-------Faq Css-------------------*/
+
+.accordian_faq {
+    width: 100%;
+    float: left;
+    background: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+#accordion h3 {
+    font-size: 30px;
+    font-weight: 900 !important;
+    letter-spacing: 2px;
+    color: #38c;
+    text-transform: uppercase;
+    float: left;
+    width: 100%;
+}
+
+.list_accordian {
+    padding-left: 16px;
+}
+
+    .list_accordian li {
+        list-style: hanging;
+        font-size: 16px;
+    }
+
+
+.back_accordian {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.list_accordian li {
+    list-style: hanging;
+    padding: 10px 0px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.test_heading {
+    background: url(../../images/line-title.png) repeat-y top left;
+    background-size: 100% auto;
+    padding: 5px 15px 5px 15px;
+    height: auto;
+    margin: 30px 0px 20px 0px;
+    position: relative;
+    float: left;
+    width: 100%;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.back_accordian .accordion-content {
+    border: 1px solid #ccc;
+}
+
+    .back_accordian .accordion-content p {
+        font-weight: 100;
+    }
+
+/*---------End of Css----------------*/
+
+
+
+
+
+
+
+.reset_password {
+    width: 100%;
+    max-width: 500px;
+    margin: 107px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    background:url(../../images/bg-scroller.png) repeat-y top center;
+}
+
+.reset_password h4
+{
+        margin-top: 0px;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color:#fff;
+}
+
+.reset_password .form-group label
+{
+    padding:5px 6px;
+    font-size:14px;
+    color:#fff;
+}
+
+.reset_password .form-group input[type="submit"]
+{
+    width: 130px;
+    text-transform: uppercase;
+    border: 2px solid rgba(1,255,205,1);
+    background: rgba(1,255,205,0.2);
+    font-weight: 700;
+    color: rgba(1,255,205,1);
+}
+
+/*---------Start of Media query----------------*/
+@media (max-width:1264px) {
+    #header nav ul li {
+        margin-left: 10px;
+    }
+
+    .img-scroller li {
+        padding: 0px 3px;
+    }
+}
+
+@media (max-width:1139px) {
+    .menu li:last-child {
+        margin-right: 280px !important;
+    }
+
+    .menu > ul li a {
+        font-size: 12px;
+        padding: 0px 1px !important;
+    }
+
+    .register_menu li a {
+        font-size: 12px;
+        padding: 0px 10px !important;
+    }
+
+    .register_menu {
+        padding: 22px 10px;
+    }
+
+    .col-sm-12.placebox {
+        width: 74%;
+        min-width: 740px;
+    }
+
+    .logo_img img {
+        width: 130px;
+        margin-top: 10px;
+    }
+
+    .menu .menu_sub_catagory li a {
+        padding: 10px !important;
+    }
+
+    .menu .menu_sub_catagory li:last-child {
+        margin: 0px !important;
+    }
+
+    .menu .view_menu a {
+        padding: 6px 25px !important;
+    }
+
+    .menu .cars_catgories li {
+        margin-right: 0px !important;
+    }
+
+    .menu .catagory_last li {
+        margin: 0px auto !important;
+    }
+
+    .btns_listing span {
+        font-size: 13px;
+    }
+
+
+    .listing_text {
+        padding: 3px 5px !important;
+    }
+
+        .listing_text h2 {
+            margin-top: 2px;
+            font-size: 14px;
+            font-weight: 100;
+        }
+
+        .listing_text ul {
+            font-size: 12px;
+            margin-bottom: 0px;
+        }
+
+    .veiw_detail a {
+        width: 110px;
+        margin: 5px 0px;
+    }
+
+
+    .favourate_icon {
+        width: 100%;
+        padding-top: 0px;
+    }
+}
+
+
+
+
+
+
+@media (max-width:1024px) {
+    .list_sidebar {
+        width: 80% !important;
+    }
+
+    .listing_car {
+        width: 100% !important;
+        margin-top: 20px;
+    }
+
+    .veiw_detail {
+        width: 100%;
+        float: left;
+    }
+
+    .button_book button {
+        font-size: 18px;
+    }
+
+    .vedio_serction {
+        width: 100% !important;
+    }
+
+    .button_book {
+        width: 100% !important;
+    }
+}
+
+
+@media (max-width:992px) {
+    #header.alt nav a {
+        color: #000;
+        font-weight: 100;
+        font-size: 12px;
+    }
+
+    .menu li:last-child {
+        margin-right: 200px !important;
+    }
+
+    .register_menu {
+        padding: 22px 5px;
+    }
+
+        .register_menu li a {
+            font-size: 12px;
+            padding: 0px 5px !important;
+        }
+
+        .register_menu li .regist_head {
+            padding: 5px 8px !important;
+        }
+
+    .menu .menu_sub_catagory li:last-child {
+        margin: 0px !important;
+    }
+
+    .menu .view_menu a {
+        padding: 6px 25px !important;
+    }
+
+    .menu .cars_catgories li {
+        margin-right: 0px !important;
+    }
+
+    .menu .catagory_last li {
+        margin: 0px auto !important;
+    }
+
+
+    #p_setid li img {
+        width: 40px;
+        height: auto;
+    }
+
+    .scroller .actions {
+        margin: 6px 0px 0px 0px;
+        padding: 0px 10px;
+        text-align: center;
+    }
+
+    .featured_text h3 {
+        font-size: 24px;
+    }
+
+    .featured_text {
+        padding: 0px !important;
+    }
+
+    .about-inner h1 {
+        font-size: 30px;
+    }
+
+    .testimonials-section .item .img-block img {
+        height: 110px;
+    }
+
+    .testimonials-section .caption {
+        padding: 10px 5px;
+        min-height: 170px;
+    }
+
+        .testimonials-section .caption h3 a {
+            font-size: 14px;
+        }
+
+        .testimonials-section .caption h3 {
+            padding: 0px;
+        }
+
+    .testimonials-section .owl-theme .owl-controls .owl-buttons .owl-next {
+        margin: -44px 0 0px 0px;
+    }
+
+    .testimonials-section .owl-theme .owl-controls .owl-buttons .owl-prev {
+        margin: -43px 0px 0px 0px;
+    }
+
+    .newsletter .inner, .faq .inner {
+        padding: 10px 20px 20px 20px;
+    }
+
+    .btn-see .read-more {
+        background-size: 100% 100%;
+        width: 235px;
+        height: 58px;
+        line-height: 52px;
+    }
+
+    .faq ul li {
+        font-size: 18px;
+    }
+
+    .inner p {
+        font-size: 18px;
+    }
+
+    .scroller .actions li.next-btn {
+        float: right !important;
+        margin-top: 0px !important;
+        margin-left: 0px !important;
+    }
+
+    .handle {
+        width: 10px !important;
+    }
+
+    .frame ul li {
+        width: 160px !important;
+    }
+
+    .scroller .actions li.back-btn a, .scroller .actions li.next-btn a {
+        background-size: 100% !important;
+        width: 110px !important;
+        font-size: 14px !important;
+        line-height: 32px;
+    }
+}
+
+
+
+@media (max-width:864px) {
+    .testimonials-section .item .img-block img {
+        height: 180px;
+    }
+
+    #header nav {
+        height: auto !important;
+    }
+
+    .menu ul {
+        margin-top: -0px !important;
+    }
+
+    .menu li:last-child {
+        margin-right: 0px !important;
+        padding: 0px !important;
+    }
+
+    #header nav ul li {
+        line-height: 64px;
+    }
+
+    .register_menu {
+        padding: 14px 20px;
+    }
+
+        .register_menu li a {
+            padding: 0px 15px !important;
+        }
+
+    #header nav ul li {
+        float: none !important;
+        text-align: center;
+    }
+
+    #header nav ul {
+        text-align: center;
+    }
+
+        #header nav ul li {
+            margin-left: 20px;
+        }
+
+    .menu .menu_sub_catagory li:last-child {
+        margin: 0px !important;
+    }
+
+    .menu .view_menu a {
+        padding: 6px 25px !important;
+    }
+
+    .menu .cars_catgories li {
+        margin-right: 0px !important;
+    }
+
+    .menu .catagory_last li {
+        margin: 0px auto !important;
+    }
+
+    .cars_catgories li {
+        width: 49%;
+    }
+
+    #header .menu .catagory_last li {
+        float: left !important;
+    }
+
+        #header .menu .catagory_last li a {
+            margin: 0px !important;
+            padding: 0px !important;
+        }
+
+    .menu .menu_sub_catagory li {
+        text-align: left !important;
+    }
+
+    #header .menu .tab_right ul {
+        text-align: left !important;
+    }
+
+        #header .menu .tab_right ul li {
+            text-align: left !important;
+        }
+
+
+    .mCSB_horizontal.mCSB_inside > .mCSB_container {
+        margin-bottom: 0px !important;
+    }
+
+    .scroller .actions li.middle {
+        width: 92%;
+    }
+
+    .scroller .actions li.next-btn {
+        float: left;
+        margin-top: 20px;
+        margin-left: 26px;
+    }
+
+
+    .tweet img {
+        height: 40px;
+    }
+
+    .rating-icon {
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+
+    .rating-count {
+        float: none;
+        text-align: center;
+    }
+
+    .faq ul li {
+        font-size: 15px;
+    }
+
+    .accordion-content p {
+        line-height: 15px;
+        font-size: 14px;
+    }
+
+    .main_part {
+        padding: 30px 0px;
+        font-size: 20px;
+    }
+
+    .copyright a {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width:768px) {
+
+    .tweet img {
+        height: 54px;
+    }
+
+    .rating-icon {
+        float: right;
+        text-align: right;
+        width: auto;
+    }
+
+    .rating-count {
+        float: left;
+        text-align: left;
+    }
+
+    .testimonials-section .item .img-block img {
+        height: 180px;
+    }
+}
+
+
+@media (max-width:767px) {
+    .col-sm-12.placebox {
+        width: 70%;
+        min-width: 480px;
+    }
+
+    .search_contianer .form-group {
+        max-width: 154px;
+        float: left;
+    }
+
+    .search_contianer .input-group-addon {
+        padding: 5px 7px;
+    }
+
+    .search_contianer .form-control.input-lg.location-field {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .search_contianer .input-group-addon {
+        font-size: 18px;
+    }
+
+    .search_contianer .form-group.date-select {
+        max-width: 100px;
+    }
+
+    .search_contianer #pickup {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .search_contianer #dropoff {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .search_contianer .btn.btn-primary, .comment-form input[type="submit"] {
+        font-size: 12px;
+        padding: 5px 5px;
+        line-height: 24px;
+    }
+
+    .menu .menu_sub_catagory li:last-child {
+        margin: 0px !important;
+    }
+
+    .menu .view_menu a {
+        padding: 6px 25px !important;
+    }
+
+    .menu .cars_catgories li {
+        margin-right: 0px !important;
+    }
+
+    .menu .catagory_last li {
+        margin: 0px auto !important;
+    }
+
+    #header .navbar-toggle {
+        float: left !important;
+        background: #666 !important;
+        margin-top: 18px;
+        margin-left: 23px;
+    }
+
+
+        #header .navbar-toggle .icon-bar {
+            background: #fff;
+        }
+
+    .scroller .title p {
+        font-size: 24px;
+    }
+
+    .faq ul li {
+        font-size: 18px;
+    }
+
+    .main_part {
+        padding: 20px 0px;
+        font-size: 36px;
+    }
+
+    .img-scroller li {
+        padding: 0px 3px;
+    }
+
+    .grid_list .col-sm-4 {
+        width: 280px;
+        padding: 0px 5px;
+        float: left;
+    }
+
+    .list_sidebar {
+        width: 100% !important;
+    }
+}
+
+
+@media (max-width:639px) {
+    #header.alt h1 {
+        text-align: left !important;
+    }
+
+    .banner-inner {
+        padding-top: 10em;
+    }
+
+    .col-sm-12.placebox {
+        margin: -100px auto;
+    }
+
+    .menu .menu_sub_catagory li:last-child {
+        margin: 0px !important;
+    }
+
+    .menu .view_menu a {
+        padding: 6px 25px !important;
+    }
+
+    .menu .cars_catgories li {
+        margin-right: 0px !important;
+    }
+
+    .menu .catagory_last li {
+        margin: 0px auto !important;
+    }
+
+    .view_menu .read-more {
+        width: 115px;
+    }
+
+    #header.alt .menu {
+        display: block;
+    }
+
+    #header nav ul li {
+        line-height: 40px;
+        text-align: left !important;
+    }
+
+    .faq ul li {
+        float: left;
+    }
+
+    .contact_inner {
+        padding-left: 10px !important;
+    }
+
+    .send-message {
+        padding-right: 10px !important;
+    }
+
+    #p_setid li img {
+        width: 30px;
+        height: auto;
+    }
+
+    .grid_list .col-sm-4 {
+        width: 340px;
+        padding: 0px 5px;
+        float: left;
+    }
+
+
+    .avialable h3 {
+        font-size: 18px !important;
+    }
+
+    .jayco_ul ul {
+        margin-left: 0px;
+    }
+
+        .jayco_ul ul li {
+            padding: 0px 10px !important;
+            width: 15% !important;
+        }
+}
+
+
+@media (max-width:464px) {
+    .col-sm-12.placebox {
+        width: 70%;
+        min-width: 300px;
+        margin: 30px auto;
+    }
+
+    .search_contianer .form-group {
+        max-width: 100%;
+    }
+
+        .search_contianer .form-group.date-select {
+            max-width: 100%;
+            width: 100%;
+        }
+
+    .search_contianer .btn.btn-primary, .comment-form input[type="submit"] {
+        font-size: 12px;
+        padding: 5px 25px;
+        line-height: 28px;
+    }
+
+    .register_menu {
+        padding: 14px 0px;
+    }
+
+        .register_menu li a {
+            padding: 0px 5px !important;
+        }
+
+    .navbar-header {
+        width: 100%;
+        position: relative;
+        float: left;
+    }
+
+    .featured .title span {
+        font-size: 24px;
+    }
+
+    .featured_text h3 {
+        font-size: 18px;
+    }
+
+    .featured_text p {
+        font-weight: 100;
+    }
+
+    .scroller .title span, .newsletter .title span {
+        font-size: 24px;
+    }
+
+    .scroller .title p {
+        font-size: 18px;
+    }
+
+
+    .about .title span {
+        font-size: 24px;
+    }
+
+    .about-inner h1 {
+        font-size: 18px;
+    }
+
+    .about-inner p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+
+    .grid_list .col-sm-4 {
+        width: 270px;
+        padding: 0px 5px;
+        float: left;
+    }
+
+    .contant_detail {
+        padding: 0px !important;
+    }
+
+    .col-xs-12.col-sm-4.testimonial_box {
+        width: 100%;
+    }
+
+    .testimonials-section .item .img-block img {
+        height: auto;
+    }
+}
+
+.mid_contain h2 {
+    width: 100%;
+    float: left;
+}
+
+.accordion-content {
+    float: left !important;
+    width: 100%;
+}
+
+#header.alt nav a:active, #header.alt nav a:hover {
+    color: #333;
+}

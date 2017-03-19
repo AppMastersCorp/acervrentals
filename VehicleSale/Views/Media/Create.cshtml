@@ -1,7 +1,15 @@
 ﻿@model IEnumerable<ClassLibrary1.Banner>
+
+@using System.Web.Configuration;
+@using CloudinaryDotNet;
+@using CloudinaryDotNet.Actions;
 @{
     Layout = null;
     ViewBag.Title = "Create";
+    Account account = new Account(WebConfigurationManager.AppSettings["CloudName"],
+                           WebConfigurationManager.AppSettings["ApiKey"],
+                           WebConfigurationManager.AppSettings["ApiSecret"]);
+    Cloudinary cloudinary = new Cloudinary(account);
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -36,22 +44,18 @@
                     {
                         <div class="form-group">
                             <label>Banner Image @i</label><br />
-
-                            <img src="@item.BannerUrl" height="100" width="100" id="@("BannerUrl" + i)" />
+                            @cloudinary.Api.UrlImgUp.Transform(new Transformation().Width("100").Height("100").Crop("fill")).BuildImageTag(item.PublicKey, new StringDictionary("id=" + ("BannerUrl" + i)))
+                            @*<img src="@item.BannerUrl" height="100" width="100" id="@("BannerUrl" + i)" />*@
 
                         </div>
                         <div class="form-group">
                             <label>Banner Url @i</label><br />
                             <input id="@("ImageUrl" + i)" name="ImageUrl1" type="file" onchange="showMyImage(this,@i)" class="file form-control" data-preview-file-type="text">
                             @*@Html.EditorFor(model => model.BannerImageUrl, new { htmlAttributes = new { @class = "form-control" } })*@
-
-
                         </div>
                         <div class="form-group">
                             <label>Title @i</label><br />
                             <input type="text" id="@("Title" + i)" value="@item.Title" class="form-control" />
-
-
                         </div>
                         <div class="form-group">
                             <label>Banner Link @i</label><br />
@@ -164,7 +168,7 @@
                     },
                     error: function (error) {
                         if (j == 5) {
-                           // window.location.href = '/Home/Index';
+                            // window.location.href = '/Home/Index';
                             parent.location.reload();
                         }
                     }

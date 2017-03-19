@@ -19,7 +19,7 @@ namespace ClassLibrary1
         public Nullable<int> TagID { get; set; }
         public Nullable<bool> IsActive { get; set; }
     
-        public virtual Vehicle Vehicle { get; set; }
         public virtual TagMaster TagMaster { get; set; }
+        public virtual Vehicle Vehicle { get; set; }
     }
 }

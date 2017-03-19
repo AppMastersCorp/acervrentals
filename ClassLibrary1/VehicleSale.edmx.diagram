@@ -4,58 +4,59 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1e92c0ff91a04a6bb41f759945746940" Name="Diagram1">
-        <EntityTypeShape EntityType="VehicleSaleModel.AmentiesMaster" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Banner" Width="1.5" PointX="10.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Brand" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Category" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.FeaturesMaster" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Model" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.RentTerm" Width="1.5" PointX="8.25" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.User" Width="1.5" PointX="9.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.VehicleAmenty" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.VehicleFeature" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.VehicleImage" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.VehicleRent" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.VehicleRentleCondition" Width="1.5" PointX="7.75" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VehicleSaleModel.VehicleType" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <AssociationConnector Association="VehicleSaleModel.FK_FeaturesMaster_AmentiesMaster" ManuallyRouted="false" />
-        <AssociationConnector Association="VehicleSaleModel.FK_VehicleAmenties_AmentiesMaster" ManuallyRouted="false" />
-        <AssociationConnector Association="VehicleSaleModel.FK_Categories_VehicleTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="VehicleSaleModel.FK_VehicleFeatures_FeaturesMaster" ManuallyRouted="false" />
-        <AssociationConnector Association="VehicleSaleModel.FK_VehicleRent_RentTerms" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Vehicle" Width="1.5" PointX="5.25" PointY="6.125" />
+      <Diagram DiagramId="ac460ed9e33f421c8ee27ed65095a1b2" Name="Diagram1" ZoomLevel="76">
+        <EntityTypeShape EntityType="VehicleSaleModel.AmentiesMaster" Width="1.5" PointX="6" PointY="21.375" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Banner" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Brand" Width="1.5" PointX="0.75" PointY="17.125" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Category" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="VehicleSaleModel.ContactUsRequestDetail" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Faq" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.FeaturesMaster" Width="1.5" PointX="3" PointY="20.25" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Folder" Width="1.5" PointX="8.75" PointY="4.875" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Login_SocailNetwork" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Make" Width="1.5" PointX="0.75" PointY="11.625" />
+        <EntityTypeShape EntityType="VehicleSaleModel.MessageSender" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Model" Width="1.5" PointX="0.75" PointY="14.5" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Newsletter" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.OfferMaster" Width="1.5" PointX="5.25" PointY="26" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Page" Width="1.5" PointX="8.75" PointY="1" />
+        <EntityTypeShape EntityType="VehicleSaleModel.PageImage" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.RentTerm" Width="1.5" PointX="6" PointY="4.625" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Role" Width="1.5" PointX="13.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.TagMaster" Width="1.5" PointX="6" PointY="1.375" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Testimonial" Width="1.5" PointX="12.75" PointY="13.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.UploadFile" Width="1.5" PointX="11" PointY="4.875" />
+        <EntityTypeShape EntityType="VehicleSaleModel.User" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.VehicleAmenty" Width="1.5" PointX="8.25" PointY="14.375" />
+        <EntityTypeShape EntityType="VehicleSaleModel.VehicleFeature" Width="1.5" PointX="5.25" PointY="17.375" />
+        <EntityTypeShape EntityType="VehicleSaleModel.VehicleImage" Width="1.5" PointX="5.25" PointY="13.75" />
+        <EntityTypeShape EntityType="VehicleSaleModel.VehicleRent" Width="1.5" PointX="8.25" PointY="8.375" />
+        <EntityTypeShape EntityType="VehicleSaleModel.VehicleRentleCondition" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Vehicle" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="VehicleSaleModel.VehicleTag" Width="1.5" PointX="8.25" PointY="11.375" />
+        <EntityTypeShape EntityType="VehicleSaleModel.VehicleType" Width="1.5" PointX="0.75" PointY="19.625" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Widget" Width="1.5" PointX="11" PointY="1" />
+        <EntityTypeShape EntityType="VehicleSaleModel.Wishlist" Width="1.5" PointX="14.75" PointY="11.75" />
+        <AssociationConnector Association="VehicleSaleModel.FK_FeaturesMaster_AmentiesMaster" />
+        <AssociationConnector Association="VehicleSaleModel.FK_VehicleAmenties_AmentiesMaster" />
         <AssociationConnector Association="VehicleSaleModel.FK_Vehicles_Brands" />
         <AssociationConnector Association="VehicleSaleModel.FK_Vehicles_Categories" />
+        <AssociationConnector Association="VehicleSaleModel.FK_VehicleFeatures_FeaturesMaster" />
+        <AssociationConnector Association="VehicleSaleModel.FK_UploadFiles_Folders" />
+        <AssociationConnector Association="VehicleSaleModel.FK_Vehicles_Make" />
         <AssociationConnector Association="VehicleSaleModel.FK_Vehicles_Models" />
+        <AssociationConnector Association="VehicleSaleModel.FK_OfferMaster_Vehicles" />
+        <AssociationConnector Association="VehicleSaleModel.FK_Widget_Page" />
+        <AssociationConnector Association="VehicleSaleModel.FK_VehicleRent_RentTerms" />
+        <AssociationConnector Association="VehicleSaleModel.FK_VehicleTags_TagMaster" />
         <AssociationConnector Association="VehicleSaleModel.FK_VehicleAmenties_Vehicles" />
         <AssociationConnector Association="VehicleSaleModel.FK_VehicleFeatures_Vehicles" />
         <AssociationConnector Association="VehicleSaleModel.FK_VehicleImages_Vehicles" />
         <AssociationConnector Association="VehicleSaleModel.FK_VehicleRent_Vehicles" />
         <AssociationConnector Association="VehicleSaleModel.FK_VehicleRentleConditions_Vehicles" />
         <AssociationConnector Association="VehicleSaleModel.FK_Vehicles_VehicleTypes" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Faq" Width="1.5" PointX="10.375" PointY="4.75" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Role" Width="1.5" PointX="12.375" PointY="4.75" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Login_SocailNetwork" Width="1.5" PointX="13.375" PointY="7.75" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Testimonial" Width="1.5" PointX="12.375" PointY="11.75" />
-        <EntityTypeShape EntityType="VehicleSaleModel.OfferMaster" Width="1.5" PointX="7.5" PointY="18.625" />
-        <AssociationConnector Association="VehicleSaleModel.FK_OfferMaster_Vehicles" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Wishlist" Width="1.5" PointX="13.375" PointY="0.75" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Newsletter" Width="1.5" PointX="0.75" PointY="14.75" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Page" Width="1.5" PointX="14.375" PointY="4" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Widget" Width="1.5" PointX="16.625" PointY="4" />
-        <AssociationConnector Association="VehicleSaleModel.FK_Widget_Page" />
-        <EntityTypeShape EntityType="VehicleSaleModel.PageImage" Width="1.5" PointX="3.375" PointY="14.75" />
-        <EntityTypeShape EntityType="VehicleSaleModel.Folder" Width="1.5" PointX="14.375" PointY="11.875" />
-        <EntityTypeShape EntityType="VehicleSaleModel.UploadFile" Width="1.5" PointX="16.625" PointY="11.875" />
-        <AssociationConnector Association="VehicleSaleModel.FK_UploadFiles_Folders" />
-        <EntityTypeShape EntityType="VehicleSaleModel.TagMaster" Width="1.5" PointX="9.25" PointY="18.625" />
-        <EntityTypeShape EntityType="VehicleSaleModel.VehicleTag" Width="1.5" PointX="10.625" PointY="14.75" />
         <AssociationConnector Association="VehicleSaleModel.FK_VehicleTags_Vehicles" />
-        <AssociationConnector Association="VehicleSaleModel.FK_VehicleTags_TagMaster" />
-        <EntityTypeShape EntityType="VehicleSaleModel.MessageSender" Width="1.5" PointX="14.375" PointY="14.75" />
-        <EntityTypeShape EntityType="VehicleSaleModel.ContactUsRequestDetail" Width="1.5" PointX="15.375" PointY="0.75" />
-        </Diagram>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

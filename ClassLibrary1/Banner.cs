@@ -16,11 +16,11 @@ namespace ClassLibrary1
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public string BannerUrl { get; set; }
         public string BannerLink { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public Nullable<bool> IsActive { get; set; }
-        public string BannerUrl { get; set; }
         public string PublicKey { get; set; }
     }
 }

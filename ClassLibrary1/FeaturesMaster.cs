@@ -23,6 +23,7 @@ namespace ClassLibrary1
         public int ID { get; set; }
         public Nullable<int> AmentiesID { get; set; }
         public string Title { get; set; }
+        public string ImageUrl { get; set; }
         public string Description { get; set; }
         public Nullable<bool> IsActive { get; set; }
     

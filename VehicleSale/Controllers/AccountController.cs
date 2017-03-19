@@ -22,6 +22,7 @@ using System.Net.Mail;
 using System.Net;
 using VehicleSale.ViewModels;
 using System.Web.Routing;
+using System.Web.Configuration;
 
 namespace VehicleSale.Controllers
 {
@@ -106,7 +107,7 @@ namespace VehicleSale.Controllers
                         Session["CurrentUser"] = user;
                         Session["CurrentUserId"] = user.UserId;
 
-                        FormsAuthentication.SetAuthCookie(model.Email, false);
+                        FormsAuthentication.SetAuthCookie(model.Email, true);
 
                         var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, user.RoleName);
                         string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
@@ -239,7 +240,7 @@ namespace VehicleSale.Controllers
                         context.Users.Add(user);
                         context.SaveChanges();
                         EmailVerificationMail(model.Email);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home", new RouteValueDictionary(new { login = "true" }));
 
                     }
                     else
@@ -248,6 +249,10 @@ namespace VehicleSale.Controllers
                         return View();
                     }
 
+                }
+                else
+                {
+                    ViewBag.ErrMessage = "Email already registered";
                 }
                 //var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 //var result = await UserManager.CreateAsync(user, model.Password);
@@ -274,19 +279,18 @@ namespace VehicleSale.Controllers
 
             string href = Request.Url.GetLeftPart(UriPartial.Authority) + "/Account/EmailVerification?Email=" + email;
             // context.Response.Write(string.Format("Name :{0} , Age={1}, Qualification={2}", fullName, age, qua));
-            MailMessage msg = new MailMessage();
-            msg.From = new MailAddress("gorab@technocodz.com");
-            msg.To.Add(email);
-            msg.Subject = "Account Verification";
-            msg.IsBodyHtml = true;
-            msg.Body = "You Can Click the link for Account Activation <a href=" + href + ">Activate Now<a>";
+            //MailMessage msg = new MailMessage();
+            //msg.From = new MailAddress("gorab@technocodz.com");
+            //msg.To.Add(email);
+            //msg.Subject = "Account Verification";
+            //msg.IsBodyHtml = true;
+            string body = "Please click on the link for Account Activation. <a href=" + href + ">Activate Now<a>";
+            SendEmail(email.ToLower(), "Account Verification", body);
+            //SmtpClient sc = new SmtpClient("mail.technocodz.com");
 
-            SmtpClient sc = new SmtpClient("mail.technocodz.com");
+            //sc.Port = 25;
 
-            sc.Port = 25;
-            //  sc.Credentials = new NetworkCredential("as2647566@gmail.com", "123456qw");
-            //   sc.EnableSsl = true;
-            sc.Send(msg);
+            //sc.Send(msg);
         }
 
         [HttpPost]
@@ -401,8 +405,6 @@ namespace VehicleSale.Controllers
                 //ViewBag.Error = "Email Id already Exit??";
                 return Json(new { success = false }, JsonRequestBehavior.AllowGet);
             }
-
-
         }
 
         public class CustomPrincipalSerializeModel
@@ -412,12 +414,14 @@ namespace VehicleSale.Controllers
             public string LastName { get; set; }
             public string roles { get; set; }
         }
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult EmailVerification(string Email)
         {
-
             User u = context.Users.Single(ud => ud.Email == Email);
             u.IsActive = true;
             context.SaveChanges();
+            ViewBag.Message = "Your account is now Active";
             return RedirectToAction("Login", "Account");
         }
         //
@@ -440,6 +444,7 @@ namespace VehicleSale.Controllers
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult ForgotPassword(ForgotPasswordViewModel model)
         {
             if (ModelState.IsValid)
@@ -462,8 +467,8 @@ namespace VehicleSale.Controllers
                     u.UserName = Exist.UserName;
                     u.IsActive = Exist.IsActive;
                     context.SaveChanges();
-
-                    return RedirectToAction("Login");
+                  
+                    return RedirectToAction("Confirmation");
                 }
                 else
                 {
@@ -481,24 +486,27 @@ namespace VehicleSale.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Confirmation()
+        {
+            return View();
+        }
         public void SendMail(string Email, string pass)
         {
             string href = Request.Url.GetLeftPart(UriPartial.Authority) + "/Account/ResetPassword?Email=" + Email + "&ForgetPassword=" + pass;
             // context.Response.Write(string.Format("Name :{0} , Age={1}, Qualification={2}", fullName, age, qua));
-            MailMessage msg = new MailMessage();
-            msg.From = new MailAddress("gorab@technocodz.com");
-            msg.To.Add(Email);
-            msg.Subject = "Your New Password";
-            msg.IsBodyHtml = true;
+            //MailMessage msg = new MailMessage();
+            //msg.From = new MailAddress("gorab@technocodz.com");
+            //msg.To.Add(Email);
+            //msg.Subject = "Your New Password";
+            //msg.IsBodyHtml = true;
 
-            msg.Body = "You Forgotten your password . Confirmation <a href=" + href + ">Confirm</a>  ";
-            SmtpClient sc = new SmtpClient("mail.technocodz.com");
-
-            sc.Port = 25;
-            //  sc.Credentials = new NetworkCredential("as2647566@gmail.com", "123456qw");
-            //   sc.EnableSsl = true;
-            sc.Send(msg);
+            string Body = "You Forgotten your password . Please click on link <a href=" + href + ">Confirm</a>  ";
+            //SmtpClient sc = new SmtpClient("mail.technocodz.com");
+            SendEmail(Email.ToLower(), "Forgot Password", Body);
+            //sc.Port = 25;
+            //sc.Send(msg);
         }
         //
         // GET: /Account/ForgotPasswordConfirmation
@@ -687,6 +695,7 @@ namespace VehicleSale.Controllers
             Session.Abandon();
             Response.Cookies.Clear();
             AuthenticationManager.SignOut();
+            FormsAuthentication.SignOut();
             return RedirectToAction("index", "home");
         }
 
@@ -766,6 +775,19 @@ namespace VehicleSale.Controllers
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "Home");
+        }
+        public bool SendEmail(string to = "info@acervrentals.com", string Subject = "", string Content = "Test Data")
+        {
+            var myMessage = new SendGrid.SendGridMessage();
+            myMessage.AddTo(to);
+            myMessage.From = new MailAddress(WebConfigurationManager.AppSettings["SendGridFromEmail"]);
+            myMessage.Subject = Subject;
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(WebConfigurationManager.AppSettings["SendGridUsername"], WebConfigurationManager.AppSettings["SendGridPassword"]);
+            TimeSpan time = TimeSpan.FromMinutes(1);
+            myMessage.Html = Content;
+            var transportWeb = new SendGrid.Web(WebConfigurationManager.AppSettings["SendGridKey"], credentials, time);
+            transportWeb.DeliverAsync(myMessage);
+            return true;
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

@@ -23,18 +23,21 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Seats)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Sleeps)
+                @*<th>
+                    @Html.DisplayNameFor(model => model.AdultSleeps)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KidSleeps)
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.YearBuilt)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Length)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Width)
-                </th>
+                </th>*@
 
                 <th>
                     @Html.DisplayNameFor(model => model.Brand)
@@ -45,18 +48,18 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Model)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.VehicleType)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsFeatured)
-                </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.IsSaleable)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SalePrice)
-                </th>*@
+               @* <th>
+         @Html.DisplayNameFor(model => model.VehicleType)
+     </th>
+     <th>
+         @Html.DisplayNameFor(model => model.IsFeatured)
+     </th>
+    <th>
+         @Html.DisplayNameFor(model => model.IsSaleable)
+     </th>
+     <th>
+         @Html.DisplayNameFor(model => model.SalePrice)
+     </th>*@
                 <th>
                     Features
                 </th>
@@ -80,18 +83,21 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Seats)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sleeps)
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.AdultSleeps)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KidSleeps)
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.YearBuilt)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Length)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Width)
-                    </td>
+                    </td>*@
 
                     <td>
                         @Html.DisplayFor(modelItem => item.Brand.Name)
@@ -102,18 +108,18 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Model.Name)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VehicleType.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => item.IsFeatured)
-                    </td>
                     @*<td>
-                        @Html.DisplayFor(model => item.IsSaleable)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => item.SalePrice)
-                    </td>*@
+        @Html.DisplayFor(modelItem => item.VehicleType.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.IsFeatured)
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.IsSaleable)
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.SalePrice)
+    </td>*@
                     <td>
                         @Html.ActionLink("Features", "Index", "VehicleFeatures", new { id = item.ID }, null)
                     </td>

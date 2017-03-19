@@ -29,6 +29,9 @@
                     @Html.DisplayNameFor(model => model.ImageURl)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.LogoUrl)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.isactive)
                 </th>
                 <th>
@@ -53,8 +56,10 @@
                     @Html.DisplayFor(modelItem => item.Summary)
                 </td>
                 <td>
-
                     <img src=@Html.DisplayFor(modelItem => item.ImageURl) alt="" width="200" height="200" />
+                </td>
+                <td>
+                    <img src=@Html.DisplayFor(modelItem => item.LogoUrl) alt="" width="100" height="100" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.isactive)

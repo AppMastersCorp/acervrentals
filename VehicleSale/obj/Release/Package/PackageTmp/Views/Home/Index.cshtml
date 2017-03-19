@@ -10,6 +10,7 @@
     var Testimonials = ViewBag.RVTestimonials;
     var Faqs = ViewBag.RVFaqs;
     var Ratingavrage = ViewBag.RVRatingavrage;
+    var Tags = ViewBag.RVTags;
     Account account = new Account(WebConfigurationManager.AppSettings["CloudName"],
                              WebConfigurationManager.AppSettings["ApiKey"],
                              WebConfigurationManager.AppSettings["ApiSecret"]);
@@ -26,13 +27,15 @@
 <link rel="stylesheet" href="~/Content/Slider/Css/font-awesome.css">
 <link rel="stylesheet" href="~/Content/Slider/Css/ospb.css">
 <link rel="stylesheet" href="~/Content/Slider/Css/horizontal.css">
+
+<link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
 @*<link href="http://fancyapps.com/fancybox/source/jquery.fancybox.css" rel="stylesheet" />*@
 @*<link href="~/Content/Fancybox/jquery.fancybox.css" rel="stylesheet" />*@
 <script src="~/Content/Slider/js/modernizr.js"></script>
-<script src="~/Content/Slider/js/jquery.min.js"></script>
+@*<script src="~/Content/Slider/js/jquery.min.js"></script>*@
 @*<script src="~/Content/Fancybox/jquery.fancybox.js"></script>*@
 @*<script type="text/javascript" src="http://fancyapps.com/fancybox/source/jquery.fancybox.js"></script>*@
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <style>
     .ui-widget-header {
@@ -63,6 +66,9 @@
         background: #333;
     }
 
+    .about-inner h1 {
+        color: #fff;
+    }
 
     .scrollbar .handle .mousearea {
         width: 85px;
@@ -93,7 +99,7 @@
         border: 0px !important;
     }
 </style>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
     $(document).ready(function () {
         var frame = $('#basic1');
@@ -222,7 +228,6 @@
         <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1369px; height: 700px; overflow: hidden;">
             <a data-u="any" href="http://www.jssor.com" style="display:none">Banner Rotator</a>
             @{var images = list.GetSliderImages();
-
                 @*<a data-toggle="modal" onclick="showEditDel(this)" data-modal-id="modal-form-company-address" href="#"><div class="edit-indicator-widget" style="position:absolute;z-index:999;right:35px; float:right; list-style-type:none; width:30px;"><img style="display:none;margin:5px;width:30px" id="SliderEdit" title="Edit Slider Images" src="~/images/Edit.png"></div></a>*@
 
                 <a data-toggle="fb-modal" href="/Media/Create"><div class="edit-indicator-widget" style="position:absolute;z-index:999;right:35px; float:right; list-style-type:none; width:35px;"><img style="display:none;margin:5px;width:30px" id="EditImage" title="Edit Slider Images" src="~/images/Edit.png"></div></a>
@@ -241,45 +246,7 @@
                     </div>
 
                 }       }
-            @*<div data-p="112.50" style="display: none;">
-                    <img data-u="image" src="~/images/banner.jpg" />
-                    <div class="banner-inner">
-                        <h2>BOOK YOUR RV OR CAMPER</h2>
-                        <hr>
-                        <p>
-                            YOUR NEXT FAMILY VACATION DOESN'T HAVE TO BREAK THE BANK!
-                            FORGET THE COST OF AIRFARE AND CALL ACE RV
-                            TO HIT THE OPEN ROAD WITH YOUR FAMILY
-                        </p>
-                        <a href="#" class="button-big">CHOOSE YOUR RV NOW</a>
-                    </div>
-                </div>
-                <div data-p="112.50" style="display: none;">
-                    <img data-u="image" src="~/images/bannerbg1.jpg" />
-                    <div class="banner-inner">
-                        <h2>BOOK YOUR RV OR CAMPER</h2>
-                        <hr>
-                        <p>
-                            YOUR NEXT FAMILY VACATION DOESN'T HAVE TO BREAK THE BANK! <br>
-                            FORGET THE COST OF AIRFARE AND CALL ACE RV<br>
-                            TO HIT THE OPEN ROAD WITH YOUR FAMILY
-                        </p>
-                        <a href="#" class="button-big">CHOOSE YOUR RV NOW</a>
-                    </div>
-                </div>
-                <div data-p="112.50" style="display: none;">
-                    <img data-u="image" src="~/images/banner.jpg" />
-                    <div class="banner-inner">
-                        <h2>BOOK YOUR RV OR CAMPER</h2>
-                        <hr>
-                        <p>
-                            YOUR NEXT FAMILY VACATION DOESN'T HAVE TO BREAK THE BANK! <br>
-                            FORGET THE COST OF AIRFARE AND CALL ACE RV<br>
-                            TO HIT THE OPEN ROAD WITH YOUR FAMILY
-                        </p>
-                        <a href="#" class="button-big">CHOOSE YOUR RV NOW</a>
-                    </div>
-                </div>*@
+
         </div>
         <!-- Bullet Navigator -->
         <div data-u="navigator" class="jssorb01" style="bottom:42px;right:662px;">
@@ -289,11 +256,36 @@
         <span data-u="arrowleft" class="jssora05l" style="top:0px;left:8px;width:40px;height:40px;" data-autocenter="2"></span>
         <span data-u="arrowright" class="jssora05r" style="top:0px;right:8px;width:40px;height:40px;" data-autocenter="2"></span>
     </div>
+
+    <div class="container search_contianer">
+        <div class="col-sm-12 placebox">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                    <select class="form-control input-lg location-field">
+                        <option>2875 Towerview Rd. Herndon, VA 20171</option>
+                    </select>
+                    @*<input name="q" value="" class="form-control input-lg location-field" placeholder="Where will your journey begin?" autocomplete="off">*@
+                </div>
+            </div>
+            <div class="form-group date-select">
+                <div class="input-group">
+                    <span class="input-group-addon calendar"><i class="fa fa-calendar"></i></span>
+                    <input name="from" id="pickup" class="form-control input-lg datepicker-field-from datepicker-field-from--home hasDatepicker" placeholder="Pickup">
+                </div>
+            </div>
+            <div class="form-group date-select">
+                <div class="input-group">
+                    <span class="input-group-addon calendar"><i class="fa fa-calendar"></i></span>
+                    <input name="to" id="dropoff" class="form-control input-lg datepicker-field-to datepicker-field-to--home hasDatepicker" placeholder="Dropoff">
+                </div>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-primary btn-lg btn-block btn-od-standard" href="/Home/OurFleetListing"><i class="fa fa-search"></i> Find Yours</a>
+            </div>
+        </div>
+    </div>
 </section>
-
-
-
-
 
 <!-- One -->
 <section id="one" class="featured">
@@ -311,7 +303,7 @@
 
                 <div class="col-sm-6">
                     <a href="/VehicleDetail/Index/@vichleDetail.VehicleID">
-                        @cloudinary.Api.UrlImgUp.Transform(new Transformation().Crop("fill")).BuildImageTag(@vichleDetail.PublicKey)
+                        @cloudinary.Api.UrlImgUp.Transform(new Transformation().Height("200").Crop("fill")).BuildImageTag(@vichleDetail.PublicKey)
                         @*<img src="@vichleDetail.ImageUrl" alt="" />*@
                     </a>
                 </div>
@@ -421,12 +413,12 @@
 
                     @if (FeatureList != null)
             {
-                foreach (AmentiesMaster ammenty in FeatureList)
+                foreach (FeaturesMaster feature in FeatureList)
                 {
                             <li class="">
-                                <a href="#feature" onclick="SelectFeature(this)" data-html="@ammenty.Name">
-                                    <img src="@ammenty.ImageUrl" alt="@ammenty.Name" /><br />
-                                    @ammenty.Name<br />
+                                <a href="#feature" onclick="SelectFeature(this)" data-html="@feature.Title">
+                                    <img src="@feature.ImageUrl" alt="@feature.Title" /><br />
+                                    @feature.Title<br />
                                     <span id="featuretext"></span>
                                 </a>
                             </li>
@@ -444,7 +436,7 @@
             <ul class="actions">
                 <li class="back-btn"><a href="#passengers" class="back" onclick="Back_Next(this)">GO BACK</a></li>
 
-                <li class="next-btn"><a href="#type" class="next-btn" onclick="Back_Next(this)">Next</a></li>
+                <li class="next-btn"><a href="#" class="next-btn" onclick="Result();">Next</a></li>
             </ul>
             @**@
 
@@ -489,86 +481,46 @@
 
 </section>
 <!-- two -->
-<section id="type" class="scroller">
+@*<section id="type" class="scroller">
 
-    <div class="title">
-        <span>CHOOSE YOUR RV</span>
-        <p>VEHICLE TYPE</p>
-    </div>
-
-
-    <div class="pagespan container hori_scroll">
-        <div class="wrap">
-
-            <div class="frame" id="basic1">
-
-                <ul class="img-scroller clearfix" id="c_scroll">
-                    @if (CategoryList != null)
-            {
-                foreach (Category category in CategoryList)
-                {
-                            <li class="">
-                                <a href="#type" onclick="vehicle_types(this)" data-html="@category.Name" data-bind="@category.ID">
-                                    <img src="@category.ImageUrl" alt="" /><br />
-                                    @category.Name<br />
-                                    <span id="categorytext"></span>
-                                </a>
-                            </li>
-                        }
-                    }
-
-
-                </ul>
-
-            </div>
-            <div class="scrollbar"><div class="handle"><div class="mousearea"></div></div></div>
-            <ul class="actions">
-                <li class="back-btn"><a href="#feature" class="back" onclick="Back_Next(this)">GO BACK</a></li>
-                <li></li>
-                <li class="next-btn"><a href="#" class="next-btn" onclick="Result();">Next</a></li>
-            </ul>
-
-
+        <div class="title">
+            <span>CHOOSE YOUR RV</span>
+            <p>VEHICLE TYPE</p>
         </div>
-    </div>
 
 
+        <div class="pagespan container hori_scroll">
+            <div class="wrap">
 
-    @*<div class="content horizontal-images mCustomScrollbar _mCS_6" data-mcs-theme="dark">
-            <div class="mCustomScrollBox mCS-light-3 mCSB_horizontal mCSB_inside">
+                <div class="frame" id="basic1">
 
-
-                <div class="mCSB_container">
-
-                    <ul class="img-scroller">
-
-                        @if (FeatureList != null)
+                    <ul class="img-scroller clearfix" id="c_scroll">
+                        @if (CategoryList != null)
                 {
-                    foreach (AmentiesMaster ammenty in FeatureList)
+                    foreach (Category category in CategoryList)
                     {
                                 <li class="">
-                                    <a href="#feature" onclick="SelectFeature(this)" data-html="@ammenty.Name">
-                                        <img src="@ammenty.ImageUrl" alt="@ammenty.Name" /><br />
-                                        @ammenty.Name<br />
-                                        <span id="featuretext"></span>
+                                    <a href="#type" onclick="vehicle_types(this)" data-html="@category.Name" data-bind="@category.ID">
+                                        <img src="@category.ImageUrl" alt="" /><br />
+                                        @category.Name<br />
+                                        <span id="categorytext"></span>
                                     </a>
                                 </li>
-
                             }
                         }
 
                     </ul>
+
                 </div>
-                <div id="mCSB_6_scrollbar_horizontal" class="mCSB_scrollTools mCSB_6_scrollbar mCS-light-3 mCSB_scrollTools_horizontal" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_6_dragger_horizontal" class="mCSB_dragger" style="position: absolute; min-width: 30px; left: 0px; display: block; width: 456px; max-width: 1030px;"><div class="mCSB_dragger_bar"></div></div><div class="mCSB_draggerRail"></div></div></div>
+                <div class="scrollbar"><div class="handle"><div class="mousearea"></div></div></div>
+                <ul class="actions">
+                    <li class="back-btn"><a href="#feature" class="back" onclick="Back_Next(this)">GO BACK</a></li>
+                    <li></li>
+                    <li class="next-btn"><a href="#" class="next-btn" onclick="Result();">Next</a></li>
+                </ul>
             </div>
         </div>
-        <ul class="actions">
-            <li class="back-btn"><a href="#passengers" class="back" onclick="Back_Next(this)">GO BACK</a></li>
-            <li class="middle"><a href="#" class="scroll"><span class="scroll-btn"><img src="~/images/btn_scroll.png" alt="" /></span></a></li>
-            <li class="next-btn"><a href="#type" class="next-btn" onclick="Back_Next(this)">Next</a></li>
-        </ul>*@
-
-</section>
+    </section>*@
 
 
 
@@ -579,6 +531,8 @@
         border: #d95b5b 1px solid;
     }
 </style>
+
+
 <script>
 
     var person_count = 0;
@@ -676,45 +630,46 @@
         if ($(ctrl).attr("href") == "#feature" && parseInt(person_count) > 0) {
             $('#feature').show();
             $('#passengers').hide();
-            $('#type').hide();
+            //  $('#type').hide();
         }
         else if ($(ctrl).attr("href") == "#passengers") {
             $('#feature').hide();
             $('#passengers').show();
-            $('#type').hide();
+            // $('#type').hide();
         }
-        else if ($(ctrl).attr("href") == "#type" && feature_array.length > 0) {
-            $('#feature').hide();
-            $('#passengers').hide();
-            $('#type').show();
-        }
+        //else if ($(ctrl).attr("href") == "#type" && feature_array.length > 0) {
+        //    $('#feature').hide();
+        //    $('#passengers').hide();
+        //    $('#type').show();
+        //}
 
     }
     function Result() {
-        if (vehicle_type != undefined) {
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                url: "/Home/GoToList",
-                data: "{'person':'" + person_count + "', 'type':'" + vehicle_type + "', 'feature':'" + feature_array + "'}",
-                success: function (Record) {
-                    window.location.href = "/Home/ListingPage";
 
-                }
-            });
-        }
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "/Home/GoToList",
+            data: "{'person':'" + person_count + "', 'feature':'" + feature_array + "'}",
+            success: function (Record) {
+                window.location.href = "/Home/ListingPage";
+
+            }
+        });
     }
+
 </script>
 
 <!-- three -->
 <section id="three" class="about">
     <div class="title"><span>ABOUT ACE RV</span></div>
     <div class="about-inner">
-        <p>ACE RV SALES AND RENTALS OFFERS RV, MOTOR HOME AND TRAVEL TRAILER RENTALS AND SALES AT GREAT RATES AND BEST DEALS THROUGH OUT VIRGINIA, MARYLAND AND WASHINGTON DC AREAS.</p>
-        <p>WE LOOK FORWARD TO ASSISTING YOU WITH YOUR NEXT RV SALE OR RV RENTAL. AS A FAMILY OWNED BUSINESS,</p>
-        <p class="last">WE STRIVE TO PROVIDE YOU WITH A COURTEOUS, RELIABLE AND PERSONALIZED RV RENTAL AND SALES EXPERIENCE.</p>
-        <a href="#" class="read-more">READ More</a>
+        <p>@Html.Raw(ViewBag.AboutUs) .....</p>
+        @*<p>ACE RV SALES AND RENTALS OFFERS RV, MOTOR HOME AND TRAVEL TRAILER RENTALS AND SALES AT GREAT RATES AND BEST DEALS THROUGH OUT VIRGINIA, MARYLAND AND WASHINGTON DC AREAS.</p>
+            <p>WE LOOK FORWARD TO ASSISTING YOU WITH YOUR NEXT RV SALE OR RV RENTAL. AS A FAMILY OWNED BUSINESS,</p>
+            <p class="last">WE STRIVE TO PROVIDE YOU WITH A COURTEOUS, RELIABLE AND PERSONALIZED RV RENTAL AND SALES EXPERIENCE.</p>*@
+        <a href="~/Home/AboutUs" class="read-more">READ More</a>
     </div>
 </section>
 
@@ -722,11 +677,15 @@
 <section id="three" class="sponcer">
     <div class="full">
         <ul>
-            <li><a href="#"><img src="~/images/logo-sponcer-1.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="~/images/logo-sponcer-2.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="~/images/logo-sponcer-3.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="~/images/logo-sponcer-4.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="~/images/logo-sponcer-5.jpg" alt="" /></a></li>
+            @if (Tags != null)
+            {
+                foreach (TagMaster tags in Tags)
+                {
+                    <li><a href="~/Home/TagWiseFleetListing/@tags.ID"><img src="@tags.TagIconUrl" alt="" /></a></li>
+                }
+            }
+
+
         </ul>
     </div>
 </section>
@@ -743,9 +702,21 @@
                 {
                     //crausal item
                     <div class="item">
-                        <div class="img-block"><img src="@tstmonls.ImageURl" alt=""></div>
+                        <div class="img-block">
+                            @if (tstmonls.ImageURl == null)
+                            {
+                                <img src="@tstmonls.ImageURl" alt="">
+                            }
+                            else
+                            {
+                                <img src="@tstmonls.ImageURl" alt="">
+                            }
+                        </div>
                         <div class="caption">
-                            <h2 class="text-center tweet"><img src="~/images/tweeter.png" /></h2>
+                            <h2 class="text-center tweet">
+
+                                <img src="@tstmonls.LogoUrl" />
+                            </h2>
                             <h3>
                                 <a href="#">
                                     @tstmonls.Title
@@ -763,7 +734,7 @@
 
         </div>
 
-        <div class="btn-see"><a href="#" class="read-more">See All Feedbacks</a></div>
+        <div class="btn-see"><a href="/Home/TestimonialListing" class="read-more">See All Feedbacks</a></div>
     </div>
 </section>
 
@@ -779,6 +750,7 @@
                 <input name="" type="text" placeholder="EMAIL" id="txt_Email">
                 <input name="Button" type="button" value="Subscribe" id="btn_Subscribe">
             </form>
+            <label id="error"> </label>
         </div>
     </div>
     <div class="faq col-sm-6">
@@ -836,12 +808,18 @@
         <h3>Send us a message</h3>
         <div class="inner">
             <form id="subscribe">
-                <input name="" type="text" placeholder="Name">
-                <input name="" type="text" placeholder="Email">
-                <textarea name="" cols="8" rows="2" placeholder="message"></textarea>
-                <input name="Button" type="button" value="Send">
-            </form>
+                <input id="msg_Name" type="text" placeholder="Name">
+                @*<label id="err_Name"></label>*@
+                <input id="msg_Email" type="text" placeholder="Email">
+                @*<label id="err_Email"></label>*@
+                <input id="msg_Phone" type="text" placeholder="Phone">
+                @*<label id="err_Phone"></label>*@
+                <textarea id="msg_Message" cols="8" rows="2" placeholder="Message"></textarea>
+                @*<label id="err_Message"></label>*@
+                <input name="Button" type="button" id="btn_Message" value="Send">
 
+            </form>
+            <label id="err_Message"></label>
         </div>
     </div>
 </section>
@@ -851,10 +829,13 @@
 <script src="~/Content/Slider/js/horizontal.js"></script>
 <script type="text/javascript">
     $(document).ready(function ($) {
+
+        $("#pickup").datepicker();
+        $("#dropoff").datepicker();
+        //$("#msg_Phone").datepicker();
         $(".accordion-content").slideUp();
         $('#accordion').find('.accordion-toggle').click(function () {
 
-            //Expand or collapse this panel
             $(this).next().slideToggle('fast');
 
             //Hide the other panels
@@ -868,17 +849,62 @@
     var isblank = /^(\s)+$/;
     var isValidEmail = /^\w+((-\w+)|(\.\w+))*\@@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
 
+
+    $('#btn_Message').click(function () {
+        var Name = $('#msg_Name').val();
+        var Email = $('#msg_Email').val();
+        var Phone = $('#msg_Phone').val();
+        var Message = $('#msg_Message').val();
+        if (Name == '') {
+            $("#err_Message").html('Please enter Name.');
+            return false;
+        }
+        else if (Email == '') {
+            $("#err_Message").html('Please enter Email.');
+        }
+        else if (Email.search(isValidEmail) == -1) {
+            $("#err_Message").html('Please enter Correct Email.');
+            return false;
+        }
+        else if (Phone == '') {
+            $("#err_Message").html('Please enter Phone.');
+            return false;
+        }
+        else if (Message == '') {
+            $("#err_Message").html('Please enter Message');
+            return false;
+        }
+        else {
+            $.ajax({
+                url: "/Home/MessageSenderDetails",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: "{'Name':'" + Name + "', 'Email':'" + Email + "', 'Phone':'" + Phone + "', 'Message':'" + Message + "'}",
+                type: "post", success: function (data) {
+
+                    $("#err_Message").html('Message sent sucessfully.');
+                    $('#msg_Name').val('');
+                    $('#msg_Email').val('');
+                    $('#msg_Phone').val('');
+                    $('#msg_Message').val('');
+
+                }, error: function (data) {
+                    return false;
+                }
+            });
+
+        }
+    });
     $('#btn_Subscribe').click(function () {
 
         var Email = $("#txt_Email").val();
 
         if (Email == '') {
-            alert('Please Enter Emailid.');
+            $("#error").html('Please enter Email.');
             return false;
         }
         else if (Email.search(isValidEmail) == -1) {
-
-            alert('Please Enter Correct Emailid.');
+            $("#error").html('Please enter Correct Email.');
             return false;
         }
         else {
@@ -886,12 +912,13 @@
                 url: "/Home/NewsletterSubscribe?Email=" + Email,
                 type: "post", success: function (data) {
                     if (data == 'true') {
-                        alert("Sucessfully Submit.");
+                        $("#error").html('Sucessfully Subscribed.');
+
                         $("#txt_Email").val("");
                     }
                     if (data == 'Already') {
+                        $("#error").html('You are already Subscribed.');
 
-                        alert("You are already Subscribed.");
                         $("#txt_Email").val("");
 
                     }
@@ -903,6 +930,16 @@
         }
     });
     $(document).ready(function () {
+        //$("#txt_Email").blur(function () {
+        //    var Email = $("#txt_Email").val();
+        //    if (Email == '') {
+        //        $("#error").html('Please Enter Emailid.');
+        //    }
+        //    else
+        //    {
+        //        $("#error").html('');
+        //    }
+        //})
         $(".ui-state-default").css("left", "0%");
         $("#owl-demo").owlCarousel({
             navigation: true,
@@ -926,55 +963,55 @@
         }
 </style>
 <script type="text/javascript">
-        jQuery(document).ready(function ($) {
+    jQuery(document).ready(function ($) {
 
-            var jssor_4_SlideshowTransitions = [
-              { $Duration: 1200, x: 0.2, y: -0.1, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $Jease$.$InWave, $Top: $Jease$.$InWave, $Clip: $Jease$.$OutQuad }, $Outside: true, $Round: { $Left: 1.3, $Top: 2.5 } },
-              { $Duration: 1500, x: 0.3, y: -0.3, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.1, 0.9], $Top: [0.1, 0.9] }, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $Jease$.$InJump, $Top: $Jease$.$InJump, $Clip: $Jease$.$OutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5 } },
-              { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $Jease$.$InWave, $Top: $Jease$.$InWave, $Clip: $Jease$.$OutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5 } },
-              { $Duration: 1500, x: 0.3, y: -0.3, $Delay: 80, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Easing: { $Left: $Jease$.$InJump, $Top: $Jease$.$InJump, $Clip: $Jease$.$OutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5 } },
-              { $Duration: 1800, x: 1, y: 0.2, $Delay: 30, $Cols: 10, $Rows: 5, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $SlideOut: true, $Reverse: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2050, $Easing: { $Left: $Jease$.$InOutSine, $Top: $Jease$.$OutWave, $Clip: $Jease$.$InOutQuad }, $Outside: true, $Round: { $Top: 1.3 } },
-              { $Duration: 1000, $Delay: 30, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2049, $Easing: $Jease$.$OutQuad },
-              { $Duration: 1000, $Delay: 80, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Easing: $Jease$.$OutQuad },
-              { $Duration: 1000, y: -1, $Cols: 12, $Formation: $JssorSlideshowFormations$.$FormationStraight, $ChessMode: { $Column: 12 } },
-              { $Duration: 1000, x: -0.2, $Delay: 40, $Cols: 12, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Assembly: 260, $Easing: { $Left: $Jease$.$InOutExpo, $Opacity: $Jease$.$InOutQuad }, $Opacity: 2, $Outside: true, $Round: { $Top: 0.5 } },
-              { $Duration: 2000, y: -1, $Delay: 60, $Cols: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Easing: $Jease$.$OutJump, $Round: { $Top: 1.5 } }
-            ];
+        var jssor_4_SlideshowTransitions = [
+          { $Duration: 1200, x: 0.2, y: -0.1, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $Jease$.$InWave, $Top: $Jease$.$InWave, $Clip: $Jease$.$OutQuad }, $Outside: true, $Round: { $Left: 1.3, $Top: 2.5 } },
+          { $Duration: 1500, x: 0.3, y: -0.3, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.1, 0.9], $Top: [0.1, 0.9] }, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $Jease$.$InJump, $Top: $Jease$.$InJump, $Clip: $Jease$.$OutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5 } },
+          { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $Jease$.$InWave, $Top: $Jease$.$InWave, $Clip: $Jease$.$OutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5 } },
+          { $Duration: 1500, x: 0.3, y: -0.3, $Delay: 80, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Easing: { $Left: $Jease$.$InJump, $Top: $Jease$.$InJump, $Clip: $Jease$.$OutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5 } },
+          { $Duration: 1800, x: 1, y: 0.2, $Delay: 30, $Cols: 10, $Rows: 5, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $SlideOut: true, $Reverse: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2050, $Easing: { $Left: $Jease$.$InOutSine, $Top: $Jease$.$OutWave, $Clip: $Jease$.$InOutQuad }, $Outside: true, $Round: { $Top: 1.3 } },
+          { $Duration: 1000, $Delay: 30, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2049, $Easing: $Jease$.$OutQuad },
+          { $Duration: 1000, $Delay: 80, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Easing: $Jease$.$OutQuad },
+          { $Duration: 1000, y: -1, $Cols: 12, $Formation: $JssorSlideshowFormations$.$FormationStraight, $ChessMode: { $Column: 12 } },
+          { $Duration: 1000, x: -0.2, $Delay: 40, $Cols: 12, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Assembly: 260, $Easing: { $Left: $Jease$.$InOutExpo, $Opacity: $Jease$.$InOutQuad }, $Opacity: 2, $Outside: true, $Round: { $Top: 0.5 } },
+          { $Duration: 2000, y: -1, $Delay: 60, $Cols: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Easing: $Jease$.$OutJump, $Round: { $Top: 1.5 } }
+        ];
 
-            var jssor_4_options = {
-                $AutoPlay: true,
-                $SlideshowOptions: {
-                    $Class: $JssorSlideshowRunner$,
-                    $Transitions: jssor_4_SlideshowTransitions,
-                    $TransitionsOrder: 1
-                },
-                $ArrowNavigatorOptions: {
-                    $Class: $JssorArrowNavigator$
-                },
-                $BulletNavigatorOptions: {
-                    $Class: $JssorBulletNavigator$
-                }
-            };
-
-            var jssor_4_slider = new $JssorSlider$("jssor_4", jssor_4_options);
-
-            /*responsive code begin*/
-            /*you can remove responsive code if you don't want the slider scales while window resizing*/
-            function ScaleSlider() {
-                var refSize = jssor_4_slider.$Elmt.parentNode.clientWidth;
-                if (refSize) {
-                    refSize = Math.min(refSize, 2400);
-                    jssor_4_slider.$ScaleWidth(refSize);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
+        var jssor_4_options = {
+            $AutoPlay: true,
+            $SlideshowOptions: {
+                $Class: $JssorSlideshowRunner$,
+                $Transitions: jssor_4_SlideshowTransitions,
+                $TransitionsOrder: 1
+            },
+            $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+            },
+            $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$
             }
-            ScaleSlider();
-            $(window).bind("load", ScaleSlider);
-            $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", ScaleSlider);
-            /*responsive code end*/
-        });
+        };
+
+        var jssor_4_slider = new $JssorSlider$("jssor_4", jssor_4_options);
+
+        /*responsive code begin*/
+        /*you can remove responsive code if you don't want the slider scales while window resizing*/
+        function ScaleSlider() {
+            var refSize = jssor_4_slider.$Elmt.parentNode.clientWidth;
+            if (refSize) {
+                refSize = Math.min(refSize, 2400);
+                jssor_4_slider.$ScaleWidth(refSize);
+            }
+            else {
+                window.setTimeout(ScaleSlider, 30);
+            }
+        }
+        ScaleSlider();
+        $(window).bind("load", ScaleSlider);
+        $(window).bind("resize", ScaleSlider);
+        $(window).bind("orientationchange", ScaleSlider);
+        /*responsive code end*/
+    });
 </script>
 <script type="text/javascript" src="~/assets/js/jssor.slider-21.1.6.min.js"></script>

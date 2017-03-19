@@ -89,6 +89,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SqlServer.Types, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.13.0.4001.0\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -233,6 +237,7 @@
     <Compile Include="Controllers\FaqsController.cs" />
     <Compile Include="Controllers\FeaturesMastersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MakesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\ModelsmasterController.cs" />
@@ -254,9 +259,17 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AmentiesMasterVM.cs" />
+    <Compile Include="ViewModels\MakeVM.cs" />
     <Compile Include="ViewModels\BrandVM.cs" />
     <Compile Include="ViewModels\CategoryVM.cs" />
     <Compile Include="ViewModels\FaqVM.cs" />
@@ -308,6 +321,63 @@
     <Content Include="assets\owl-carousel\owl.carousel.min.js" />
     <Content Include="assets\owl-carousel\owl.theme.css" />
     <Content Include="assets\owl-carousel\owl.transitions.css" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\AutoMapper.dll" />
+    <Content Include="bin\CaptchaMvc.dll" />
+    <Content Include="bin\ClassLibrary1.dll" />
+    <Content Include="bin\ClassLibrary1.pdb" />
+    <Content Include="bin\CloudinaryDotNet.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.SqlServer.Types.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\SendGrid.dll" />
+    <Content Include="bin\SendGrid.SmtpApi.dll" />
+    <Content Include="bin\SendGridMail.dll" />
+    <Content Include="bin\SqlServerTypes\x64\msvcr120.dll" />
+    <Content Include="bin\SqlServerTypes\x86\msvcr120.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\VehicleSale.dll" />
+    <Content Include="bin\VehicleSale.pdb" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\admin\bootstrap\css\bootstrap.css" />
     <Content Include="Content\admin\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\admin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -1259,6 +1329,16 @@
     <Content Include="Content\Compare\javascript\jquery.AshAlom.gaugeMeter-2.0.0.min-20160407195904.js" />
     <Content Include="Content\Compare\javascript\viewportchecker-20160407195904.js" />
     <Content Include="Content\Css\Model.css" />
+    <Content Include="Content\dropzone\css\basic.css" />
+    <Content Include="Content\dropzone\css\dropzone.css" />
+    <Content Include="Content\dropzone\dropzone-amd-module.js" />
+    <Content Include="Content\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Content\dropzone\dropzone.js" />
+    <Content Include="Content\dropzone\dropzone.min.js" />
+    <Content Include="Content\dropzone\images\noimage.png" />
+    <Content Include="Content\dropzone\images\spritemap%402x.png" />
+    <Content Include="Content\dropzone\images\spritemap.png" />
+    <Content Include="Content\dropzone\images\UploadImage.png" />
     <Content Include="Content\Fancybox\jquery.fancybox-1.3.4.css" />
     <Content Include="Content\Fancybox\jquery.fancybox-1.3.4.js" />
     <Content Include="Content\Fancybox\jquery.fancybox.css" />
@@ -2022,10 +2102,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\069b56f2-923d-4f61-96ca-64b40d69b177logo-sponcer-1.jpg" />
+    <Content Include="images\0fbabedd-8ace-4bd9-9512-7049a59075f683ec7c2f-427d-4850-9aa5-7ed24f0d1315logo-sponcer-3.jpg" />
+    <Content Include="images\1821fd91-537b-4506-8129-6b82b1df451clogo-sponcer-1.jpg" />
+    <Content Include="images\352bdb08-ee89-4487-bbc2-445e6a69d69ethumb-09.jpg" />
+    <Content Include="images\441db836-70eb-4c66-839b-99239930ca02bannerbg1.jpg" />
+    <Content Include="images\506482f0-8713-4841-ac9d-c7c0923a29eclogo-sponcer-1.jpg" />
+    <Content Include="images\631c7371-65c3-4832-8bf3-88a9dc53b8f8logo-sponcer-3.jpg" />
+    <Content Include="images\6e0826e0-b76b-4922-8af6-8f1cd51f501cbanner.jpg" />
+    <Content Include="images\83ec7c2f-427d-4850-9aa5-7ed24f0d1315logo-sponcer-3.jpg" />
+    <Content Include="images\9204ec3e-44b8-44f1-92b4-b6b6ae1133aflogo-sponcer-1.jpg" />
     <Content Include="images\arrow-left.png" />
     <Content Include="images\arrow-right.png" />
+    <Content Include="images\banner-terms-of-service.jpg" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\bannerbg1.jpg" />
+    <Content Include="images\Banners\34bb364c-7e06-4b7f-a7f6-bd19c0910ce8bannerbg1.jpg" />
     <Content Include="images\Banners\banner.jpg" />
     <Content Include="images\Banners\bannerbg1.jpg" />
     <Content Include="images\Banners\img-testimonial.png" />
@@ -2042,11 +2134,14 @@
     <Content Include="images\btn-scroll.png" />
     <Content Include="images\btn_scroll.png" />
     <Content Include="images\bullet-faq.png" />
+    <Content Include="images\c5d06d7d-e5f0-47d7-af91-064d9936ab55logo-sponcer-4.jpg" />
     <Content Include="images\Choose1.png" />
     <Content Include="images\choose2.png" />
     <Content Include="images\choose3.png" />
     <Content Include="images\choose4.png" />
     <Content Include="images\Choose5.png" />
+    <Content Include="images\d62da804-ce8e-4c2a-84a7-a1544f38acb1logo-sponcer-5.jpg" />
+    <Content Include="images\d75415fe-7596-44f1-8519-2921b0127b6flogo-sponcer-2.jpg" />
     <Content Include="images\download.png" />
     <Content Include="images\Driving_icon.jpg" />
     <Content Include="images\Edit.png" />
@@ -2076,6 +2171,7 @@
     <Content Include="images\Logo.png" />
     <Content Include="images\men-and-boy.png" />
     <Content Include="images\min-price.jpg" />
+    <Content Include="images\motorhome-rv-usa-dp.jpg" />
     <Content Include="images\partners-logo.png" />
     <Content Include="images\pic01.jpg" />
     <Content Include="images\pic02.jpg" />
@@ -2090,12 +2186,27 @@
     <Content Include="images\testimonial1.png" />
     <Content Include="images\testimonial2.png" />
     <Content Include="images\testimonial3.png" />
+    <Content Include="images\testimonlasimages\0ea554a2-f992-435f-999a-1304642d616ftweeter.png" />
+    <Content Include="images\testimonlasimages\12d74e86-0d53-4841-9604-3fb50699aea3tweeter.png" />
+    <Content Include="images\testimonlasimages\13257e43-6fc7-46be-af11-f4303e09703aguestbook.png" />
     <Content Include="images\testimonlasimages\2aa13cee-3b28-403d-9004-0d07da2f8655banner.jpg" />
     <Content Include="images\testimonlasimages\34bb364c-7e06-4b7f-a7f6-bd19c0910ce8bannerbg1.jpg" />
+    <Content Include="images\testimonlasimages\3ddb1331-7ead-46a7-b929-17a8d038f917testimonial1.png" />
+    <Content Include="images\testimonlasimages\3fc082f2-7b89-4039-bfd7-707b478b7f60yelp-icon.png" />
+    <Content Include="images\testimonlasimages\4980b062-733f-43c3-910e-87cf1f364f9ftweeter.png" />
+    <Content Include="images\testimonlasimages\5988c0ac-f8b5-4f29-9d4d-5836ace01919tweeter.png" />
+    <Content Include="images\testimonlasimages\5b86fa9e-7c53-448f-8542-af823a11892dtestimonial4.png" />
+    <Content Include="images\testimonlasimages\857f7c31-89c0-4a14-99dc-d0e421c43416tweeter.png" />
+    <Content Include="images\testimonlasimages\90ac2500-116b-4caf-a53a-556b30fd660dtweeter.png" />
     <Content Include="images\testimonlasimages\a99d2c9e-5d49-49f1-a9e2-d355b04d3b2cbanner.jpg" />
     <Content Include="images\testimonlasimages\b77153bf-2330-4d15-8223-95e0c8f9b4bcbannerbg1.jpg" />
     <Content Include="images\testimonlasimages\banner.jpg" />
     <Content Include="images\testimonlasimages\bannerbg1.jpg" />
+    <Content Include="images\testimonlasimages\bf4b7bea-b74b-4fac-8682-a015fb96ebcabannerbg1.jpg" />
+    <Content Include="images\testimonlasimages\c500a2a4-d3f4-418b-8c14-212bdbe095f0testimonial1.png" />
+    <Content Include="images\testimonlasimages\ed8d4381-9e5e-4914-be32-112059e053e2facebook_circle_color-256.png" />
+    <Content Include="images\testimonlasimages\ef66ae94-2bb0-4d13-a813-e842711127fa3ddb1331-7ead-46a7-b929-17a8d038f917testimonial1.png" />
+    <Content Include="images\testimonlasimages\f93a622a-1ac9-4552-841c-8b028094f636tweeter.png" />
     <Content Include="images\testimonlasimages\testimonial1.png" />
     <Content Include="images\testimonlasimages\testimonial2.png" />
     <Content Include="images\testimonlasimages\testimonial3.png" />
@@ -2133,37 +2244,93 @@
     <Content Include="img\thumb-11.jpg" />
     <Content Include="img\thumb-12.jpg" />
     <Content Include="ProductImage\01079cfd-22bf-4d60-b49e-7b2b41a0eccf1910.png" />
+    <Content Include="ProductImage\01da12df-d282-4ea5-bd7c-0f3197154c7305.jpg" />
     <Content Include="ProductImage\11b2db3a-0b06-45cd-9b50-d9d5c9e6d375Choose1.png" />
+    <Content Include="ProductImage\1449cc2f-020d-4e1d-a72a-5e4f5d727939a0f6eb2c-cde1-425e-8bad-925bb3463bbechoose2.png" />
+    <Content Include="ProductImage\152798f5-104a-453e-924b-5f2399439cdd326264ae-16a8-41f1-a59f-589fa5a5150ba9ad4134-0de5-4148-841f-4a7a2d1ddd2f2.png" />
+    <Content Include="ProductImage\164d98c7-de12-4a6b-a743-67d8407edcdc5be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\16b87aec-8e85-44e7-8fbf-9b10c1bdb5536e0826e0-b76b-4922-8af6-8f1cd51f501cbanner.jpg" />
+    <Content Include="ProductImage\23e35919-4fc4-4798-8afe-862bbae734aeb77153bf-2330-4d15-8223-95e0c8f9b4bcbannerbg1.jpg" />
+    <Content Include="ProductImage\2979e242-c851-4ac6-86be-cd0040b435292c78dad5-1a28-4645-8b1b-ae821997a41b98385308-7ac9-4d0d-8bbf-d21b453ea9bdchoose3.png" />
+    <Content Include="ProductImage\2a6c8a4c-21e7-448e-a585-182e62b4cc113781e898-1ae9-4098-9a6a-4b548873bbd8one.png" />
+    <Content Include="ProductImage\2c00263e-d2e8-48b5-9acc-8b617627ca283fca8672-6111-4fc6-8492-0add4078e2db5be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\2c78dad5-1a28-4645-8b1b-ae821997a41b98385308-7ac9-4d0d-8bbf-d21b453ea9bdchoose3.png" />
+    <Content Include="ProductImage\2cefe03c-8bfe-4425-b61f-bfb5477fee815be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\326264ae-16a8-41f1-a59f-589fa5a5150ba9ad4134-0de5-4148-841f-4a7a2d1ddd2f2.png" />
     <Content Include="ProductImage\32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" />
     <Content Include="ProductImage\3781e898-1ae9-4098-9a6a-4b548873bbd8one.png" />
     <Content Include="ProductImage\37fcc407-8dc2-4654-bb58-c6aa13f89f825.png" />
+    <Content Include="ProductImage\396aeb37-cd15-4503-8e08-07f5f57fa52cbanner.jpg" />
+    <Content Include="ProductImage\3c16ab0b-c260-4a56-9af6-8f7e08ef9dc4bannerbg1.jpg" />
+    <Content Include="ProductImage\3fca8672-6111-4fc6-8492-0add4078e2db5be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\407d9b5d-c7b9-48f1-8db4-9b839715ecf6069b56f2-923d-4f61-96ca-64b40d69b177logo-sponcer-1.jpg" />
     <Content Include="ProductImage\408edb37-f90a-42bb-b0ac-50d032b6a496Choose1.png" />
+    <Content Include="ProductImage\4500dce5-fe76-43ba-8edd-69cc28468f1d83ec7c2f-427d-4850-9aa5-7ed24f0d1315logo-sponcer-3.jpg" />
+    <Content Include="ProductImage\4bcf3681-7887-493e-bdd1-b7e65a412e682aa13cee-3b28-403d-9004-0d07da2f8655banner.jpg" />
+    <Content Include="ProductImage\5be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\5dab69f9-c74a-4940-8594-bb7933b46d392a6c8a4c-21e7-448e-a585-182e62b4cc113781e898-1ae9-4098-9a6a-4b548873bbd8one.png" />
     <Content Include="ProductImage\61faf522-97a5-4201-85a0-96801c2688eb5.png" />
+    <Content Include="ProductImage\620df0c6-5395-4c8e-9c2a-109007841db12cefe03c-8bfe-4425-b61f-bfb5477fee815be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\624310a3-3f3d-4769-8fd0-eef71a01ea82download.png" />
+    <Content Include="ProductImage\7209d492-eed9-4414-9c8d-b13524cab655bannerbg1.jpg" />
+    <Content Include="ProductImage\76f24404-f275-4b4c-aecf-4a88d16f72e0banner.jpg" />
     <Content Include="ProductImage\7845ad1d-4f2d-4f4c-9e11-8d9acb4372541910.png" />
+    <Content Include="ProductImage\7acb432f-a6cd-43cd-a94f-6736c92b3fbf34bb364c-7e06-4b7f-a7f6-bd19c0910ce8bannerbg1.jpg" />
+    <Content Include="ProductImage\7cb1163e-218c-4948-a2e9-ab66330c6962bannerbg1.jpg" />
     <Content Include="ProductImage\7cc7869a-397d-4eb4-a803-8d06bb2f0967AdminTask.png" />
+    <Content Include="ProductImage\82e9ccb6-677c-4ffd-b227-1856177f84aa3ddb1331-7ead-46a7-b929-17a8d038f917testimonial1.png" />
     <Content Include="ProductImage\8645b6de-828f-42ad-8a2e-fb772e7dd48a2.png" />
+    <Content Include="ProductImage\86e35a18-8413-4302-bf55-de40a5d9f6935be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\8c18f095-e8c4-44ea-a702-ba7aa885623a1910.png" />
     <Content Include="ProductImage\8c9595f2-594b-42a9-a8f7-cf547c8ccbd22.png" />
+    <Content Include="ProductImage\94cb044a-1442-47f9-942f-8c29eb1902c43fca8672-6111-4fc6-8492-0add4078e2db5be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\98385308-7ac9-4d0d-8bbf-d21b453ea9bdchoose3.png" />
+    <Content Include="ProductImage\9c826050-ffd1-4920-8383-c7b3b91728bf5be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\9d625aa9-05ce-41d7-bb10-e9577dfafce55be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\a0f6eb2c-cde1-425e-8bad-925bb3463bbechoose2.png" />
+    <Content Include="ProductImage\a2a94bc2-73dc-4762-9442-34023b4373e0banner.jpg" />
+    <Content Include="ProductImage\a52a6952-4d6e-4fdd-a1db-4b01a2e4bb9c5be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\a9ad4134-0de5-4148-841f-4a7a2d1ddd2f2.png" />
     <Content Include="ProductImage\aa98f35e-95b9-480a-98a5-9d805d7ccf6achoose2.png" />
+    <Content Include="ProductImage\ab380f51-a68b-46c6-b952-359c1bde067eafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\afd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\b61f4064-359f-46f0-a6bb-6d1c8a11c9a71910.png" />
+    <Content Include="ProductImage\ba5261e0-df03-4eab-b1ba-702380d484102a6c8a4c-21e7-448e-a585-182e62b4cc113781e898-1ae9-4098-9a6a-4b548873bbd8one.png" />
+    <Content Include="ProductImage\bc4b4fd8-4263-4515-bfc4-62f6cfe4081cbanner.jpg" />
     <Content Include="ProductImage\bc7cfd5e-be41-4207-a6ac-7038c326d1441.png" />
+    <Content Include="ProductImage\bd842db8-b85a-495c-9c03-0500efa2bc1a2cefe03c-8bfe-4425-b61f-bfb5477fee815be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\bdbcdc12-d575-45dc-aaf8-1a0c86e8ae33banner.jpg" />
+    <Content Include="ProductImage\be0e6bc6-27c2-444d-ac3a-66f1691031092a6c8a4c-21e7-448e-a585-182e62b4cc113781e898-1ae9-4098-9a6a-4b548873bbd8one.png" />
     <Content Include="ProductImage\be96c5a4-fea8-4358-8efd-595a7aeecf06choose4.png" />
     <Content Include="ProductImage\brightimage.png" />
+    <Content Include="ProductImage\c4c7507c-66d2-4d8d-a695-53b2237a152dab380f51-a68b-46c6-b952-359c1bde067eafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\c616577a-fefa-47c6-878d-c2f72ff2bf471910.png" />
+    <Content Include="ProductImage\c6546830-7989-43c8-a8b8-0550edb539b7img-truck.jpg" />
     <Content Include="ProductImage\c9b9ae47-37c3-4879-9fba-3326148327661910.png" />
     <Content Include="ProductImage\cc717ffc-5cf4-416a-bff3-30ecbfcb97081.png" />
+    <Content Include="ProductImage\dd4c520b-2163-4526-aa44-d19ac5e96a512cefe03c-8bfe-4425-b61f-bfb5477fee815be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\dfec1697-7536-4f32-8747-07536de6d7891910.png" />
+    <Content Include="ProductImage\dsafdsa.png" />
+    <Content Include="ProductImage\e1f6c843-0ebf-46c4-8117-971ae5882f00408edb37-f90a-42bb-b0ac-50d032b6a496Choose1.png" />
+    <Content Include="ProductImage\e3a0b4be-4857-486e-850a-1cc2e307e6312aa13cee-3b28-403d-9004-0d07da2f8655banner.jpg" />
+    <Content Include="ProductImage\e3f0c298-7a98-4eb6-b24a-3c982e3e46732aa13cee-3b28-403d-9004-0d07da2f8655banner.jpg" />
+    <Content Include="ProductImage\e6b4c7e5-bc43-457e-8371-0b593d00d6412cefe03c-8bfe-4425-b61f-bfb5477fee815be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\e8cd315e-0bf2-42f5-adae-6bc9cf60f1edchoose3.png" />
+    <Content Include="ProductImage\e9eb370d-9485-4b49-99ed-26694c35f274img-2.png" />
+    <Content Include="ProductImage\ec61150f-4b17-4002-b72e-ab0ce799ba9705.jpg" />
+    <Content Include="ProductImage\ed169f39-6c21-427f-af6e-2b89d46ae049afd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\ee7c3f75-43b0-460f-94d4-49d446dfdc4b1.png" />
+    <Content Include="ProductImage\eefa3a5d-bc3b-414e-8ee9-657c42502bdf2cefe03c-8bfe-4425-b61f-bfb5477fee815be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\ef4cfcdb-18c8-4ec0-ae9d-b1edc862f8b41910.png" />
+    <Content Include="ProductImage\ef5c017f-fd66-478d-81e4-1d638ea612615b86fa9e-7c53-448f-8542-af823a11892dtestimonial4.png" />
+    <Content Include="ProductImage\efd1a078-74ba-4342-89f1-98a259614851banner.jpg" />
+    <Content Include="ProductImage\f0a4e194-8b69-4a21-8922-11aaa784dc93a52a6952-4d6e-4fdd-a1db-4b01a2e4bb9c5be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
+    <Content Include="ProductImage\f46704a0-26e3-4813-a12c-a82d886401b75be0f1b6-baa6-4c0d-a681-6f3702e4133fafd7bc34-afd2-4c19-af79-72587033e9cfspoon.png" />
     <Content Include="ProductImage\f488129e-021c-4723-b8ed-c5850e723d97Choose5.png" />
     <Content Include="ProductImage\f5601770-e285-4cdb-b277-451bd14d0c411910.png" />
     <Content Include="ProductImage\im.png" />
     <Content Include="ProductImage\noimage.jpg" />
+    <Content Include="RV 2\87295617-51b0-42c3-aa69-d2d66c46af630fbabedd-8ace-4bd9-9512-7049a59075f683ec7c2f-427d-4850-9aa5-7ed24f0d1315logo-sponcer-3.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -2220,7 +2387,15 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\VehicleSale.dll.config" />
     <Content Include="ProductImage\ProductImage.zip" />
+    <Content Include="Content\dropzone\css\stylus\basic.styl" />
+    <Content Include="Content\dropzone\css\stylus\dropzone.styl" />
+    <Content Include=".ebextensions\001_install.config" />
     <None Include="Properties\PublishProfiles\VehicleSale.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -2234,6 +2409,19 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial130.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial130.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2325,7 +2513,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ListingPage.cshtml" />
     <Content Include="Views\Home\VehicleDetail.cshtml" />
-    <Content Include="Views\VehicleDetail\VehicleListing.cshtml" />
     <Content Include="Views\Home\VehicleListing.cshtml" />
     <Content Include="Views\Media\Create.cshtml" />
     <Content Include="Views\Account\LogOff.cshtml" />
@@ -2368,8 +2555,16 @@
     <Content Include="Views\TagMasters\Edit.cshtml" />
     <Content Include="Views\TagMasters\Index.cshtml" />
     <Content Include="Views\Home\TagWiseFleetListing.cshtml" />
-    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Shared\_LayoutOld.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Account\Confirmation.cshtml" />
+    <Content Include="Views\Makes\Create.cshtml" />
+    <Content Include="Views\Makes\Delete.cshtml" />
+    <Content Include="Views\Makes\Edit.cshtml" />
+    <Content Include="Views\Makes\Index.cshtml" />
+    <Content Include="Views\Home\TestimonialListing.cshtml" />
+    <Content Include="Views\Home\partialGrid.cshtml" />
+    <Content Include="Views\VehicleImages\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

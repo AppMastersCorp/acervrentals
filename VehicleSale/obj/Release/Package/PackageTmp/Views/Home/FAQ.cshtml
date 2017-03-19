@@ -5,28 +5,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>FAQ</h2>
+<div class="container">
+    <h2 class="test_heading">FAQ</h2>
 
-@*<div class="title"><span>Faq</span></div>*@
-<div class="inner">
+    <div class="inner">
 
-    <div id="accordion">
-        <ul>
-            @if (Model != null)
+        <div id="accordion" class="accordian_faq">
+            <div class="col-sm-12"><h3>Faq Discription</h3></div>
+
+            <div class="col-sm-6 ">
+                <div class="col-sm-12 back_accordian">
+
+                    <ul class="list_accordian">
+                        @if (Model != null)
             {
                 foreach (Faq fq in Model)
                 {
-                    <li class="accordion-toggle">@fq.Description</li>
-                        <div class="accordion-content default">
-                            <p>@fq.Faqresult</p>
-                        </div>
-                }
-            }
+                                <li class="accordion-toggle">@fq.Description</li>
+                                <div class="accordion-content default">
+                                    <p>@fq.Faqresult</p>
+                                </div>
+                            }
+                        }
 
 
-        </ul>
+                    </ul>
+
+                </div>
+            </div>
+
+
+            <div class="col-sm-6 ">
+
+                <div class="col-sm-12 back_accordian">
+                    <ul class="list_accordian">
+                        @if (Model != null)
+            {
+                foreach (Faq fq in Model)
+                {
+                                <li class="accordion-toggle">@fq.Description</li>
+                                <div class="accordion-content default">
+                                    <p>@fq.Faqresult</p>
+                                </div>
+                            }
+                        }
+
+
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
     </div>
+
+
+
+
 </div>
+
+@*<div class="title"><span>Faq</span></div>*@
+
 
 
 <script>

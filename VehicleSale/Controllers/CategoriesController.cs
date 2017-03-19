@@ -20,7 +20,7 @@ namespace VehicleSale.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            var categories = db.Categories.Include(c => c.VehicleType);
+            var categories = db.Categories;//.Include(c => c.VehicleType)
             return View(categories.ToList());
         }
 

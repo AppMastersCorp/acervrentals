@@ -55,7 +55,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.ImageUrl)
 
-                        <input id="ImageUrl" name="ImageUrl" type="file" class="file form-control" data-preview-file-type="text">
+                        <input id="ImageUrl" name="ImageUrl" required type="file" class="file form-control" data-preview-file-type="text">
                         @*@Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
 
