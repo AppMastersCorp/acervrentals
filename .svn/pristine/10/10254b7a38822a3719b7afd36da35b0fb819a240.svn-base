@@ -1,0 +1,612 @@
+﻿@using VehicleSale.ViewModels;
+@using ClassLibrary1;
+@{
+    var User = (RoleVM)Session["CurrentUser"];
+    VehicleSaleEntities db = new VehicleSaleEntities();
+    var CategoryList = db.Categories.Where(c => c.IsActive == true).ToList();
+}
+@if (Request.QueryString["Login"] != null)
+{
+    <script>
+        parent.$.fancybox.close();
+    </script>
+
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Acer RV Rentals</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/Scripts/lib/jquery/ui/jquery-ui.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/assets/css/main.css" />
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="~/assets/owl-carousel/owl.theme.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+    <link href="~/Content/Css/Model.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Sintony:400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Scripts -->
+    <script src="~/assets/js/jquery-1.10.2.min.js"></script>
+    @*
+        <script src="~/assets/js/jquery.min.js"></script>*@
+    <script src="~/assets/js/skel.min.js"></script>
+    <script src="~/assets/js/util.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/Content/Scripts/Model.js"></script>
+    <script src="~/Content/admin/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/Scripts/Ecommerce/front-end-editing.js"></script>
+
+    <script>
+        var $ = jQuery.noConflict();
+
+
+        function editSlider() {
+            $("#EditImage").css("display", "block");
+            $("#editmenu").attr("hidden", false);
+            //$("#toggle").html("End editing")
+        }
+        function showEditDel(element) {
+            SliderId = $(element).parent().attr("id");
+            var i = 0;
+            $("#" + SliderId).find("ul li").not(".clone").find("img").each(function () {
+                var img = $(this).attr("src");
+                $(".SliderImagesPopUp input[type='text']").eq(i).attr("value", img);
+                i++;
+            });
+        }
+    </script>
+
+</head>
+<body class="landing">
+    <!-- Header -->
+    <input type="hidden" id="hduname" name="UserName" value='@Convert.ToString(Session["AdminId"])' />
+    <header id="header" class="alt">
+        <div class="container">
+
+            <h1 class="logo_img"><a href="/Home/index"><img src="~/images/Logo.png" alt="" /></a></h1>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <ul class="register_menu">
+
+                <li>
+                    @if (Session["CurrentUser"] == null)
+                    {
+                        <a class="login_head" href="/Account/Login" id="login" data-toggle="login-modal">LOGIN </a>
+                        <a class="regist_head" href="/Account/Register" data-toggle="login-modal">Register </a>
+
+                        @*<a class="login_head" href="#">Login</a>
+                            <a class="regist_head" href="#">Register</a>*@
+                    }
+                    else
+                    {
+
+                        <a class="login_head" id="logout" href="~/Account/Logoff">LOGOUT</a>
+                        <a class="regist_head" href="#">@User.FirstName @User.LastName</a>
+
+                    }
+                </li>
+            </ul>
+            <!------------------New Header--------------------->
+            @*<div class="xs-menu-cont">
+                    <a id="menutoggle"><i class="fa fa-align-justify"></i> </a>
+                    <nav class="xs-menu displaynone">
+                        <ul>
+                            <li class="active">
+                                <a href="#">Our Fleet</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="#">Our Catagory</a>
+                                <div class="mega-menu fadeIn animated">
+
+                                    <ul class="catagories_ul">
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+
+                                        </li>
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+
+                                        </li>
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+                                        </li>
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+
+                                        </li>
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+
+                                        </li>
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+
+                                        </li>
+
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+
+                                        </li>
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+
+                                        </li>
+
+
+
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="#"><img src="/images/Choose1.png" /></a><br />
+                                            </div>
+                                            <a href="#">Catagory 1</a>
+
+                                        </li>
+
+                                    </ul>
+
+
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">Menu</a>
+                            </li>
+                            <li>
+                                <a href="#">Wishlist</a>
+                            </li>
+
+
+                        </ul>
+                    </nav>
+                </div>*@
+
+
+        </div>
+
+
+        <nav class="menu">
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul>
+                    <li class="active">
+                        <a href="/Home/OurFleetListing">OUR FLEET</a>
+                    </li>
+                    <li class="drop-down" id="cateLi">
+                        <a href="#">CATEGORIES</a>
+
+                        <div class="mega-menu fadeIn animated" id="cateMenu">
+
+                            <ul class="catagories_ul">
+                                @if (CategoryList != null)
+                                {
+                                    foreach (Category cat in CategoryList)
+                                    {
+                                        <li class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="img_div">
+                                                <a href="/Home/ListingPage?vehicle=@cat.ID"><img src="@cat.ImageUrl" /></a><br />
+                                            </div>
+                                            <a href="/Home/ListingPage?vehicle=@cat.ID">@cat.Name</a>
+                                        </li>
+                                    }
+
+                                }
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="drop-down" id="menuLi">
+                        <a href="#">MENU</a>
+                        <div class="mega-menu fadeIn animated" id="smartMenu">
+
+                            <div class="container">
+
+                                <div class="col-xs-12 col-sm-offset-1 col-sm-8 tab_right pull-right">
+
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#rvs">RV'S</a></li>
+                                        <li><a data-toggle="tab" href="#trailers">Trailers</a></li>
+                                        <li><a data-toggle="tab" href="#van">VAN</a></li>
+                                    </ul>
+
+                                    <div class="tab-content tab_content">
+                                        <div id="rvs" class="tab-pane fade in active">
+                                            <ul class="cars_catgories">
+                                                @if (CategoryList != null)
+                                                {
+                                                    foreach (Category cat in CategoryList.Where(c => c.VehicleTypeID == 1).Take(6))
+                                                    {
+                                                        <li>
+                                                            <a href="/Home/ListingPage?vehicle=@cat.ID">
+                                                                <img src="@cat.ImageUrl" />
+                                                            </a>
+                                                            <a href="/Home/ListingPage?vehicle=@cat.ID">   <h3>@cat.Name</h3></a>
+                                                        </li>
+                                                    }
+                                                }
+
+
+                                            </ul>
+
+                                            <div class="text-right col-sm-12 view_menu" style="padding:0px;">
+                                                <a href="" class="read-more">VIEW ALL</a>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div id="trailers" class="tab-pane fade">
+                                            <ul class="cars_catgories">
+                                                @if (CategoryList != null)
+                                                {
+                                                    foreach (Category cat in CategoryList.Where(c => c.VehicleTypeID == 2).Take(6))
+                                                    {
+                                                        <li>
+                                                            <img src="@cat.ImageUrl" />
+                                                            <h3>@cat.Name</h3>
+                                                        </li>
+                                                    }
+                                                }
+
+
+
+                                            </ul>
+
+                                            <div class="text-right col-sm-12 view_menu" style="padding:0px;">
+                                                <a href="" class="read-more">VIEW ALL</a>
+
+                                            </div>
+                                        </div>
+                                        <div id="van" class="tab-pane fade">
+                                            <ul class="cars_catgories">
+                                                @if (CategoryList != null)
+                                                {
+                                                    foreach (Category cat in CategoryList.Where(c => c.VehicleTypeID == 2).Take(6))
+                                                    {
+                                                        <li>
+                                                            <img src="@cat.ImageUrl" />
+                                                            <h3>@cat.Name</h3>
+                                                        </li>
+                                                    }
+                                                }
+                                            </ul>
+                                            <div class="text-right col-sm-12 view_menu" style="padding:0px;">
+                                                <a href="" class="read-more">VIEW ALL</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="col-xs-12 col-sm-3 menu_box pull-left">
+                                    <h4>Menu</h4>
+                                    <ul class="menu_sub_catagory">
+                                        <li><a href="/Home/Index">Home</a></li>
+                                        <li><a href="/Home/AboutUs">About</a></li>
+                                        <li><a href="/Home/TestimonialListing">Testimonials</a></li>
+                                        <li><a href="/Home/RefundPolicy">Refund Policies</a></li>
+                                        <li><a href="/Home/TermsAndConditions">Terms&Conditions</a></li>
+                                        <li><a href="/Home/ContactUs">Conatct Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="container">
+
+
+                                <section id="three" class="sponcer">
+                                    <h3>CATEGORIES</h3>
+
+
+                                    <div class="full">
+                                        <ul class="catagory_last">
+                                            <li><a href="/Home/TagWiseFleetListing/4"><img src="/Images/506482f0-8713-4841-ac9d-c7c0923a29eclogo-sponcer-1.jpg" alt=""></a></li>
+                                            <li><a href="/Home/TagWiseFleetListing/5"><img src="/Images/d75415fe-7596-44f1-8519-2921b0127b6flogo-sponcer-2.jpg" alt=""></a></li>
+                                            <li><a href="/Home/TagWiseFleetListing/6"><img src="/Images/631c7371-65c3-4832-8bf3-88a9dc53b8f8logo-sponcer-3.jpg" alt=""></a></li>
+                                            <li><a href="/Home/TagWiseFleetListing/7"><img src="/Images/c5d06d7d-e5f0-47d7-af91-064d9936ab55logo-sponcer-4.jpg" alt=""></a></li>
+                                            <li><a href="/Home/TagWiseFleetListing/8"><img src="/Images/d62da804-ce8e-4c2a-84a7-a1544f38acb1logo-sponcer-5.jpg" alt=""></a></li>
+
+
+                                        </ul>
+                                    </div>
+
+
+                                </section>
+
+
+                            </div>
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/Home/WishListing">WISH LIST</a>
+                    </li>
+                    @if (Session["Admin"] != null)
+                    {
+
+                        <li style="cursor:pointer;" class="dropdown-toggle" onclick="editSlider()"><a id="toggle">START EDITING</a></li>
+                        <li><a href="/Brands">DASHBOARD </a></li>
+                    }
+
+
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <!----------------End OF Css---------------------------->
+        @*<nav id="nav">
+                <ul>
+                    <li><a href="~/Home/OurFleetListing">OUR FLEET's</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORIES</a>
+                        <ul class="dropdown-menu user-menu">
+                            @if (CategoryList != null)
+                            {
+                                foreach (Category category in CategoryList)
+                                {
+                                    <li>
+                                        <a href="~/Home/CategoryWiseFleetListing/@category.ID">@category.Name</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                    <li><a href="#">RENTAL</a></li>
+                    <li><a href="~/Home/BuyListing">BUY</a></li>
+                    <li><a href="#">SERVICING </a></li>
+                    @if (Session["Admin"] != null)
+                    {
+
+                        <li style="cursor:pointer;" class="dropdown-toggle" onclick="editSlider()"><a id="toggle">Start editing</a></li>
+                        <li><a href="/Brands">DASHBOARD </a></li>
+                    }
+                    @if (Session["CurrentUser"] == null)
+                    {
+
+                        <li><a href="/Account/Login" id="login" data-toggle="login-modal">LOGIN </a></li>
+                    }
+                </ul>
+                <div class="btns_top">
+                    @if (Session["CurrentUser"] != null)
+                    {
+                        <a href="#">@User.FirstName @User.LastName</a>
+                        <a id="logout" href="~/Account/Logoff">LogOut</a>
+                    }
+                </div>
+
+
+
+            </nav>*@
+    </header>
+    @*<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>*@
+
+    @RenderBody()
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-1">
+            <div class="title"><span>Find Your Way</span></div>
+            <div class="col-sm-3">
+                <ul>
+                    <li><a href="~/Home/Index">Home</a></li>
+                    <li><a href="~/Home/AboutUs">About Us</a></li>
+                    <li><a href="#">Rental</a></li>
+                    <li><a href="#">Buy</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <ul>
+
+                    <li><a href="#">Servicing</a></li>
+                    <li><a href="#">Info</a></li>
+                    <li><a href="~/Home/FAQ">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <ul>
+                    <li><a href="~/Home/TestimonialListing">Testimonials</a></li>
+                    <li><a href="~/Home/OurFleetListing?VehicleType=1">Our RVS</a></li>
+                    <li><a href="~/Home/OurFleetListing?VehicleType=2">Our Trailers</a></li>
+                    <li><a href="~/Home/OurFleetListing?VehicleType=3">Our Vans</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <ul>
+                    <li><a href="~/Home/RefundPolicy">Refund Policy</a></li>
+                    <li><a href="~/Home/TermsAndConditions">Terms And Conditions</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="~/Home/ContactUs">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-2">
+            <div class="col-sm-2 main_part">Main<br /> Partners</div>
+            <div class="col-sm-10">
+                <div class="col-sm-4"><a href="#"><img src="~/images/partners-logo.png" alt=""></a></div>
+                <div class="col-sm-4"><a href="#"><img src="~/images/partners-logo.png" alt=""></a></div>
+                <div class="col-sm-4"><a href="#"><img src="~/images/partners-logo.png" alt=""></a></div>
+            </div>
+        </div>
+        <div class="copy-right">
+            <div class="col-sm-6 copyright"><a href="#">© ACERV 2016.  Terms & Conditions  |  Privacy Policy</a></div>
+            <div class="col-sm-6 powered"><a href="#"><img src="~/images/img-powered.png" alt=""></a></div>
+        </div>
+    </footer>
+
+    @*<div id="modal-form-company-address" class="modal-box">
+            <header>
+                <a href="#" class="js-modal-close close">×</a>
+                <h3>Edit Slider</h3>
+                <a class="btn btn-primary js-modal-close" onclick="return SaveSliderImage();" style="float:right;">Save Image</a>
+            </header>
+            <div class="modal-body">
+                <form method="get">
+                    <div class="Input SliderImagesPopUp">
+                        <div class="form-group">
+                            <input type="text" class="form-control" required placeholder="Upload Image" />
+                            <a href="#" data-modal-id="modal-form-company-contact"><img id="modelPopup" class="ImgUpload" onclick="getNewTextBoxId(this)" title="Image" src="~/Content/images/upload.png" /></a>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required placeholder="Upload Image" />
+                            <a href="#" data-modal-id="modal-form-company-contact"><img id="modelPopup" class="ImgUpload" onclick="getNewTextBoxId(this)" title="Image" src="~/Content/images/upload.png" /></a>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required placeholder="Upload Image" />
+                            <a href="#" data-modal-id="modal-form-company-contact"><img id="modelPopup" class="ImgUpload" onclick="getNewTextBoxId(this)" title="Image" src="~/Content/images/upload.png" /></a>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required placeholder="Upload Image" />
+                            <a href="#" data-modal-id="modal-form-company-contact"><img id="modelPopup" class="ImgUpload" onclick="getNewTextBoxId(this)" title="Image" src="~/Content/images/upload.png" /></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>*@
+    <link href="~/Content/Fancybox/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/Content/Fancybox/jquery.fancybox.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $(document).on('click', '[data-toggle="fb-modal"]', function () {
+
+                var clone = $(this).clone();
+                clone.attr('data-toggle', '');
+                clone.hide();
+                clone.fancybox({
+                    type: 'iframe',
+                    autoSize: true,
+                    minHeight: 400,
+
+                    minWidth: 500,
+                    padding: 0,
+                    afterShow: function () {
+                        $(".fancybox-iframe").contents().find('form').attr('target', '_parent').css('margin', '0');
+                    }
+                }).click().remove();
+                return false;
+            });
+            $(document).on('click', '[data-toggle="login-modal"]', function () {
+
+                var clone = $(this).clone();
+                clone.attr('data-toggle', '');
+                clone.hide();
+                clone.fancybox({
+                    type: 'iframe',
+                    autoSize: true,
+                    minHeight: 400,
+                    maxWidth: 400,
+                    minWidth: 400,
+                    padding: 0,
+                    afterShow: function () {
+                        $(".fancybox-iframe").contents().find('form').css('margin', '0');
+                    },
+                    afterClose: function () {
+                        window.location.reload();
+                    }
+                }).click().remove();
+                return false;
+            });
+            $(document).on('click', '[data-toggle="forgot-modal"]', function () {
+
+                var clone = $(this).clone();
+                clone.attr('data-toggle', '');
+                clone.hide();
+                clone.fancybox({
+                    type: 'iframe',
+                    autoSize: true,
+                    minHeight: 400,
+                    maxWidth: 400,
+                    minWidth: 400,
+                    padding: 0,
+                    afterShow: function () {
+                        $(".fancybox-iframe").contents().find('form').attr('target', '_parent').css('margin', '0');
+                    }
+                }).click().remove();
+                return false;
+            });
+        });
+    </script>
+    <script src="~/assets/owl-carousel/owl.carousel.js"></script>
+</body>
+</html>
+
+
+
+<script>
+    $(document).ready(function () {
+        //responsive menu toggle
+        $("#menutoggle").click(function () {
+            $('.xs-menu').toggleClass('displaynone');
+
+        });
+        //add active class on menu
+        $('ul li').click(function (e) {
+            //e.preventDefault();
+            $('li').removeClass('active');
+            $(this).addClass('active');
+        });
+        //drop down menu
+        $("#cateLi").hover(function () {
+            $('#cateMenu').addClass('display-on');
+        });
+        $("#cateLi").mouseleave(function () {
+            $('#cateMenu').removeClass('display-on');
+        });
+        $("#menuLi").hover(function () {
+            $('#smartMenu').addClass('display-on');
+        });
+        $("#menuLi").mouseleave(function () {
+            $('#smartMenu').removeClass('display-on');
+        });
+
+    });
+
+</script>

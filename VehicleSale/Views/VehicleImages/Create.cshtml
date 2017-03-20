@@ -1,0 +1,105 @@
+﻿@model ClassLibrary1.VehicleImage
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var ID = ViewBag.ID;
+}
+<link href="~/Content/dropzone/css/dropzone.css" rel="stylesheet" />
+<script src="~/Content/dropzone/dropzone.js"></script>
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Vehicle Images</h3>
+    </header>
+    <div class="panel-body">
+        @*@using (Html.BeginForm("Create", "VehicleImages", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-sm-6">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VehicleID, "Vehicle")
+
+                    @Html.DropDownList("VehicleID", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.VehicleID, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImageUrl, "Image")
+                    <input id="ImageUrl" name="ImageUrl" type="file" class="file form-control" data-preview-file-type="text">
+                
+                    @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+
+                </div>*@
+
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.VideoUrl, "Video Url ( if available)")
+                    @Html.EditorFor(model => model.VideoUrl, new { htmlAttributes = new { @class = "form-control" } })
+                </div>*@
+             
+                @*
+                <div class="form-group">
+
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    @Html.ActionLink("Back to List", "Index", "VehicleImages", new { id = ID }, new { @class = "btn btn-primary" })
+
+
+                </div>
+            </div>
+        }*@
+        <form action="~/VehicleImages/SaveUploadedFile/@ID" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+            <div class="fallback" style="display:none;">
+                <input name="file" type="file" />
+                @*<input type="submit" value="Upload" />*@
+            </div>
+        </form>
+        <div class="partialContents" data-url="/VehicleImages/Manage/@ID">
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    $(document).ready(function () {
+        $('input[type=file]').change(function () {
+            var val = $(this).val().toLowerCase();
+            var regex = new RegExp("(.*?)\.(jpg|jpeg|bmp|gif|png)$");
+            if (!(regex.test(val))) {
+                $(this).val('');
+                alert('Please select correct file format');
+            }
+        });
+    });
+    Dropzone.options.dropzoneForm = {
+        acceptedFiles: "image/*",
+        maxFiles: 12,
+        init: function () {
+            this.on("maxfilesexceeded", function (data) {
+                var res = eval('(' + data.xhr.responseText + ')');
+            });
+            this.on("addedfile", function (file) {
+
+                setTimeout(callback, 1000);
+            });
+        }
+    };
+    function callback() {
+        var url = $(".partialContents").data("url");
+        if (url && url.length > 0) {
+            $(".partialContents").load(url);
+        }
+    }
+    $(function () {
+        callback();
+    });
+</script>
+<style>
+    .fallback {
+        display: block !important;
+    }
+</style>

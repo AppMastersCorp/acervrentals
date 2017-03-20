@@ -1,0 +1,484 @@
+﻿@model IEnumerable<VehicleSale.ViewModels.VehicleDetailsVM>
+@using CloudinaryDotNet;
+@using CloudinaryDotNet.Actions;
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "Compare";
+    Account account = new Account(WebConfigurationManager.AppSettings["CloudName"],
+                               WebConfigurationManager.AppSettings["ApiKey"],
+                               WebConfigurationManager.AppSettings["ApiSecret"]);
+    Cloudinary cloudinary = new Cloudinary(account);
+}
+@*<link href="~/assets/css/main.css" rel="stylesheet" />*@
+
+<script type="text/javascript">
+    var pageScript = [], pageLoaded = !1, addPageScript = function (o) { "function" == typeof o && (pageLoaded ? o() : pageScript.push(o)) }, loadPageScript = function () { pageLoaded = !0; for (var o in pageScript) pageScript[o]() }, windowLoadScript = [], windowLoaded = !1, addWindowLoadScript = function (o) { "function" == typeof o && (windowLoaded ? o() : windowLoadScript.push(o)) }; window.onload = function () { windowLoaded = !0; for (var o in windowLoadScript) windowLoadScript[o]() };
+</script>
+<div id="Wraper">
+</div>
+<main id="comparePageMain">
+    <h1>Compare Honda Amaze and Honda Brio and Maruti Celerio</h1>
+    <section id="cd-compare" class="comwrap comparehead scrolltotop">
+        <div class="combox clearfix">
+            <div class="comcol">
+
+
+            </div><div class="compare-three">
+                @foreach (var item in Model)
+                {
+                    <div class="col-1">
+                        <div class="closebtn compare_sprite" title="Remove" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",1)'></div><div class="compic">
+                            <a href="#" title="Honda Amaze">
+                                @cloudinary.Api.UrlImgUp.Transform(new Transformation().Width("204").Height("85").Crop("fill")).BuildImageTag(item.PublicKey)
+                                @*<img src="@item.ImageUrl" width="204" height="85" />*@
+                            </a>
+                        </div>
+
+                        <div class="comhead"><a href="https://www.cardekho.com/carmodels/Honda/Honda_Amaze" title="Honda Amaze">@item.vehicleTitle</a></div>
+
+                        <div class="comprice"><span class="webrupee">Rs </span>@item.Rent<sup>*</sup></div>
+                        <div class="getonroadp">
+
+                            <div class="clear"></div>
+                        </div>
+                        <div class="combotarrow sprite"></div>
+                        <div class="clear"></div>
+                    </div>@*<div class="col-1">
+                            <div class="closebtn compare_sprite" title="Remove" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",2)'></div><div class="compic">
+                                <a href="https://www.cardekho.com/carmodels/Honda/Honda_Brio" title="Honda Brio"><img src="~/ProductImage/32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" width="204" height="85" /></a>
+                            </div>
+                            <div class="comhead"><a href="https://www.cardekho.com/carmodels/Honda/Honda_Brio" title="Honda Brio">Honda Brio</a></div>
+                            <div class="clear"></div>
+                            <div class="comprice"><span class="webrupee">Rs </span>4.75 Lakh<sup>*</sup></div>
+
+                            <div class="combotarrow sprite"></div>
+                            <div class="clear"></div>
+                        </div><div class="col-1">
+                            <div class="closebtn compare_sprite" title="Remove" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",3)'></div><div class="compic">
+                                <a href="https://www.cardekho.com/carmodels/Maruti/Maruti_Celerio" title="Maruti Celerio"><img src="~/ProductImage/32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" width="204" height="85" /></a>
+                            </div>
+                            <div class="comhead"><a href="https://www.cardekho.com/carmodels/Maruti/Maruti_Celerio" title="Maruti Celerio">Maruti Celerio</a></div>
+                            <div class="comprice"><span class="webrupee">Rs </span>4.13 Lakh<sup>*</sup></div>
+                            <div class="getonroadp">
+                            </div>
+                            <div class="combotarrow sprite"></div>
+                            <div class="clear"></div>
+                        </div>*@
+                }<div class="clear"></div>
+            </div>
+        </div>
+    </section><section class="titleborder">
+        <table id="hidecomparetr1" class="gsc-co-wrap comparewrap" data-gsco-collapse>
+            <thead class="open" id="Overview">
+                <tr>
+                    <th class="OverviewTH3">Overview</th>
+                    @foreach (var item in Model)
+                    {
+                        <th class="heading_comparewrap-three"> @item.vehicleTitle</th>
+                            @*<th class="heading_comparewrap-three"> Brio</th>
+                                <th class="heading_comparewrap-three"> Celerio</th>*@
+                    }
+                </tr>
+            </thead>
+            <tbody class="compcontent comparewrap-three" style="display:block;">
+
+                <tr id="fuelTypeHideContent">
+                    <td>Vehicle Code</td>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.vehicleCode</td>
+
+                    }
+
+                </tr>
+                <tr>
+                    <td>Vehicle Brand</td>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.vehicleBrand</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Vehicle Model </td>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.vehicleModel</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Vehicle Category</td>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.vehicleCategory</td>
+                    }
+                </tr>
+                <tr id="FuelTankHideContent">
+                    <td>Length</td>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.length</td>
+                    }
+                </tr>
+
+                <tr id="seatingCapacityHideContent">
+                    <td>Width</td>  @foreach (var item in Model)
+                    {
+                        <td>@item.width</td>
+                    }
+
+                </tr>
+
+                <tr id="transmissionTypeHideContent">
+                    <td>Seats</td>  @foreach (var item in Model)
+                    {
+                        <td>@item.seats</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Adult Sleeps</td>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.Adultsleeps</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Kids Sleeps</td>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.KidSleeps</td>
+                    }
+                </tr>
+
+                <tr>
+                    <td>Rate</td>
+                    @foreach (var item in Model)
+                    {
+                        <td><span class="webrupee">Rs </span>@item.Rent</td>
+                    }
+
+                </tr>
+
+
+
+            </tbody>
+        </table>
+        <table class="gsc-co-wrap comparewrap" data-gsco-collapse>
+            <thead class="open" id="Photo_Comparison">
+                <tr>
+                    <th>
+                        <span class="spleft">PHOTO COMPARISON</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="compcontent" style="display:block;">
+                <tr>
+                    <td>
+                        <div class="usedcarslider">
+                            <div class="usedleft">
+                                <div class="photocomparison">
+                                    <div class="leftsection leftsection3" id="leftsideImagedec"> </div>
+                                    <div class="compareslide">
+                                        <div class="angularcar">
+                                            <ul id="photocompare3">
+
+                                                <li>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <div class="firstcar" onclick="opencompareimagepopup('3',1,'open');">
+                                                            <div class="leftsection leftsection3 descriptnclass" style="" id="desc1" data-desc="Rear Right Side">Image View</div>
+                                                            <input id="compaircar1" name="compaircar1" type="hidden" value="../../images.cardekho.com/car-images/carexteriorimages/large/Honda/Honda-Amaze/rear-right-side-048.jpg" />
+                                                         
+                                                            @cloudinary.Api.UrlImgUp.Transform(new Transformation().Width("200").Height("150").Crop("fill")).BuildImageTag(item.PublicKey)
+
+
+                                                            @*<img class="Hand" src="@item.ImageUrl" style="height:150px;width:200px" data-gsll-src="@item.ImageUrl" alt="Honda Amaze E i-VTEC Image" />*@
+                                                        </div>
+                                                    }
+                                                    @*<div class="firstcar" onclick="opencompareimagepopup('3',2,'open');">
+                                                            <div class="leftsection leftsection3 descriptnclass" style="display:none;" id="desc2" data-desc="Rear Right Side"> Image View</div>
+                                                            <input id="compaircar2" name="compaircar2" type="hidden" value="../../images.cardekho.com/car-images/carexteriorimages/large/Honda/Honda-Brio/rear-right-side-048.jpg" />
+                                                            <img class="Hand" src="~/ProductImage/32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" data-gsll-src="~/ProductImage/32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" alt="Honda Brio 1.2 E MT Image" />
+                                                        </div>
+                                                        <div class="firstcar last" onclick="opencompareimagepopup('3',3,'open');">
+                                                            <div class="leftsection leftsection3 descriptnclass" style="display:none;" id="desc3" data-desc="Rear Right Side">Image View</div>
+                                                            <input id="compaircar3" name="compaircar3" type="hidden" value="../../images.cardekho.com/car-images/carexteriorimages/large/Maruti/Maruti-Celerio/rear-right-side-048.jpg" />
+                                                            <img class="Hand" src="~/ProductImage/32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" data-gsll-src="~/ProductImage/32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" alt="Maruti Celerio LXI Image" />
+                                                        </div>*@
+                                                </li>
+                                                <li>
+                                                    <div class="firstcar" onclick="opencompareimagepopup('3',4,'open');">
+                                                        <div class="leftsection leftsection3 descriptnclass" style="display:none;" id="desc4" data-desc="Wheel"> Wheel</div>
+                                                        <input id="compaircar4" name="compaircar4" type="hidden" value="../../images.cardekho.com/car-images/carexteriorimages/large/Honda/Honda-Amaze/wheel-042.jpg" />
+                                                        <img class="Hand" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-gsll-src="https://images.cardekho.com/car-images/carexteriorimages/large/Honda/Honda-Amaze/wheel-042.jpg" alt="Honda Amaze E i-VTEC Image" />
+                                                    </div>
+                                                    <div class="firstcar" onclick="opencompareimagepopup('3',5,'open');">
+                                                        <div class="leftsection leftsection3 descriptnclass" style="display:none;" id="desc5" data-desc="Wheel"> Wheel</div>
+                                                        <input id="compaircar5" name="compaircar5" type="hidden" value="../../images.cardekho.com/car-images/carexteriorimages/large/Honda/Honda-Brio/wheel-042.jpg" />
+                                                        <img class="Hand" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-gsll-src="https://images.cardekho.com/car-images/carexteriorimages/large/Honda/Honda-Brio/wheel-042.jpg" alt="Honda Brio 1.2 E MT Image" />
+                                                    </div>
+                                                    <div class="firstcar last" onclick="opencompareimagepopup('3',6,'open');">
+                                                        <div class="leftsection leftsection3 descriptnclass" style="display:none;" id="desc6" data-desc="Wheel"> Wheel</div>
+                                                        <input id="compaircar6" name="compaircar6" type="hidden" value="../../images.cardekho.com/car-images/carexteriorimages/large/Maruti/Maruti-Celerio/wheel-042.jpg" />
+                                                        <img class="Hand" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-gsll-src="https://images.cardekho.com/car-images/carexteriorimages/large/Maruti/Maruti-Celerio/wheel-042.jpg" alt="Maruti Celerio LXI Image" />
+                                                    </div>
+                                                </li>
+
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<link href="~/Content/Compare/css/cd-compare-20170206184340.css" rel="stylesheet" />
+<link href="~/Content/Compare/css/cd-global-20170209193523.css" rel="stylesheet" />
+
+<div class="clear"></div>
+<div id="comparecarvariantslimitpopup"></div>
+<script>var mainModelName = ''; var sponsoredCarName = ''; var sponsoredImageUrl = '';</script>
+<div class="comparebox disnone open" id="compare">
+    <div class="comparelogo spriteheader"></div>
+    <div class="mainbox"><div class="righttop model_overview" id="addClass" onclick="expandColapseCompareSection();"></div><div id="compareMinimise"></div></div>
+    <div id="compareIntial">
+        <div class="comparedetail">
+            <div class="mainbox">
+                <div class="compareleft">
+                    <div class="comparison loadingmore">My Comparison</div>
+                    <div class="clear"></div>
+                    <ul id="comparisionPopupSection"></ul>
+                    <div class="addcar"><div class="comparebtn"><a href="javascript:void(0);" onclick="submitForComaprison();" class="comparenow">Compare Now</a><div id="addButton"></div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="hiddenVariantList" class="disnone"></div><div id="onlineSureyaPopup" class="disnone"></div><div id="showOfferUserInfoForGORP" class="disnone"></div>
+<div class="graybg disnone" id="showOfferUserInfoForGORPBG">
+</div>
+<div id="cd-top" class="is-intro" id="hidedata">
+    <div class="mainbox" style="position:relative;">
+        <div class="comparetop">
+            <label>Compare</label>
+            <select name="Q" class="custom-select" id="compareCategoryDropDown" onclick="getCompareFeatureDiv('compareCategoryDropDown','honda-amaze-and-honda-brio-and-maruti-celerio.html');">
+                <option value="Overview">Overview</option>
+                <option value="Photo_Comparison">Photo Comparison</option>
+                <option value="Standard_Features">Standard Features</option>
+                <option value="Engine">Engine</option>
+                <option value="Transmission">Transmission</option>
+                <option value="Suspension_System">Suspension System</option>
+                <option value="Steering">Steering</option>
+                <option value="Brake_System">Brake System</option>
+                <option value="Performance">Performance</option>
+                <option value="Fuel">Fuel</option>
+                <option value="Tyres">Tyres</option>
+                <option value="Other_Specifications">Other Specifications</option>
+                <option value="Payload_Towing">Payload & Towing</option>
+                <option value="General_Car_Details">General Car Details</option>
+                <option value="Comfort_Convenience">Comfort & Convenience</option>
+                <option value="Interior">Interior</option>
+                <option value="Exterior">Exterior</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Exterior_Dimensions">Exterior Dimensions</option>
+                <option value="Interior_Dimensions">Interior Dimensions</option>
+                <option value="Safety-Info">Safety-Info</option>
+            </select>
+        </div>
+        <div class="cell marginl15 marginttop10">
+            <div><a class="comparetitlename" href="https://www.cardekho.com/carmodels/Honda/Honda_Amaze" title="Honda Amaze">Honda Amaze</a></div>
+            <div class="txtwhite width100displayinlne">
+                E i-VTEC<div class="compriceheader"><span class="webrupee">Rs </span>5.69 Lakh<sup>*</sup></div>
+            </div>
+            <span><a href="javascript:void(0);" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",1)' title="Remove"><span class="removeimg compare_sprite"></span></a></span>
+        </div>
+        <div class="vs">vs</div>
+        <div class="
+             cell marginttop10
+             ">
+            <div><a class="comparetitlename" href="https://www.cardekho.com/carmodels/Honda/Honda_Brio" title="Honda Brio">Honda Brio</a></div>
+            <div class="txtwhite width100displayinlne">
+                1.2 E MT<div class="compriceheader"><span class="webrupee">Rs </span>4.75 Lakh<sup>*</sup></div>
+            </div>
+            <span><a href="javascript:void(0);" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",2)' title="Remove"><span class="removeimg compare_sprite"></span></a></span>
+        </div>
+        <div class="vs">vs</div>
+        <div class="cell marginttop10">
+            <div><a class="comparetitlename" href="https://www.cardekho.com/carmodels/Maruti/Maruti_Celerio" title="Maruti Celerio">Maruti Celerio</a></div>
+            <div class="txtwhite width100displayinlne">
+                LXI<div class="compriceheader"><span class="webrupee">Rs </span>4.13 Lakh<sup>*</sup></div>
+            </div>
+            <span><a href="javascript:void(0);" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",3)' title="Remove"><span class="removeimg compare_sprite"></span></a></span>
+        </div>
+    </div>
+</div>
+<div id="compareimagepopupopen" class="disnone"><div id="popupimage"><div class="closeimg" onclick="opencompareimagepopup('','','close');"> <a title="Close" class="compare_sprite topclose">close</a></div><div class="popupimageslider"><ul id="popimagepop" class="carousel"><li id="compareFirst"><img src="../../images.cardekho.com/images/spacer.gif" width="650" height="420" alt="compareimage"></li><li id="compareSecond"><img src="../../images.cardekho.com/images/spacer.gif" width="650" height="420" alt="compareimage"></li><li id="compareThred"><img src="../../images.cardekho.com/images/spacer.gif" width="650" height="420" alt="compareimage"></li></ul></div></div><div class="graybg"> </div></div>
+<div class="comparisonreview disnone" id="comparisonreview">
+    <div class="comparsignbtn compare_sprite"></div>
+</div>
+<div id="compareRoadTestPopup"></div>
+<div id="compareCarVideoPopup"></div>
+<form name="compareCarsForm" method="Post" action="https://www.cardekho.com/compareCars.do;jsessionid=82F8A178759735FB6ECF8270897BD172.server73" style="display:none;" id="compareForm"><input name="car1" type="hidden" value="Honda Amaze E i-VTEC" /><input name="car2" type="hidden" value="Honda Brio 1.2 E MT" /><input name="car3" type="hidden" value="Maruti Celerio LXI" /></form>
+<form name="compareCarsForm" method="Post" action="https://www.cardekho.com/compareCars.do;jsessionid=82F8A178759735FB6ECF8270897BD172.server73" style="display:none;" id="compareFormRemove">
+    <input name="removeCars" type="hidden" value="Honda-Amaze" />
+    <input name="carVariantCompare" id="carVariantCompare1" type="hidden" value="Honda Amaze E i-VTEC" /><input name="removeCars" type="hidden" value="Honda-Brio" />
+    <input name="carVariantCompare" id="carVariantCompare2" type="hidden" value="Honda Brio 1.2 E MT" /><input name="removeCars" type="hidden" value="Maruti-Celerio" />
+    <input name="carVariantCompare" id="carVariantCompare3" type="hidden" value="Maruti Celerio LXI" /><input name="removeSponserCar" id="removeSponserCar" type="hidden" value="" />
+</form>
+<script type="text/javascript">
+    var carCategory = ''; var sessionUN = ''; var sessionEID = ''; var sessionMN = ''; var basepath = 'https://www.cardekho.com/'; var staticpath = 'https://static.cardekho.com/'; var fbGraphUrl = 'https://graph.facebook.com/fql?q=SELECT%20total_count%20FROM%20link_stat%20WHERE%20url=%22www.facebook.com/CarDekho%22'; var promCampListSize = 4; var sessionSlider = ''; var sliderIdToJS = 'OFF'; var faceBookPopup = ''; var _dynamicProperties = {}; var fbLikeIt = "honda-amaze-and-honda-brio-and-maruti-celerio.html"; var metroCitiesNames = "Ahmedabad,Bangalore,Chandigarh,Chennai,Ghaziabad,Gurgaon,Hyderabad,Jaipur,Cochin,Kolkata,Lucknow,Mumbai,New Delhi,Noida,Patna,Pune"; var userSourceOfCampaignUserBean = ""; var sessionValue = '82F8A178759735FB6ECF8270897BD172.server73'; var fuelSliderIds = ''; var sessioncity = ''; var sessionCityOriginal = ''; mainsiteurl = 'https://www.cardekho.com/'; staticsiteurl = 'https://static.cardekho.com/'; var popularOems = 'Maruti,Hyundai,Honda,Toyota,Mahindra,Tata,Ford,Chevrolet,Renault,Volkswagen,Audi,Nissan,Datsun,Mercedes-Benz,Jaguar,BMW,Skoda,Fiat,Mitsubishi,Land Rover'; var popularOemsArray = popularOems.split(','); var istoskipleadpopup = ''; var carLeadCity = ""; var cityByPinCode = "";
+    // 04 Nov 2015, IsLeadCapture filed used to show lead popup one time in session
+    var isLeadCapture = '';
+    var isLeadCaptureOffer = '';
+    var utm_sourceForGTMTracking = "direct";
+</script>
+<script type='text/javascript'>
+    var secondAds = false;
+    var thirdAds = false;
+    function onScrollAds() {
+        var scrollPos = $(document).scrollTop();
+        var googleAds2 = checkAndGetAdDivScrolltop('div-gpt-ad-1410165534062-2', 900, 800);
+        var googleAds3 = checkAndGetAdDivScrolltop('div-gpt-ad-1419056484877-1', 1200, 1100);
+        if (googleAds3 != undefined && googleAds3 <= scrollPos && !thirdAds) {
+            googletag.cmd.push(function () { googletag.display('div-gpt-ad-1419056484877-1'); googletag.pubads().refresh([gptAdSlots[0]]); });
+            thirdAds = true;
+        }
+    }
+    function checkAndGetAdDivScrolltop(divId, offsetTop, locationTop) {
+        var divScrollTop = undefined;
+        if ($("#" + divId).length > 0) {
+            divScrollTop = $("#" + divId).offset().top > offsetTop ? $("#" + divId).offset().top - locationTop : $("#" + divId).offset().top
+        }
+        return divScrollTop;
+    }
+</script>
+<script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+		'//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+    var gptAdSlots = [];
+    googletag.cmd.push(function () {
+        gptAdSlots[0] = googletag.defineSlot('/1089059/CarDekho_CompareDetail_970x90_MTF_n', [970, 90], 'div-gpt-ad-1419056484877-1').addService(googletag.pubads());
+        gptAdSlots[1] = googletag.defineSlot('/1089059/CarDekho_CompareDetail_970x90_ATF_n', [970, 90], 'div-gpt-ad-1410165534062-2').addService(googletag.pubads());
+        //googletag.pubads().enableSingleRequest();
+        googletag.pubads().setTargeting("Brand", ['Honda', 'Honda', 'Maruti']).setTargeting("Model", ['Honda_Amaze', 'Honda_Brio', 'Maruti_Celerio']);
+        googletag.pubads().disableInitialLoad();
+        googletag.pubads().setCentering(true);
+        googletag.pubads().addEventListener('slotRenderEnded', function (event) {
+            if (event.isEmpty) {
+                hideEmptySlot(event);
+            }
+        });
+        googletag.enableServices();
+    });
+
+</script>
+@*<script src="~/Content/Compare/javascript/jquery-merged-20160414174124.js" defer></script>
+    <script src="~/Content/Compare/javascript/array-data-20170220200119.js" defer></script>
+    <script src="~/Content/Compare/javascript/19aeaf9d1aeb9dba7f2967202ab53f43eb8e6707.js" defer></script>
+    <script src="~/Content/Compare/javascript/cd-global-20170215194809.js" defer></script>
+
+    <script src="~/Content/Compare/javascript/cd-leadform-20170215194809.js" defer></script>
+    <script src="~/Content/Compare/javascript/cd-compare-20160929132259.js" defer onload="loadPageScript();"></script>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#header').addClass('top_bar');
+    });
+    var cdLeadFormJs = "../../Content/Compare/javascript/cd-leadform-20170215194809.js";
+    var viewPortChecker = "../../Content/Compare/javascript/viewportchecker-20160407195904.js";
+    var gaugeMeterJS = "../../Content/Compare/javascript/jquery.AshAlom.gaugeMeter-2.0.0.min-20160407195904.js";
+    var list = 3;
+    var count = "15";
+    var numberOfDivs = '';
+    var noOfExpertReview = 3;
+    var isClickExpertReview = false;
+    var car1 = '';
+    var car2 = '';
+    var car3 = '';
+    var car4 = '';
+    var modelObj = new Object();
+    addPageScript(function () {
+        //Hide the table whose content is empty
+        var compcontentElement = $(".compcontent");
+        $(compcontentElement).each(function (index) {
+            if ($.trim($(this).html()) == "") {
+                $(this).parent().hide();
+            }
+        });
+        loadCustomSelect();
+        loadCompareHideShowScript();
+        loadCompareScript();
+        loadPhotoFrameCarousel();
+        $.fn.iCheck = function () { };
+        //For ATF Ads
+        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1410165534062-2'); googletag.pubads().refresh([gptAdSlots[1]]); });
+        var isLoadLeadFormJS = true;
+        $.getScript(gaugeMeterJS, function () {
+            startRatingGaugemeter('GaugeMeter', 'scoreCardRow');
+        });
+        $("#feedback_fixed").addClass("disnone");
+        car1 = 'Honda Amaze E i-VTEC';
+
+        modelObj.car1 = 'Honda Amaze';
+
+        $("#carVariantForCompare1").change(function () {
+            var isOtherVariant = changeVariant("https://www.cardekho.com/", 1, 3, 3);
+            if (isOtherVariant == false) {
+                $("#carVariantForCompare1 option[value='" + $("#carVariantCompare1").val() + "']").attr('selected', 'selected');
+                valuesChangedById('carVariantForCompare1', 'holder', '', '', '');
+            }
+        }); car2 = 'Honda Brio 1.2 E MT';
+
+        modelObj.car2 = 'Honda Brio';
+
+        $("#carVariantForCompare2").change(function () {
+            var isOtherVariant = changeVariant("https://www.cardekho.com/", 2, 3, 3);
+            if (isOtherVariant == false) {
+                $("#carVariantForCompare2 option[value='" + $("#carVariantCompare2").val() + "']").attr('selected', 'selected');
+                valuesChangedById('carVariantForCompare2', 'holder', '', '', '');
+            }
+        }); car3 = 'Maruti Celerio LXI';
+
+        modelObj.car3 = 'Maruti Celerio';
+
+        $("#carVariantForCompare3").change(function () {
+            var isOtherVariant = changeVariant("https://www.cardekho.com/", 3, 3, 3);
+            if (isOtherVariant == false) {
+                $("#carVariantForCompare3 option[value='" + $("#carVariantCompare3").val() + "']").attr('selected', 'selected');
+                valuesChangedById('carVariantForCompare3', 'holder', '', '', '');
+            }
+        });
+
+
+        setTimeout(function () {
+            getComparisionWidget('3', '', modelObj, 'comparisonreview');
+        }, 10000);
+        document.addEventListener('scroll', onScrollAds, false);
+        if (document.getElementById("carMake1") != undefined && document.getElementById("carMake1") != '') {
+            setTimeout(function () { getOemArray(document.getElementById("carMake1"), "current", ''); }, 200);
+        }
+    });
+
+
+</script>
+<div data-gsst="" class="gsst_scroll-btn" style="display: block;"><span class="spriteheader toparrownew"></span></div>
+<div class="scoresectionbox DispNone" id="carModelRatingDiv"></div>
+
+<!-- Mirrored from www.cardekho.com/compare/honda-amaze-and-honda-brio-and-maruti-celerio.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Feb 2017 09:49:55 GMT -->

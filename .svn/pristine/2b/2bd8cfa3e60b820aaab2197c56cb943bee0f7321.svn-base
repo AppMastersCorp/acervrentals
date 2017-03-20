@@ -1,0 +1,60 @@
+﻿@model VehicleSale.ViewModels.FaqVM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">FAQ</h3>
+    </header>
+    <div class="panel-body">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-sm-6">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description)
+
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.isactive,"Is Active")
+
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.isactive)
+                        @Html.ValidationMessageFor(model => model.isactive, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Faqresult,"Answer")
+          
+                        @Html.EditorFor(model => model.Faqresult, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Faqresult, "", new { @class = "text-danger" })
+   
+                </div>
+
+                <div class="form-group">
+          
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        }
+
+    
+    </div>
+</section>

@@ -1,0 +1,222 @@
+D:\VehicleSale\VehicleSale\bin\ApplicationInsights.config
+D:\VehicleSale\VehicleSale\bin\roslyn\csc.exe
+D:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VehicleSale\VehicleSale\bin\roslyn\System.Collections.Immutable.dll
+D:\VehicleSale\VehicleSale\bin\roslyn\System.Reflection.Metadata.dll
+D:\VehicleSale\VehicleSale\bin\roslyn\vbc.exe
+D:\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe
+D:\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe.config
+D:\VehicleSale\VehicleSale\bin\VehicleSale.dll.config
+D:\VehicleSale\VehicleSale\bin\VehicleSale.dll
+D:\VehicleSale\VehicleSale\bin\VehicleSale.pdb
+D:\VehicleSale\VehicleSale\bin\Antlr3.Runtime.dll
+D:\VehicleSale\VehicleSale\bin\AutoMapper.dll
+D:\VehicleSale\VehicleSale\bin\ClassLibrary1.dll
+D:\VehicleSale\VehicleSale\bin\EntityFramework.dll
+D:\VehicleSale\VehicleSale\bin\EntityFramework.SqlServer.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.Agent.Intercept.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.DependencyCollector.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.Web.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.WindowsServer.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.ApplicationInsights.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.Core.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Cookies.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Facebook.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Google.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.OAuth.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Twitter.dll
+D:\VehicleSale\VehicleSale\bin\Microsoft.Web.Infrastructure.dll
+D:\VehicleSale\VehicleSale\bin\Newtonsoft.Json.dll
+D:\VehicleSale\VehicleSale\bin\Owin.dll
+D:\VehicleSale\VehicleSale\bin\System.Web.Helpers.dll
+D:\VehicleSale\VehicleSale\bin\System.Web.Mvc.dll
+D:\VehicleSale\VehicleSale\bin\System.Web.Optimization.dll
+D:\VehicleSale\VehicleSale\bin\System.Web.Razor.dll
+D:\VehicleSale\VehicleSale\bin\System.Web.WebPages.Deployment.dll
+D:\VehicleSale\VehicleSale\bin\System.Web.WebPages.dll
+D:\VehicleSale\VehicleSale\bin\System.Web.WebPages.Razor.dll
+D:\VehicleSale\VehicleSale\bin\WebGrease.dll
+D:\VehicleSale\VehicleSale\bin\ClassLibrary1.pdb
+D:\VehicleSale\VehicleSale\bin\AutoMapper.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.DependencyCollector.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.Web.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.AI.WindowsServer.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.ApplicationInsights.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VehicleSale\VehicleSale\bin\System.Web.Helpers.xml
+D:\VehicleSale\VehicleSale\bin\System.Web.Mvc.xml
+D:\VehicleSale\VehicleSale\bin\System.Web.Optimization.xml
+D:\VehicleSale\VehicleSale\bin\System.Web.Razor.xml
+D:\VehicleSale\VehicleSale\bin\System.Web.WebPages.xml
+D:\VehicleSale\VehicleSale\bin\System.Web.WebPages.Deployment.xml
+D:\VehicleSale\VehicleSale\bin\System.Web.WebPages.Razor.xml
+D:\VehicleSale\VehicleSale\bin\Antlr3.Runtime.pdb
+D:\VehicleSale\VehicleSale\bin\Newtonsoft.Json.xml
+D:\VehicleSale\VehicleSale\bin\EntityFramework.xml
+D:\VehicleSale\VehicleSale\bin\EntityFramework.SqlServer.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.Core.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Facebook.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Cookies.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.OAuth.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Google.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Twitter.xml
+D:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\VehicleSale\VehicleSale\obj\Debug\VehicleSale.csprojResolveAssemblyReference.cache
+D:\VehicleSale\VehicleSale\obj\Debug\VehicleSale.dll
+D:\VehicleSale\VehicleSale\obj\Debug\VehicleSale.pdb
+E:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\VehicleSale\VehicleSale\bin\roslyn\System.Collections.Immutable.dll
+E:\VehicleSale\VehicleSale\bin\roslyn\System.Reflection.Metadata.dll
+E:\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe
+E:\VehicleSale\VehicleSale\bin\ApplicationInsights.config
+E:\VehicleSale\VehicleSale\bin\roslyn\csc.exe
+E:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\VehicleSale\VehicleSale\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\VehicleSale\VehicleSale\bin\roslyn\vbc.exe
+E:\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe.config
+E:\VehicleSale\VehicleSale\bin\VehicleSale.dll.config
+E:\VehicleSale\VehicleSale\bin\VehicleSale.dll
+E:\VehicleSale\VehicleSale\bin\VehicleSale.pdb
+E:\VehicleSale\VehicleSale\bin\Antlr3.Runtime.dll
+E:\VehicleSale\VehicleSale\bin\AutoMapper.dll
+E:\VehicleSale\VehicleSale\bin\ClassLibrary1.dll
+E:\VehicleSale\VehicleSale\bin\EntityFramework.dll
+E:\VehicleSale\VehicleSale\bin\EntityFramework.SqlServer.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.Agent.Intercept.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.DependencyCollector.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.Web.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.WindowsServer.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.ApplicationInsights.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.Core.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Cookies.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Facebook.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Google.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.OAuth.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Twitter.dll
+E:\VehicleSale\VehicleSale\bin\Microsoft.Web.Infrastructure.dll
+E:\VehicleSale\VehicleSale\bin\Newtonsoft.Json.dll
+E:\VehicleSale\VehicleSale\bin\Owin.dll
+E:\VehicleSale\VehicleSale\bin\System.Web.Helpers.dll
+E:\VehicleSale\VehicleSale\bin\System.Web.Mvc.dll
+E:\VehicleSale\VehicleSale\bin\System.Web.Optimization.dll
+E:\VehicleSale\VehicleSale\bin\System.Web.Razor.dll
+E:\VehicleSale\VehicleSale\bin\System.Web.WebPages.Deployment.dll
+E:\VehicleSale\VehicleSale\bin\System.Web.WebPages.dll
+E:\VehicleSale\VehicleSale\bin\System.Web.WebPages.Razor.dll
+E:\VehicleSale\VehicleSale\bin\WebGrease.dll
+E:\VehicleSale\VehicleSale\bin\ClassLibrary1.pdb
+E:\VehicleSale\VehicleSale\bin\AutoMapper.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.DependencyCollector.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.Web.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.AI.WindowsServer.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.ApplicationInsights.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\VehicleSale\VehicleSale\bin\System.Web.Helpers.xml
+E:\VehicleSale\VehicleSale\bin\System.Web.Mvc.xml
+E:\VehicleSale\VehicleSale\bin\System.Web.Optimization.xml
+E:\VehicleSale\VehicleSale\bin\System.Web.Razor.xml
+E:\VehicleSale\VehicleSale\bin\System.Web.WebPages.xml
+E:\VehicleSale\VehicleSale\bin\System.Web.WebPages.Deployment.xml
+E:\VehicleSale\VehicleSale\bin\System.Web.WebPages.Razor.xml
+E:\VehicleSale\VehicleSale\bin\Antlr3.Runtime.pdb
+E:\VehicleSale\VehicleSale\bin\Newtonsoft.Json.xml
+E:\VehicleSale\VehicleSale\bin\EntityFramework.xml
+E:\VehicleSale\VehicleSale\bin\EntityFramework.SqlServer.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.Core.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Facebook.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Cookies.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.OAuth.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Google.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.Twitter.xml
+E:\VehicleSale\VehicleSale\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\VehicleSale\VehicleSale\obj\Debug\VehicleSale.csprojResolveAssemblyReference.cache
+E:\VehicleSale\VehicleSale\obj\Debug\VehicleSale.dll
+E:\VehicleSale\VehicleSale\obj\Debug\VehicleSale.pdb
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\ApplicationInsights.config
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\SqlServerTypes\x64\msvcr120.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\SqlServerTypes\x86\msvcr120.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\csc.exe
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\System.Collections.Immutable.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\System.Reflection.Metadata.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\vbc.exe
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe.config
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\VehicleSale.dll.config
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\VehicleSale.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\VehicleSale.pdb
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\ClassLibrary1.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\ClassLibrary1.pdb
+D:\VehicleSale (3)\VehicleSale\VehicleSale\obj\Debug\VehicleSale.csprojResolveAssemblyReference.cache
+D:\VehicleSale (3)\VehicleSale\VehicleSale\obj\Debug\VehicleSale.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\obj\Debug\VehicleSale.pdb
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\SqlServerTypes\x64\SqlServerSpatial130.dll
+D:\VehicleSale (3)\VehicleSale\VehicleSale\bin\SqlServerTypes\x86\SqlServerSpatial130.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\ApplicationInsights.config
+D:\Official\Project\VehicleSale\VehicleSale\bin\SqlServerTypes\x64\msvcr120.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\SqlServerTypes\x64\SqlServerSpatial130.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\SqlServerTypes\x86\msvcr120.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\SqlServerTypes\x86\SqlServerSpatial130.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\csc.exe
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\System.Collections.Immutable.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\System.Reflection.Metadata.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\vbc.exe
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe
+D:\Official\Project\VehicleSale\VehicleSale\bin\roslyn\VBCSCompiler.exe.config
+D:\Official\Project\VehicleSale\VehicleSale\bin\VehicleSale.dll.config
+D:\Official\Project\VehicleSale\VehicleSale\bin\VehicleSale.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\VehicleSale.pdb
+D:\Official\Project\VehicleSale\VehicleSale\bin\ClassLibrary1.dll
+D:\Official\Project\VehicleSale\VehicleSale\bin\ClassLibrary1.pdb
+D:\Official\Project\VehicleSale\VehicleSale\obj\Debug\VehicleSale.csprojResolveAssemblyReference.cache
+D:\Official\Project\VehicleSale\VehicleSale\obj\Debug\VehicleSale.dll
+D:\Official\Project\VehicleSale\VehicleSale\obj\Debug\VehicleSale.pdb

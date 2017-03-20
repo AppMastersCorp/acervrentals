@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ClassLibrary1.VehicleImage>
+@using System.Web.Configuration;
+@using CloudinaryDotNet;
+@using CloudinaryDotNet.Actions
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var ID = ViewBag.ID;
+    Account account = new Account(WebConfigurationManager.AppSettings["CloudName"],
+                               WebConfigurationManager.AppSettings["ApiKey"],
+                               WebConfigurationManager.AppSettings["ApiSecret"]);
+    Cloudinary cloudinary = new Cloudinary(account);
+}
+
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Vehicle Images</h3>
+    </header>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Create New", "Create", new { id = ID }) |
+            @Html.ActionLink("Back to Vehicle List", "Index", "Vehicles", new object { }, null)
+        </p>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicle.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageUrl)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.VideoUrl)
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.Title)
+                    </td>
+                    <td>
+                        @cloudinary.Api.UrlImgUp.Transform(new Transformation().Width(200).Height(200).Crop("fill")).BuildImageTag(@item.PublicKey)
+                        @*<img src=@Html.DisplayFor(modelItem => item.ImageUrl) alt="" width="200" height="200" />*@
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoUrl)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

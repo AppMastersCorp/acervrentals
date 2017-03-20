@@ -1,0 +1,104 @@
+﻿@model ClassLibrary1.Vehicle
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="panel panel-info">
+    <header class="panel-heading">
+        <h3 class="panel-title">Vehicles</h3>
+    </header>
+    <div class="panel-body">
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+          
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Seats)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Seats)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.YearBuilt)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.YearBuilt)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Length)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Length)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Width)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Width)
+                </dd>
+
+                
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Brand.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Brand.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.VehicleType.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VehicleType.Name)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-primary" /> |
+                    @Html.ActionLink("Back to List", "Index",new object { },new {@class= "btn btn-primary" })
+                </div>
+            }
+        </div>
+    </div>
+</section>

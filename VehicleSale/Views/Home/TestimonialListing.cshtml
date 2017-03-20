@@ -1,0 +1,56 @@
+﻿@using ClassLibrary1
+@model IEnumerable<Testimonial>
+@{
+    ViewBag.Title = "TestimonialListing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/assets/owl-carousel/owl.carousel.css" rel="stylesheet" />
+<link href="~/assets/owl-carousel/owl.theme.css" rel="stylesheet" />
+<link href="~/assets/owl-carousel/owl.transitions.css" rel="stylesheet" />
+<div class="container"><div class="title testi_tittle"><span>Testimonials</span></div></div>
+<div class="container">
+    @*<p>Average Rating  @Ratingavrage / 5 rating @Ratingavrage out of 5 based on 12,229 reviews.</p>*@
+
+    <div class="testimonials-section">
+        <div class="full_test">
+            @if (Model != null)
+            {
+                foreach (var tstmonls in Model)
+                {
+                    //crausal item
+                    <div class="col-xs-12 col-sm-4 testimonial_box ">
+                        <div class="item">
+                            <div class="img-block">
+                                @if (tstmonls.ImageURl == null)
+                                {
+                                    <img src="@tstmonls.ImageURl" alt="">
+                                }
+                                else
+                                {
+                                    <img src="@tstmonls.ImageURl" alt="">
+                                }
+                            </div>
+                            <div class="caption">
+                                <h2 class="text-center tweet">
+
+                                    <img src="@tstmonls.LogoUrl" />
+                                </h2>
+                                <h3>
+                                    <a href="#">
+                                        @tstmonls.Title
+                                    </a>
+                                </h3>
+                                <p>@tstmonls.Summary</p>
+                            </div>
+                            <div class="rating">
+                                <div class="rating-count">Rating <strong>@tstmonls.Rating/5</strong></div>
+                                <div class="rating-icon"> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
