@@ -190,7 +190,7 @@
 </div>
 
 <input type="hidden" name="VehicleCategory" value="@Convert.ToString(Request.QueryString["vehicle"])" />
-
+<input type="hidden" id="VehicleTags" name="VehicleTags" value="@Convert.ToString(Request.QueryString["tags"])" />
 <style>
     /*.vehicle_type button .active{
         background-color:black !important;
@@ -274,8 +274,6 @@
                     vehicleCategory = vehicleCategory + ',' + $(this).find('[type=checkbox]').val();
                 });
             }
-
-
             var MinPrice = $("#minval").val();
             var MaxPrice = $("#maxval").val();
             var Lat = $("#cityLat").val();
@@ -283,6 +281,7 @@
             if (vehicleCategory == undefined) {
                 vehicleCategory = "0";
             }
+            var vehicleTags = $("#VehicleTags").val();
             $(".grid_list").html('<span style="margin-left:18px;">Searching, Please wait...</span><img src="/images/indicator.white.gif" />');
 
             $.ajax({
@@ -290,7 +289,7 @@
                 dataType: "html",
                 contentType: "application/json; charset=utf-8",
                 url: "/Home/getVehicle",
-                data: "{'vType':'" + vehicleType + "', 'brands':'" + brands + "', 'sleeps':'" + sleeps + "', 'vehicleCategory':'" + vehicleCategory + "', 'MinPrice':'" + MinPrice + "', 'MaxPrice':'" + MaxPrice + "', 'Lat':'" + Lat + "', 'Long':'" + Long + "','sort':'" + sort + "'}",
+                data: "{'vType':'" + vehicleType + "', 'brands':'" + brands + "', 'sleeps':'" + sleeps + "', 'vehicleCategory':'" + vehicleCategory + "', 'MinPrice':'" + MinPrice + "', 'MaxPrice':'" + MaxPrice + "', 'Lat':'" + Lat + "', 'Long':'" + Long + "','sort':'" + sort + "','vehicleTags':'" + vehicleTags + "'}",
                 success: function (result) {
                     $(".grid_list").html(result);
                     $('a[href="#grid"]').click(function () {

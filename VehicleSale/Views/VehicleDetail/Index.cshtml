@@ -113,7 +113,7 @@
             <div class="col-sm-12 total_cost">
                 <ul><li><div class="col-xs-6">Rent for one Night</div> <div class="col-xs-6 text-right">$@Model.Rent</div></li></ul>
             </div>
-            <div class="col-sm-12"> <button>Book Now for One Night</button></div>
+            <div class="col-sm-12"> <button>Book Now</button></div>  @*for One Night*@
         </div>
     </div>
     <!-----Cols-m-8-------------->
@@ -260,7 +260,7 @@
                         <td>@Model.KidSleeps</td>
                     </tr>
                 }
-                
+
                 <tr>
                     <th>Length</th>
                     <td>@Model.length</td>
@@ -269,21 +269,21 @@
                     <th>Width</th>
                     <td>@Model.width</td>
                 </tr>
-                @if (Model.Transmission != "")
+                @if (!string.IsNullOrEmpty(Model.Transmission))
                 {
-                <tr>
-                    <th>Transmission</th>
-                    <td>@Model.Transmission</td>
-                </tr>
+                    <tr>
+                        <th>Transmission</th>
+                        <td>@Model.Transmission</td>
+                    </tr>
                 }
-                @if (Model.DriveMode != "")
+                @if (!string.IsNullOrEmpty(Model.DriveMode))
                 {
                     <tr>
                         <th>Drive Mode</th>
                         <td>@Model.DriveMode</td>
                     </tr>
                 }
-                @if (Model.FuelType != "")
+                @if (!string.IsNullOrEmpty(Model.FuelType))
                 {
                     <tr>
                         <th>Fuel Type</th>

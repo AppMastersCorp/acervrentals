@@ -2787,13 +2787,13 @@ body {
 }
 
 #listing .listing_text ul {
-    width: 50%;
+    width: 60%;
     float: left;
 }
 
 #listing .btns_listing {
     float: left;
-    width: 50%;
+    width: 40%;
 }
 
     #listing .btns_listing .col-sm-12 {
@@ -4781,3 +4781,95 @@ nav.menu {
 #header.alt nav a:active, #header.alt nav a:hover {
     color: #333;
 }
+
+/*---------------- My Css-------------------*/
+.cmpare_container .mainbox, main {
+    width: 100% !important;
+    padding: 15px !important;
+    background: #f5f5f5;
+    float: left !important;
+    margin: 20px auto !important;
+    border: 1px solid #eee;
+}
+
+#hidecomparetr1 {
+    width: 100% !important;
+   
+    border:0px;
+}
+
+
+.compcontent {
+    width: 100% !important;
+    background:#fff !important;
+}
+
+
+#hidecomparetr1 .comparewrap-three {
+    width: 100% !important;
+    background:#fff !important;
+}
+
+.comparewrap tr th {
+    width: 25% !important;
+    font-size:16px !important;
+    font-weight:700 !important;
+}
+.photocomparison .compareslide
+{
+    float:left !important;
+}
+.open .heading_comparewrap-three:nth-child(2)
+{
+    width: 25% !important;
+}
+.open .heading_comparewrap-three:nth-child(3)
+{
+     width:25% !important;
+}
+
+.comparewrap-three tr td {
+    width:300px !important;
+    padding:10px !important;
+}
+
+#comparePageMain h1 {
+    font-weight: 600 !important;
+    font-size: 30px !important;
+    font-family: Arial !important;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#comparePageMain h1:after
+{
+    width:0px !important;
+}
+.gsc-co-wrap 
+{
+    width:100% !important;
+}
+.compare-three .col-1
+{
+    border:1px solid #ccc !important;
+}
+
+.comwrap .combox
+{
+    width:100% !important;
+}
+
+.compare-three .col-1
+{
+    width:30% !important;
+}
+
+
+.comparewrap th .spleft
+{
+    font-size:18px;
+    font-weight:700 !important;
+}
+
+.comparewrap tr:nth-child(even) {background-color: #f2f2f2 !important}
+/*-----------End OF My Css---------------------*/

@@ -202,7 +202,7 @@ namespace VehicleSale.Controllers
                     // }
 
                 }
-                if (LogoUrl.ContentLength > 0 && LogoUrl != null)
+                if (LogoUrl != null && LogoUrl.ContentLength > 0 )
                 {
                     //HttpFileCollectionBase file = Request.Files;
                     //DataTable dt = new DataTable { Columns = { new DataColumn("Path") } };

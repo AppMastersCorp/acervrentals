@@ -52,10 +52,10 @@ namespace ClassLibrary1
         public virtual DbSet<VehicleImage> VehicleImages { get; set; }
         public virtual DbSet<VehicleRent> VehicleRents { get; set; }
         public virtual DbSet<VehicleRentleCondition> VehicleRentleConditions { get; set; }
-        public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<VehicleTag> VehicleTags { get; set; }
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<Widget> Widgets { get; set; }
         public virtual DbSet<Wishlist> Wishlists { get; set; }
+        public virtual DbSet<Vehicle> Vehicles { get; set; }
     }
 }

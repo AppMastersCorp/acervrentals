@@ -28,7 +28,6 @@
     <EntitySet Name="VehicleImages" EntityType="VehicleSaleModel.VehicleImage" />
     <EntitySet Name="VehicleRents" EntityType="VehicleSaleModel.VehicleRent" />
     <EntitySet Name="VehicleRentleConditions" EntityType="VehicleSaleModel.VehicleRentleCondition" />
-    <EntitySet Name="Vehicles" EntityType="VehicleSaleModel.Vehicle" />
     <EntitySet Name="VehicleTags" EntityType="VehicleSaleModel.VehicleTag" />
     <EntitySet Name="VehicleTypes" EntityType="VehicleSaleModel.VehicleType" />
     <EntitySet Name="Widgets" EntityType="VehicleSaleModel.Widget" />
@@ -41,14 +40,6 @@
       <End Role="AmentiesMaster" EntitySet="AmentiesMasters" />
       <End Role="VehicleAmenty" EntitySet="VehicleAmenties" />
     </AssociationSet>
-    <AssociationSet Name="FK_Vehicles_Brands" Association="VehicleSaleModel.FK_Vehicles_Brands">
-      <End Role="Brand" EntitySet="Brands" />
-      <End Role="Vehicle" EntitySet="Vehicles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Vehicles_Categories" Association="VehicleSaleModel.FK_Vehicles_Categories">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="Vehicle" EntitySet="Vehicles" />
-    </AssociationSet>
     <AssociationSet Name="FK_VehicleFeatures_FeaturesMaster" Association="VehicleSaleModel.FK_VehicleFeatures_FeaturesMaster">
       <End Role="FeaturesMaster" EntitySet="FeaturesMasters" />
       <End Role="VehicleFeature" EntitySet="VehicleFeatures" />
@@ -56,18 +47,6 @@
     <AssociationSet Name="FK_UploadFiles_Folders" Association="VehicleSaleModel.FK_UploadFiles_Folders">
       <End Role="Folder" EntitySet="Folders" />
       <End Role="UploadFile" EntitySet="UploadFiles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Vehicles_Make" Association="VehicleSaleModel.FK_Vehicles_Make">
-      <End Role="Make" EntitySet="Makes" />
-      <End Role="Vehicle" EntitySet="Vehicles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Vehicles_Models" Association="VehicleSaleModel.FK_Vehicles_Models">
-      <End Role="Model" EntitySet="Models" />
-      <End Role="Vehicle" EntitySet="Vehicles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OfferMaster_Vehicles" Association="VehicleSaleModel.FK_OfferMaster_Vehicles">
-      <End Role="Vehicle" EntitySet="Vehicles" />
-      <End Role="OfferMaster" EntitySet="OfferMasters" />
     </AssociationSet>
     <AssociationSet Name="FK_Widget_Page" Association="VehicleSaleModel.FK_Widget_Page">
       <End Role="Page" EntitySet="Pages" />
@@ -80,6 +59,27 @@
     <AssociationSet Name="FK_VehicleTags_TagMaster" Association="VehicleSaleModel.FK_VehicleTags_TagMaster">
       <End Role="TagMaster" EntitySet="TagMasters" />
       <End Role="VehicleTag" EntitySet="VehicleTags" />
+    </AssociationSet>
+    <EntitySet Name="Vehicles" EntityType="VehicleSaleModel.Vehicle" />
+    <AssociationSet Name="FK_Vehicles_Brands" Association="VehicleSaleModel.FK_Vehicles_Brands">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicles_Categories" Association="VehicleSaleModel.FK_Vehicles_Categories">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicles_Make" Association="VehicleSaleModel.FK_Vehicles_Make">
+      <End Role="Make" EntitySet="Makes" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicles_Models" Association="VehicleSaleModel.FK_Vehicles_Models">
+      <End Role="Model" EntitySet="Models" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferMaster_Vehicles" Association="VehicleSaleModel.FK_OfferMaster_Vehicles">
+      <End Role="Vehicle" EntitySet="Vehicles" />
+      <End Role="OfferMaster" EntitySet="OfferMasters" />
     </AssociationSet>
     <AssociationSet Name="FK_VehicleAmenties_Vehicles" Association="VehicleSaleModel.FK_VehicleAmenties_Vehicles">
       <End Role="Vehicle" EntitySet="Vehicles" />
@@ -416,73 +416,6 @@
     <Property Name="IsActive" Type="Boolean" />
     <NavigationProperty Name="Vehicle" Relationship="VehicleSaleModel.FK_VehicleRentleConditions_Vehicles" FromRole="VehicleRentleCondition" ToRole="Vehicle" />
   </EntityType>
-  <EntityType Name="Vehicle">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="VehicleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="VehicleTypeID" Type="Int32" />
-    <Property Name="CategoryID" Type="Int32" />
-    <Property Name="BrandID" Type="Int32" />
-    <Property Name="MakeID" Type="Int32" />
-    <Property Name="ModelID" Type="Int32" />
-    <Property Name="Seats" Type="Int32" />
-    <Property Name="AdultSleeps" Type="Int32" />
-    <Property Name="KidSleeps" Type="Int32" />
-    <Property Name="DailyRate" Type="Double" />
-    <Property Name="SecurityDeposit" Type="Double" />
-    <Property Name="CleaningFee" Type="Double" />
-    <Property Name="WinterDiscount" Type="Double" />
-    <Property Name="YearBuilt" Type="Int32" />
-    <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsFeatured" Type="Boolean" Nullable="false" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-    <Property Name="Longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Latitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Location" Type="Geography" />
-    <Property Name="IsSaleable" Type="Boolean" Nullable="false" />
-    <Property Name="SalePrice" Type="Double" />
-    <Property Name="Transmission" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DriveMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Amps" Type="Int32" />
-    <Property Name="Wheelbase" Type="Int32" />
-    <Property Name="GCWR" Type="Int32" />
-    <Property Name="FuelCapacity" Type="Double" />
-    <Property Name="HitchWeight" Type="Double" />
-    <Property Name="BaseWeight" Type="Double" />
-    <Property Name="GVWR" Type="Int32" />
-    <Property Name="Exteriorlength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ExteriorHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ExteriorWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FreshWater" Type="Double" />
-    <Property Name="GreyWater" Type="Double" />
-    <Property Name="BlackWater" Type="Double" />
-    <Property Name="AwingSize" Type="Int32" />
-    <Property Name="Bed" Type="Int32" />
-    <Property Name="Queen" Type="Int32" />
-    <Property Name="Full" Type="Int32" />
-    <Property Name="Twin" Type="Int32" />
-    <Property Name="RearAxle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Brand" Relationship="VehicleSaleModel.FK_Vehicles_Brands" FromRole="Vehicle" ToRole="Brand" />
-    <NavigationProperty Name="Category" Relationship="VehicleSaleModel.FK_Vehicles_Categories" FromRole="Vehicle" ToRole="Category" />
-    <NavigationProperty Name="Make" Relationship="VehicleSaleModel.FK_Vehicles_Make" FromRole="Vehicle" ToRole="Make" />
-    <NavigationProperty Name="Model" Relationship="VehicleSaleModel.FK_Vehicles_Models" FromRole="Vehicle" ToRole="Model" />
-    <NavigationProperty Name="OfferMasters" Relationship="VehicleSaleModel.FK_OfferMaster_Vehicles" FromRole="Vehicle" ToRole="OfferMaster" />
-    <NavigationProperty Name="VehicleAmenties" Relationship="VehicleSaleModel.FK_VehicleAmenties_Vehicles" FromRole="Vehicle" ToRole="VehicleAmenty" />
-    <NavigationProperty Name="VehicleFeatures" Relationship="VehicleSaleModel.FK_VehicleFeatures_Vehicles" FromRole="Vehicle" ToRole="VehicleFeature" />
-    <NavigationProperty Name="VehicleImages" Relationship="VehicleSaleModel.FK_VehicleImages_Vehicles" FromRole="Vehicle" ToRole="VehicleImage" />
-    <NavigationProperty Name="VehicleRents" Relationship="VehicleSaleModel.FK_VehicleRent_Vehicles" FromRole="Vehicle" ToRole="VehicleRent" />
-    <NavigationProperty Name="VehicleRentleConditions" Relationship="VehicleSaleModel.FK_VehicleRentleConditions_Vehicles" FromRole="Vehicle" ToRole="VehicleRentleCondition" />
-    <NavigationProperty Name="VehicleType" Relationship="VehicleSaleModel.FK_Vehicles_VehicleTypes" FromRole="Vehicle" ToRole="VehicleType" />
-    <NavigationProperty Name="VehicleTags" Relationship="VehicleSaleModel.FK_VehicleTags_Vehicles" FromRole="Vehicle" ToRole="VehicleTag" />
-  </EntityType>
   <EntityType Name="VehicleTag">
     <Key>
       <PropertyRef Name="ID" />
@@ -552,30 +485,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Vehicles_Brands">
-    <End Type="VehicleSaleModel.Brand" Role="Brand" Multiplicity="0..1" />
-    <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Brand">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Vehicle">
-        <PropertyRef Name="BrandID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Vehicles_Categories">
-    <End Type="VehicleSaleModel.Category" Role="Category" Multiplicity="0..1" />
-    <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Vehicle">
-        <PropertyRef Name="CategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_VehicleFeatures_FeaturesMaster">
     <End Type="VehicleSaleModel.FeaturesMaster" Role="FeaturesMaster" Multiplicity="0..1" />
     <End Type="VehicleSaleModel.VehicleFeature" Role="VehicleFeature" Multiplicity="*" />
@@ -597,6 +506,133 @@
       </Principal>
       <Dependent Role="UploadFile">
         <PropertyRef Name="FolderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Widget_Page">
+    <End Type="VehicleSaleModel.Page" Role="Page" Multiplicity="0..1" />
+    <End Type="VehicleSaleModel.Widget" Role="Widget" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Page">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Widget">
+        <PropertyRef Name="PageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleRent_RentTerms">
+    <End Type="VehicleSaleModel.RentTerm" Role="RentTerm" Multiplicity="0..1" />
+    <End Type="VehicleSaleModel.VehicleRent" Role="VehicleRent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RentTerm">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VehicleRent">
+        <PropertyRef Name="TermID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleTags_TagMaster">
+    <End Type="VehicleSaleModel.TagMaster" Role="TagMaster" Multiplicity="0..1" />
+    <End Type="VehicleSaleModel.VehicleTag" Role="VehicleTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VehicleTag">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VehicleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VehicleTypeID" Type="Int32" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="MakeID" Type="Int32" />
+    <Property Name="ModelID" Type="Int32" />
+    <Property Name="Seats" Type="Int32" />
+    <Property Name="AdultSleeps" Type="Int32" />
+    <Property Name="KidSleeps" Type="Int32" />
+    <Property Name="DailyRate" Type="Double" />
+    <Property Name="SecurityDeposit" Type="Double" />
+    <Property Name="CleaningFee" Type="Double" />
+    <Property Name="WinterDiscount" Type="Double" />
+    <Property Name="YearBuilt" Type="Int32" />
+    <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsFeatured" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="Longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="Geography" />
+    <Property Name="IsSaleable" Type="Boolean" Nullable="false" />
+    <Property Name="SalePrice" Type="Double" />
+    <Property Name="Transmission" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DriveMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Amps" Type="Int32" />
+    <Property Name="Wheelbase" Type="Int32" />
+    <Property Name="GCWR" Type="Int32" />
+    <Property Name="FuelCapacity" Type="Double" />
+    <Property Name="HitchWeight" Type="Double" />
+    <Property Name="BaseWeight" Type="Double" />
+    <Property Name="GVWR" Type="Int32" />
+    <Property Name="Exteriorlength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExteriorHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExteriorWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FreshWater" Type="Double" />
+    <Property Name="GreyWater" Type="Double" />
+    <Property Name="BlackWater" Type="Double" />
+    <Property Name="AwingSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Bed" Type="Int32" />
+    <Property Name="Queen" Type="Int32" />
+    <Property Name="Full" Type="Int32" />
+    <Property Name="Twin" Type="Int32" />
+    <Property Name="RearAxle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Brand" Relationship="VehicleSaleModel.FK_Vehicles_Brands" FromRole="Vehicle" ToRole="Brand" />
+    <NavigationProperty Name="Category" Relationship="VehicleSaleModel.FK_Vehicles_Categories" FromRole="Vehicle" ToRole="Category" />
+    <NavigationProperty Name="Make" Relationship="VehicleSaleModel.FK_Vehicles_Make" FromRole="Vehicle" ToRole="Make" />
+    <NavigationProperty Name="Model" Relationship="VehicleSaleModel.FK_Vehicles_Models" FromRole="Vehicle" ToRole="Model" />
+    <NavigationProperty Name="OfferMasters" Relationship="VehicleSaleModel.FK_OfferMaster_Vehicles" FromRole="Vehicle" ToRole="OfferMaster" />
+    <NavigationProperty Name="VehicleAmenties" Relationship="VehicleSaleModel.FK_VehicleAmenties_Vehicles" FromRole="Vehicle" ToRole="VehicleAmenty" />
+    <NavigationProperty Name="VehicleFeatures" Relationship="VehicleSaleModel.FK_VehicleFeatures_Vehicles" FromRole="Vehicle" ToRole="VehicleFeature" />
+    <NavigationProperty Name="VehicleImages" Relationship="VehicleSaleModel.FK_VehicleImages_Vehicles" FromRole="Vehicle" ToRole="VehicleImage" />
+    <NavigationProperty Name="VehicleRents" Relationship="VehicleSaleModel.FK_VehicleRent_Vehicles" FromRole="Vehicle" ToRole="VehicleRent" />
+    <NavigationProperty Name="VehicleRentleConditions" Relationship="VehicleSaleModel.FK_VehicleRentleConditions_Vehicles" FromRole="Vehicle" ToRole="VehicleRentleCondition" />
+    <NavigationProperty Name="VehicleType" Relationship="VehicleSaleModel.FK_Vehicles_VehicleTypes" FromRole="Vehicle" ToRole="VehicleType" />
+    <NavigationProperty Name="VehicleTags" Relationship="VehicleSaleModel.FK_VehicleTags_Vehicles" FromRole="Vehicle" ToRole="VehicleTag" />
+  </EntityType>
+  <Association Name="FK_Vehicles_Brands">
+    <End Type="VehicleSaleModel.Brand" Role="Brand" Multiplicity="0..1" />
+    <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicles_Categories">
+    <End Type="VehicleSaleModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="VehicleSaleModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="CategoryID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -635,42 +671,6 @@
       </Principal>
       <Dependent Role="OfferMaster">
         <PropertyRef Name="VehicleID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Widget_Page">
-    <End Type="VehicleSaleModel.Page" Role="Page" Multiplicity="0..1" />
-    <End Type="VehicleSaleModel.Widget" Role="Widget" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Page">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Widget">
-        <PropertyRef Name="PageId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_VehicleRent_RentTerms">
-    <End Type="VehicleSaleModel.RentTerm" Role="RentTerm" Multiplicity="0..1" />
-    <End Type="VehicleSaleModel.VehicleRent" Role="VehicleRent" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="RentTerm">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="VehicleRent">
-        <PropertyRef Name="TermID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_VehicleTags_TagMaster">
-    <End Type="VehicleSaleModel.TagMaster" Role="TagMaster" Multiplicity="0..1" />
-    <End Type="VehicleSaleModel.VehicleTag" Role="VehicleTag" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TagMaster">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="VehicleTag">
-        <PropertyRef Name="TagID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

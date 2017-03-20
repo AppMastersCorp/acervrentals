@@ -17,7 +17,7 @@
 <div id="Wraper">
 </div>
 <main id="comparePageMain">
-    <h1>Compare Honda Amaze and Honda Brio and Maruti Celerio</h1>
+    @*<h1>Compare Honda Amaze and Honda Brio and Maruti Celerio</h1>*@
     <section id="cd-compare" class="comwrap comparehead scrolltotop">
         <div class="combox clearfix">
             <div class="comcol">
@@ -28,13 +28,13 @@
                 {
                     <div class="col-1">
                         <div class="closebtn compare_sprite" title="Remove" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",1)'></div><div class="compic">
-                            <a href="#" title="Honda Amaze">
+                            <a href="/VehicleDetail/Index/@item.ID" title="@item.vehicleTitle">
                                 @cloudinary.Api.UrlImgUp.Transform(new Transformation().Width("204").Height("85").Crop("fill")).BuildImageTag(item.PublicKey)
                                 @*<img src="@item.ImageUrl" width="204" height="85" />*@
                             </a>
                         </div>
 
-                        <div class="comhead"><a href="https://www.cardekho.com/carmodels/Honda/Honda_Amaze" title="Honda Amaze">@item.vehicleTitle</a></div>
+                        <div class="comhead"><a href="/VehicleDetail/Index/@item.ID" title="Honda Amaze">@item.vehicleTitle</a></div>
 
                         <div class="comprice"><span class="webrupee">Rs </span>@item.Rent<sup>*</sup></div>
                         <div class="getonroadp">
@@ -43,27 +43,7 @@
                         </div>
                         <div class="combotarrow sprite"></div>
                         <div class="clear"></div>
-                    </div>@*<div class="col-1">
-                            <div class="closebtn compare_sprite" title="Remove" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",2)'></div><div class="compic">
-                                <a href="https://www.cardekho.com/carmodels/Honda/Honda_Brio" title="Honda Brio"><img src="~/ProductImage/32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" width="204" height="85" /></a>
-                            </div>
-                            <div class="comhead"><a href="https://www.cardekho.com/carmodels/Honda/Honda_Brio" title="Honda Brio">Honda Brio</a></div>
-                            <div class="clear"></div>
-                            <div class="comprice"><span class="webrupee">Rs </span>4.75 Lakh<sup>*</sup></div>
-
-                            <div class="combotarrow sprite"></div>
-                            <div class="clear"></div>
-                        </div><div class="col-1">
-                            <div class="closebtn compare_sprite" title="Remove" onclick='makeUrlForRemoveCar("https://www.cardekho.com/",3)'></div><div class="compic">
-                                <a href="https://www.cardekho.com/carmodels/Maruti/Maruti_Celerio" title="Maruti Celerio"><img src="~/ProductImage/32df163e-46ed-45f8-b4d3-19175c8c4a32banner.jpg" width="204" height="85" /></a>
-                            </div>
-                            <div class="comhead"><a href="https://www.cardekho.com/carmodels/Maruti/Maruti_Celerio" title="Maruti Celerio">Maruti Celerio</a></div>
-                            <div class="comprice"><span class="webrupee">Rs </span>4.13 Lakh<sup>*</sup></div>
-                            <div class="getonroadp">
-                            </div>
-                            <div class="combotarrow sprite"></div>
-                            <div class="clear"></div>
-                        </div>*@
+                    </div>
                 }<div class="clear"></div>
             </div>
         </div>
@@ -180,12 +160,12 @@
                                     <div class="compareslide">
                                         <div class="angularcar">
                                             <ul id="photocompare3">
-
+                                                @*<li><div class="leftsection leftsection3 descriptnclass" style="" id="desc1" data-desc="Rear Right Side">Image View</div></li>*@
                                                 <li>
                                                     @foreach (var item in Model)
                                                     {
                                                         <div class="firstcar" onclick="opencompareimagepopup('3',1,'open');">
-                                                            <div class="leftsection leftsection3 descriptnclass" style="" id="desc1" data-desc="Rear Right Side">Image View</div>
+                                                            <div class="leftsection leftsection3 descriptnclass" style="" id="desc1" data-desc="Rear Right Side">@item.vehicleTitle</div>
                                                             <input id="compaircar1" name="compaircar1" type="hidden" value="../../images.cardekho.com/car-images/carexteriorimages/large/Honda/Honda-Amaze/rear-right-side-048.jpg" />
                                                          
                                                             @cloudinary.Api.UrlImgUp.Transform(new Transformation().Width("200").Height("150").Crop("fill")).BuildImageTag(item.PublicKey)
@@ -478,7 +458,7 @@
 
 
 </script>
-<div data-gsst="" class="gsst_scroll-btn" style="display: block;"><span class="spriteheader toparrownew"></span></div>
+@*<div data-gsst="" class="gsst_scroll-btn" style="display: block;"><span class="spriteheader toparrownew"></span></div>*@
 <div class="scoresectionbox DispNone" id="carModelRatingDiv"></div>
 
 <!-- Mirrored from www.cardekho.com/compare/honda-amaze-and-honda-brio-and-maruti-celerio.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Feb 2017 09:49:55 GMT -->

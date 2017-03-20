@@ -111,7 +111,7 @@ namespace VehicleSale.ViewModels
 
         [Display(Name = "Awing Size(ft)")]
         //[RegularExpression("^[0-9]*$", ErrorMessage = "Awing Size must be numeric")]
-        public Nullable<int> AwingSize { get; set; }
+        public string AwingSize { get; set; }
 
         //[Display(Name = "Awing Size")]
         //[RegularExpression("^[0-9]*$", ErrorMessage = "Awing Size must be numeric")]

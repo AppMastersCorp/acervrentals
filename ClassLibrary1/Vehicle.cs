@@ -70,7 +70,7 @@ namespace ClassLibrary1
         public Nullable<double> FreshWater { get; set; }
         public Nullable<double> GreyWater { get; set; }
         public Nullable<double> BlackWater { get; set; }
-        public Nullable<int> AwingSize { get; set; }
+        public string AwingSize { get; set; }
         public Nullable<int> Bed { get; set; }
         public Nullable<int> Queen { get; set; }
         public Nullable<int> Full { get; set; }

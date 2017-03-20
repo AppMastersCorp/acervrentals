@@ -27,19 +27,21 @@ namespace VehicleSale.Controllers
         {
             ViewBag.RVCategoryList = db.Categories.Where(c => c.IsActive == true).ToList();
             ViewBag.RVVehicleFeatures = db.FeaturesMasters.Where(c => c.IsActive == true).ToList();
-            ViewBag.RVVehicleAddimage = (from v in db.Vehicles
-                                         join vi in db.VehicleImages on v.ID equals vi.VehicleID
-                                         where v.IsFeatured == true && v.IsActive == true
-                                         group new { v, vi } by new { vi.VehicleID, v.ID } into r
-
+            ViewBag.RVVehicleAddimage = (from vehicle in db.Vehicles
+                                             //join vi in db.VehicleImages on v.ID equals vi.VehicleID
+                                             //where v.IsFeatured == true && v.IsActive == true
+                                             //group new { v, vi } by new { vi.VehicleID, v.ID } into r
+                                         from VehicleImage in db.VehicleImages.Where(o => vehicle.ID == o.VehicleID && o.IsActive == true)
+                                                          .Take(1)
+                                         where vehicle.IsFeatured == true && vehicle.IsActive == true
                                          select new VehicleAddimage
                                          {
-                                             VehicleID = r.Max(iu => iu.v.ID),
-                                             ImageUrl = r.Max(iu => iu.vi.ImageUrl),
-                                             CreatedOn = r.Max(iu => iu.v.CreatedOn),
-                                             PublicKey = r.Max(iu => iu.vi.PublicKey),
-                                             Vehicletitle = r.Max(vt => vt.v.Title),
-                                             VehicleDescription = r.Max(vd => vd.v.Description.Substring(0, 200))
+                                             VehicleID = vehicle.ID,
+                                             ImageUrl = VehicleImage.ImageUrl,
+                                             CreatedOn = vehicle.CreatedOn,
+                                             PublicKey = VehicleImage.PublicKey,
+                                             Vehicletitle = vehicle.Title,
+                                             VehicleDescription = vehicle.Description.Substring(0, 200)
                                          }).OrderBy(i => i.CreatedOn).Take(2).ToList();
             ViewBag.AboutUs = db.Widgets.Where(w => w.PageId == 1 && w.WidgetId == "Widget1").FirstOrDefault().Text.Substring(0, 300);
             ViewBag.RVTestimonials = db.Testimonials.Where(c => c.isactive == true).ToList();
@@ -71,10 +73,9 @@ namespace VehicleSale.Controllers
 
         public ActionResult Compare(string id)
         {
-          
             var my_id = id.Split(',');
             List<VehicleDetailsVM> vm = new List<VehicleDetailsVM>();
-            for (var i = 1; i < my_id.Length; i++)
+            for (var i = 0; i < my_id.Length; i++)
             {
                 int v_id = Convert.ToInt32(my_id[i]);
                 VehicleDetailsVM vm1 = (from vehicle in db.Vehicles
@@ -472,7 +473,7 @@ namespace VehicleSale.Controllers
             return View(model);
         }
 
-        public ActionResult getVehicle(string vType, string brands, string sleeps, string vehicleCategory, string MinPrice, string MaxPrice, string Lat, string Long, string sort)
+        public ActionResult getVehicle(string vType, string brands, string sleeps, string vehicleCategory, string MinPrice, string MaxPrice, string Lat, string Long, string sort, string vehicleTags)
         {
             #region variables
 
@@ -492,11 +493,13 @@ namespace VehicleSale.Controllers
             int v_maxprice = 1000;
             double v_lat = 0;
             double v_lng = 0;
-
+            int v_TagId = 0;
             if (!string.IsNullOrEmpty(vType) && vType != "undefined")
             {
                 v_vehicletype = int.Parse(vType);
             }
+
+
             if (!string.IsNullOrEmpty(sleeps))
             {
                 v_sleep = int.Parse(sleeps);
@@ -522,7 +525,10 @@ namespace VehicleSale.Controllers
             {
                 v_lng = Convert.ToDouble(Long);
             }
-
+            if (!string.IsNullOrEmpty(vehicleTags) && vehicleTags != "undefined")
+            {
+                v_TagId = int.Parse(vehicleTags);
+            }
             #endregion
 
             var User = (ViewModels.RoleVM)Session["CurrentUser"];
@@ -631,6 +637,13 @@ namespace VehicleSale.Controllers
                 var cat = db.Categories.Where(x => v_cate.Contains(x.ID.ToString())).Select(x => x.Name).ToArray();
                 Search_Result = (from search in Search_Result
                                  where cat.Contains(search.vehicleCategory)
+                                 select search).ToList();
+            }
+            if (v_TagId > 0)
+            {
+                Search_Result = (from search in Search_Result
+                                 join vehicletags in db.VehicleTags on search.ID equals vehicletags.VehicleID
+                                 where vehicletags.TagID == v_TagId
                                  select search).ToList();
             }
             Search_Result = (from search in Search_Result

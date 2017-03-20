@@ -332,7 +332,7 @@
     <Property Name="FreshWater" Type="float" />
     <Property Name="GreyWater" Type="float" />
     <Property Name="BlackWater" Type="float" />
-    <Property Name="AwingSize" Type="int" />
+    <Property Name="AwingSize" Type="varchar" MaxLength="50" />
     <Property Name="Bed" Type="int" />
     <Property Name="Queen" Type="int" />
     <Property Name="Full" Type="int" />

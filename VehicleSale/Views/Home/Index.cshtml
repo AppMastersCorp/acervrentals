@@ -303,7 +303,7 @@
 
                 <div class="col-sm-6">
                     <a href="/VehicleDetail/Index/@vichleDetail.VehicleID">
-                        @cloudinary.Api.UrlImgUp.Transform(new Transformation().Height("200").Crop("fill")).BuildImageTag(@vichleDetail.PublicKey)
+                        @cloudinary.Api.UrlImgUp.Transform(new Transformation().Height("200").Width("250").Crop("fill")).BuildImageTag(@vichleDetail.PublicKey)
                         @*<img src="@vichleDetail.ImageUrl" alt="" />*@
                     </a>
                 </div>
@@ -681,7 +681,7 @@
             {
                 foreach (TagMaster tags in Tags)
                 {
-                    <li><a href="~/Home/TagWiseFleetListing/@tags.ID"><img src="@tags.TagIconUrl" alt="" /></a></li>
+                    <li><a href="~/Home/ListingPage?tags=@tags.ID"><img src="@tags.TagIconUrl" alt="" /></a></li>
                 }
             }
 

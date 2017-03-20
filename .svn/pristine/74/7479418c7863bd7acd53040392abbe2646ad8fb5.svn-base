@@ -1,0 +1,12 @@
+﻿@model IEnumerable<VehicleSale.ViewModels.VehicleDetailsVM>
+@using CloudinaryDotNet;
+@using System.Web.Configuration;
+
+@using ClassLibrary1;
+@{
+    Account account = new Account(WebConfigurationManager.AppSettings["CloudName"],
+                            WebConfigurationManager.AppSettings["ApiKey"],
+                            WebConfigurationManager.AppSettings["ApiSecret"]);
+    Cloudinary cloudinary = new Cloudinary(account);
+
+}
